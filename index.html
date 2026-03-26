@@ -4,114 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hafiy Zakaria</title>
-
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>HZ</text></svg>">
-    
-    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>HZ</text></svg>">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: Georgia, serif;
             line-height: 1.6;
-            max-width: 650px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 40px 20px;
-            color: #000;
+            color: #111;
             background: #fff;
         }
-        
+
         header {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
-        
-        h1 {
-            font-size: 1.4em;
-            font-weight: normal;
-            margin-bottom: 20px;
+
+        header h1 {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 6px;
         }
-        
-        h2 {
-            font-size: 1.4em;
-            margin: 40px 0 15px 0;
+
+        header h1 a {
+            color: #111;
+            text-decoration: none;
+        }
+
+        header p {
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        nav {
+            margin-bottom: 50px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+
+        nav a {
+            color: #111;
+            text-decoration: none;
+            margin-right: 25px;
+            font-size: 0.95em;
             font-weight: bold;
         }
-        
-        h3 {
-            font-size: 1em;
-            margin: 20px 0 10px 0;
-            font-weight: bold;
+
+        nav a:hover {
+            color: #e00;
         }
-        
-        p {
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        section h2 {
+            font-size: 1.3em;
+            font-weight: bold;
             margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #111;
         }
-        
+
         a {
-            color: #00f;
+            color: #1a0dab;
             text-decoration: underline;
         }
-        
-        a:visited {
-            color: #609;
-        }
-        
+
         a:hover {
-            color: #f00;
+            color: #e00;
         }
-        
-        ul {
-            margin: 15px 0 15px 30px;
+
+        p {
+            margin-bottom: 12px;
         }
-        
-        li {
-            margin-bottom: 8px;
-        }
-        
-        dl {
-            margin: 20px 0;
-        }
-        
-        dt {
-            font-weight: bold;
-            margin-top: 15px;
-        }
-        
-        dd {
-            margin-left: 30px;
-            margin-bottom: 10px;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 20px 0;
-        }
-        
-        .book-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 30px 0;
-        }
-        
-        .book {
-            text-align: left;
-        }
-        
-        .book img {
-            width: 150px;
-            margin-bottom: 10px;
-        }
-        
-        .intro {
+
+        /* About */
+        .about p {
             font-size: 1.05em;
+        }
+
+        .about ul {
+            margin: 12px 0 12px 30px;
+        }
+
+        .about li {
+            margin-bottom: 4px;
+            font-size: 1.05em;
+        }
+
+        /* Work */
+        .work-entry {
             margin-bottom: 30px;
+        }
+
+        .work-entry h3 {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .work-entry .role {
+            margin-bottom: 2px;
+        }
+
+        .work-entry .role em {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .work-entry .role .dates {
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        .work-entry ul {
+            margin: 8px 0 0 25px;
+            font-size: 0.93em;
+        }
+
+        .work-entry li {
+            margin-bottom: 5px;
+        }
+
+        /* Projects */
+        .project {
+            margin-bottom: 20px;
+        }
+
+        .project h3 {
+            font-size: 1em;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .project h3 a {
+            color: #1a0dab;
+        }
+
+        .project p {
+            font-size: 0.95em;
+            color: #333;
+            margin-bottom: 0;
+        }
+
+        /* Blog */
+        .blog-list {
+            list-style: none;
+        }
+
+        .blog-list li {
+            margin-bottom: 14px;
+        }
+
+        .blog-list .date {
+            color: #888;
+            font-size: 0.85em;
+            display: inline-block;
+            width: 100px;
+        }
+
+        .blog-list a {
+            font-size: 1em;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #888;
+            font-size: 0.85em;
+        }
+
+        footer a {
+            color: #888;
         }
     </style>
 </head>
@@ -120,58 +192,97 @@
         <h1><a href="/">Hafiy Zakaria</a></h1>
     </header>
 
+
     <main>
-        <h2>Me in 10 seconds</h2>
-        <div class="intro">
+        <section id="about" class="about">
+            <h2>About</h2>
             <p>
-                I'm a <a href="https://www.linkedin.com/in/hafiy/" target="_blank">marketer</a>, and 
-                <a href="https://www.linkedin.com/in/hafiy/" target="_blank">project manager</a>.
+                Results-oriented program and project management professional with over 12 years of experience leading cross-functional initiatives, driving process improvements, and managing stakeholder engagement across government, enterprise, and startup environments.
             </p>
             <p>
-                I'm a <a href="#">lifelong learner</a>, 
-                curious about everything, and 
-                passionate about <a href="#">simplicity</a>.
+                Trained in PMP methodology with a proven track record in delivering multi-million ringgit connectivity &amp; ICT projects.
             </p>
-            <p>
-                Born in Kuching, moved around a few times and now I'm back.
-            </p>
-        </div>
+            <p>Based in Kuching, Sarawak.</p>
+        </section>
 
-        <h2><a href="/about.html">Me in 10 minutes?</a></h2>
-        <p>See my <a href="/about.html">"about" page</a>.</p>
+        <section id="work">
+            <h2>Work</h2>
 
-        <h2><a href="/now">What am I doing now?</a></h2>
-        <p>See my <a href="/now">"now" page</a>.</p>
+            <div class="work-entry">
+                <div class="role"><em>Independent Consultant (Digital Operations &amp; Campaign Support)</em> <span class="dates">Dec 2021 &ndash; Aug 2025</span></div>
+                <ul>
+                    <li>Supported the execution of a multi-month digital user acquisition campaign by coordinating campaign activities, monitoring milestones, and tracking performance metrics, contributing to peak growth of over 10,000 new user accounts per day and expansion of the user base to more than 87,000 users over the campaign duration.</li>
+                    <li>Led community operations by serving as a liaison between user communities of approximately 10,000 members across multiple platforms and technical teams, synthesising user feedback into actionable reports that supported product decision-making and operational adjustments.</li>
+                    <li>Executed structured quality assurance testing across development and production environments, identifying issues prior to release and supporting stable, reliable launches for both web and mobile applications.</li>
+                </ul>
+            </div>
 
-        <h2><a href="/contact">Contact me</a></h2>
-        <p>I love hearing from people. <a href="mailto:hafiyzakaria@outlook.com">Say hello</a>.</p>
+            <div class="work-entry">
+                <h3>TELEKOM MALAYSIA BERHAD</h3>
+                <div class="role"><em>Regional Project Manager (Sarawak)</em> <span class="dates">Jul 2020 &ndash; Nov 2021</span></div>
+                <div class="role"><em>Project Manager</em> <span class="dates">Jun 2018 &ndash; Jun 2020</span></div>
+                <div class="role"><em>Associate Project Manager</em> <span class="dates">Apr 2017 &ndash; May 2018</span></div>
+                <ul>
+                    <li>Led and supported the rollout of connectivity (DOME, IPME, IPVPN, SD-WAN) and ICT projects for government agencies (TVS, SAINS, MBI Selangor) and enterprise clients (Press Metal, Sarawak Energy, Curtin University) by coordinating cross-functional teams and vendors, delivering projects across rural and urban districts with project values up to eight figures (MYR).</li>
+                    <li>Managed program scope, schedules, budgets, risks, and dependencies in line with organisational governance frameworks and service level agreements (SLAs), ensuring projects were delivered within agreed requirements and controls.</li>
+                    <li>Drove process improvement initiatives by identifying operational bottlenecks and implementing revised workflows and documentation standards, contributing to more consistent project delivery and improved cross-team coordination.</li>
+                    <li>Engaged and coordinated with internal teams, vendors, and external stakeholders throughout the project lifecycle, facilitating issue resolution, progress reporting, and timely decision-making with senior stakeholders.</li>
+                </ul>
+            </div>
 
-        <h2>Projects</h2>
-        <dl>
-            <dt><a href="#">Project One</a></dt>
-            <dd>A brief description of what this project is about and why it matters.</dd>
-            
-            <dt><a href="#">Project Two</a></dt>
-            <dd>Another interesting thing I've built or am working on.</dd>
-            
-            <dt><a href="#">Project Three</a></dt>
-            <dd>Something else worth sharing with the world.</dd>
-        </dl>
+            <div class="work-entry">
+                <div class="role"><em>Business Support &amp; Network Operations Executive (Kelantan)</em> <span class="dates">Apr 2016 &ndash; Mar 2017</span></div>
+                <ul>
+                    <li>Managed backlog orders and delivery gaps for TM Consumer sales by coordinating service activation processes, reducing backlog orders by 20% within six months and improving activation turnaround time.</li>
+                    <li>Improved operational workflows and work processes for technical operations staff by converting management directives into standardised procedures, increasing team productivity and operational consistency.</li>
+                </ul>
+            </div>
 
-        <h2>Newest Articles <a href="/blog">see all</a></h2>
-        <ul>
-            <li><a href="#">Why I started writing every day</a></li>
-            <li><a href="#">The power of saying no</a></li>
-            <li><a href="#">What I learned from failure</a></li>
-            <li><a href="#">Building things that matter</a></li>
-        </ul>
+            <div class="work-entry">
+                <div class="role"><em>Marketing &amp; Business Development Executive &ndash; ACASIA Communications</em> <span class="dates">Apr 2015 &ndash; Mar 2016</span></div>
+                <ul>
+                    <li>Led social media management initiatives by planning and executing content and engagement activities, increasing Facebook followers from approximately 800 to 10,000 within the role period.</li>
+                    <li>Assisted in the strategic relaunch of ACASIA Communications Sdn Bhd, supporting event planning and coordination for the ASEAN SME Showcase &amp; Conference 2015, contributing to a high-profile relaunch officiated by Malaysia's Minister of International Trade and Industry.</li>
+                </ul>
+            </div>
 
-        <h2>Popular Articles <a href="/blog">see all</a></h2>
-        <ul>
-            <li><a href="#">Start with why</a></li>
-            <li><a href="#">Less is more</a></li>
-            <li><a href="#">How to think clearly</a></li>
-        </ul>
+            <div class="work-entry">
+                <div class="role"><em>Marketing Events Executive</em> <span class="dates">Jun 2014 &ndash; Mar 2015</span></div>
+                <ul>
+                    <li>Coordinated nationwide &ldquo;Go-To-Market&rdquo; marketing events across rural and urban districts to support sales of UniFi and Streamyx services, including deployments in Kuala Lumpur, Selangor, Pahang, Sabah, and Sarawak, contributing to increased market visibility and support for sales activities.</li>
+                </ul>
+            </div>
+
+            <div class="work-entry">
+                <div class="role"><em>Campaign Management Executive</em> <span class="dates">May 2013 &ndash; May 2014</span></div>
+                <ul>
+                    <li>Assisted in campaign and product development for upselling initiatives across multiple channels, including retail outlets, resellers, contact centres, and online platforms, contributing to subscriber growth from 158,967 in 2012 to 195,439 in 2013.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+
+            <div class="project">
+                <h3><a href="https://tracker.hafiy.my">PCDS 2030 Project Tracker</a></h3>
+                <p>A project tracking tool for monitoring PCDS 2030 initiatives.</p>
+            </div>
+        </section>
+
+        <section id="blog">
+            <h2>Blog</h2>
+            <ul class="blog-list">
+                <li><span class="date">2026-03-01</span> <a href="#">Why I started writing every day</a></li>
+                <li><span class="date">2026-02-15</span> <a href="#">The power of saying no</a></li>
+                <li><span class="date">2026-02-01</span> <a href="#">What I learned from failure</a></li>
+                <li><span class="date">2026-01-15</span> <a href="#">Building things that matter</a></li>
+            </ul>
+        </section>
     </main>
+
+    <footer>
+        <p>&copy; 2026 Hafiy Zakaria &middot; <a href="mailto:nazirul@hafiy.my">nazirul@hafiy.my</a> &middot; <a href="https://www.linkedin.com/in/hafiy/" target="_blank">LinkedIn</a></p>
+    </footer>
 </body>
 </html>
