@@ -13,179 +13,229 @@
         }
 
         body {
-            font-family: Georgia, serif;
-            line-height: 1.6;
-            max-width: 700px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 40px 20px;
-            color: #111;
+            padding: 60px 24px;
+            color: #1a1a2e;
             background: #fff;
         }
 
         header {
-            margin-bottom: 50px;
+            margin-bottom: 64px;
         }
 
         header h1 {
             font-size: 2em;
-            font-weight: bold;
-            margin-bottom: 6px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0;
         }
 
         header h1 a {
-            color: #111;
+            color: #1a1a2e;
             text-decoration: none;
-        }
-
-        header p {
-            color: #555;
-            font-size: 1.05em;
-        }
-
-        nav {
-            margin-bottom: 50px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 15px;
-        }
-
-        nav a {
-            color: #111;
-            text-decoration: none;
-            margin-right: 25px;
-            font-size: 0.95em;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #e00;
         }
 
         section {
-            margin-bottom: 50px;
+            margin-bottom: 64px;
         }
 
         section h2 {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #111;
+            font-size: 0.8em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #1a1a2e;
+            margin-bottom: 28px;
         }
 
         a {
-            color: #1a0dab;
-            text-decoration: underline;
+            color: #4a6cf7;
+            text-decoration: none;
         }
 
         a:hover {
-            color: #e00;
+            text-decoration: underline;
         }
 
         p {
             margin-bottom: 12px;
+            color: #444;
         }
 
         /* About */
         .about p {
-            font-size: 1.05em;
+            font-size: 1em;
+            line-height: 1.8;
         }
 
-        .about ul {
-            margin: 12px 0 12px 30px;
+        .about p:last-child {
+            margin-bottom: 0;
         }
 
-        .about li {
-            margin-bottom: 4px;
-            font-size: 1.05em;
+        .about .highlight {
+            color: #1a1a2e;
+            font-weight: 600;
         }
 
         /* Work */
         .work-entry {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .work-entry:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .company-name {
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888;
+            margin-bottom: 16px;
+        }
+
+        .role-item {
             margin-bottom: 20px;
-        }
-
-        .work-entry h3 {
-            font-size: 1.1em;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-
-        .work-header {
             cursor: pointer;
-            padding: 6px 0;
-            user-select: none;
         }
 
-        .work-header:hover {
-            color: #e00;
+        .role-item:last-child {
+            margin-bottom: 0;
         }
 
-        .work-header em {
-            font-style: normal;
-            font-weight: bold;
+        .role-date {
+            font-size: 0.8em;
+            color: #999;
+            font-weight: 400;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
-        .work-header .toggle-icon {
+        .role-title {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #1a1a2e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .role-title .arrow {
             font-size: 0.7em;
-            margin-right: 6px;
-            display: inline-block;
-            transition: transform 0.2s;
+            color: #bbb;
+            transition: transform 0.2s ease, color 0.2s ease;
         }
 
-        .work-header.open .toggle-icon {
+        .role-item:hover .role-title {
+            color: #4a6cf7;
+        }
+
+        .role-item:hover .arrow {
+            color: #4a6cf7;
+        }
+
+        .role-item.open .arrow {
             transform: rotate(90deg);
         }
 
-        .work-entry .role {
-            margin-bottom: 2px;
-        }
-
-        .work-entry .role em {
-            font-style: normal;
-            font-weight: bold;
-        }
-
-        .work-entry .role .dates {
-            font-style: normal;
-            font-weight: normal;
-        }
-
-        .work-details {
+        .role-details {
             display: none;
-            margin-top: 4px;
+            margin-top: 12px;
+            padding-left: 0;
         }
 
-        .work-details.open {
+        .role-details.open {
             display: block;
         }
 
-        .work-entry ul {
-            margin: 8px 0 0 25px;
-            font-size: 0.93em;
+        .role-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .work-entry li {
-            margin-bottom: 5px;
+        .role-details li {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .role-details li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+
+        .role-details li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Sub-roles (grouped under same company) */
+        .sub-roles {
+            margin-top: 4px;
+            padding-left: 0;
+        }
+
+        .sub-role {
+            margin-bottom: 4px;
+        }
+
+        .sub-role .role-date {
+            display: inline;
+            margin-left: 8px;
+        }
+
+        .role-title-sub {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #1a1a2e;
         }
 
         /* Projects */
         .project {
-            margin-bottom: 20px;
+            padding: 20px 0;
         }
 
         .project h3 {
             font-size: 1em;
-            font-weight: bold;
-            margin-bottom: 4px;
+            font-weight: 600;
+            margin-bottom: 6px;
         }
 
         .project h3 a {
-            color: #1a0dab;
+            color: #1a1a2e;
+        }
+
+        .project h3 a:hover {
+            color: #4a6cf7;
+        }
+
+        .project h3 a::after {
+            content: ' \2197';
+            font-size: 0.8em;
+            color: #bbb;
         }
 
         .project p {
-            font-size: 0.95em;
-            color: #333;
+            font-size: 0.9em;
+            color: #666;
             margin-bottom: 0;
         }
 
@@ -195,30 +245,85 @@
         }
 
         .blog-list li {
-            margin-bottom: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+        }
+
+        .blog-list li:last-child {
+            border-bottom: none;
         }
 
         .blog-list .date {
-            color: #888;
-            font-size: 0.85em;
-            display: inline-block;
-            width: 100px;
+            color: #999;
+            font-size: 0.8em;
+            flex-shrink: 0;
+            min-width: 90px;
         }
 
         .blog-list a {
-            font-size: 1em;
+            font-size: 0.95em;
+            color: #1a1a2e;
+            font-weight: 500;
         }
 
+        .blog-list a:hover {
+            color: #4a6cf7;
+        }
+
+        /* Footer */
         footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #888;
-            font-size: 0.85em;
+            margin-top: 80px;
+            padding-top: 24px;
+            border-top: 1px solid #eee;
+            color: #999;
+            font-size: 0.82em;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         footer a {
-            color: #888;
+            color: #999;
+        }
+
+        footer a:hover {
+            color: #4a6cf7;
+        }
+
+        /* Mobile tweaks */
+        @media (max-width: 480px) {
+            body {
+                padding: 40px 20px;
+            }
+
+            header {
+                margin-bottom: 48px;
+            }
+
+            header h1 {
+                font-size: 1.6em;
+            }
+
+            section {
+                margin-bottom: 48px;
+            }
+
+            .blog-list li {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .blog-list .date {
+                min-width: auto;
+            }
+
+            footer {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -226,7 +331,6 @@
     <header>
         <h1><a href="/">Hafiy Zakaria</a></h1>
     </header>
-
 
     <main>
         <section id="about" class="about">
@@ -239,92 +343,87 @@
             </p>
             <p>PMP-trained.</p>
             <p>Based in Kuching, Sarawak.</p>
-            <p><strong>Currently exploring opportunities.</strong></p>
+            <p><span class="highlight">Currently exploring opportunities.</span></p>
         </section>
 
         <section id="work">
-            <h2>Work</h2>
+            <h2>Experience</h2>
 
             <div class="work-entry">
-                <h3>INDEPENDENT CONSULTANT</h3>
-                <div class="work-header" onclick="toggleWork(this)">
-                    <span class="toggle-icon">&#9654;</span>
-                    <em>Digital Operations &amp; Campaign Support</em> <span class="dates">Dec 2021 &ndash; Aug 2025</span>
-                </div>
-                <div class="work-details">
-                    <ul>
-                        <li>Supported the execution of a multi-month digital user acquisition campaign by coordinating campaign activities, monitoring milestones, and tracking performance metrics, contributing to peak growth of over 10,000 new user accounts per day and expansion of the user base to more than 87,000 users over the campaign duration.</li>
-                        <li>Led community operations by serving as a liaison between user communities of approximately 10,000 members across multiple platforms and technical teams, synthesising user feedback into actionable reports that supported product decision-making and operational adjustments.</li>
-                        <li>Executed structured quality assurance testing across development and production environments, identifying issues prior to release and supporting stable, reliable launches for both web and mobile applications.</li>
-                    </ul>
+                <div class="company-name">Independent Consultant</div>
+                <div class="role-item" onclick="toggleRole(this)">
+                    <div class="role-date">Dec 2021 &mdash; Aug 2025</div>
+                    <div class="role-title">Digital Operations &amp; Campaign Support <span class="arrow">&#9654;</span></div>
+                    <div class="role-details">
+                        <ul>
+                            <li>Supported the execution of a multi-month digital user acquisition campaign by coordinating campaign activities, monitoring milestones, and tracking performance metrics, contributing to peak growth of over 10,000 new user accounts per day and expansion of the user base to more than 87,000 users over the campaign duration.</li>
+                            <li>Led community operations by serving as a liaison between user communities of approximately 10,000 members across multiple platforms and technical teams, synthesising user feedback into actionable reports that supported product decision-making and operational adjustments.</li>
+                            <li>Executed structured quality assurance testing across development and production environments, identifying issues prior to release and supporting stable, reliable launches for both web and mobile applications.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <div class="work-entry">
-                <h3>TELEKOM MALAYSIA BERHAD</h3>
-                <div class="work-header" onclick="toggleWork(this)">
-                    <span class="toggle-icon">&#9654;</span>
-                    <em>Regional Project Manager (Sarawak)</em> <span class="dates">Jul 2020 &ndash; Nov 2021</span><br>
-                    <span style="margin-left: 18px;"><em>Project Manager</em> <span class="dates">Jun 2018 &ndash; Jun 2020</span></span><br>
-                    <span style="margin-left: 18px;"><em>Associate Project Manager</em> <span class="dates">Apr 2017 &ndash; May 2018</span></span>
-                </div>
-                <div class="work-details">
-                    <ul>
-                        <li>Led and supported the rollout of connectivity (DOME, IPME, IPVPN, SD-WAN) and ICT projects for government agencies (TVS, SAINS, MBI Selangor) and enterprise clients (Press Metal, Sarawak Energy, Curtin University) by coordinating cross-functional teams and vendors, delivering projects across rural and urban districts with project values up to eight figures (MYR).</li>
-                        <li>Managed program scope, schedules, budgets, risks, and dependencies in line with organisational governance frameworks and service level agreements (SLAs), ensuring projects were delivered within agreed requirements and controls.</li>
-                        <li>Drove process improvement initiatives by identifying operational bottlenecks and implementing revised workflows and documentation standards, contributing to more consistent project delivery and improved cross-team coordination.</li>
-                        <li>Engaged and coordinated with internal teams, vendors, and external stakeholders throughout the project lifecycle, facilitating issue resolution, progress reporting, and timely decision-making with senior stakeholders.</li>
-                    </ul>
-                </div>
-            </div>
+                <div class="company-name">Telekom Malaysia Berhad</div>
 
-            <div class="work-entry">
-                <div class="work-header" onclick="toggleWork(this)">
-                    <span class="toggle-icon">&#9654;</span>
-                    <em>Business Support &amp; Network Operations Executive</em> <span class="dates">Apr 2016 &ndash; Mar 2017</span>
+                <div class="role-item" onclick="toggleRole(this)">
+                    <div class="role-date">Apr 2017 &mdash; Nov 2021</div>
+                    <div class="role-title">Regional Project Manager (Sarawak) <span class="arrow">&#9654;</span></div>
+                    <div class="sub-roles">
+                        <div class="sub-role"><span class="role-title-sub">Project Manager</span></div>
+                        <div class="sub-role"><span class="role-title-sub">Associate Project Manager</span></div>
+                    </div>
+                    <div class="role-details">
+                        <ul>
+                            <li>Led and supported the rollout of connectivity (DOME, IPME, IPVPN, SD-WAN) and ICT projects for government agencies (TVS, SAINS, MBI Selangor) and enterprise clients (Press Metal, Sarawak Energy, Curtin University) by coordinating cross-functional teams and vendors, delivering projects across rural and urban districts with project values up to eight figures (MYR).</li>
+                            <li>Managed program scope, schedules, budgets, risks, and dependencies in line with organisational governance frameworks and service level agreements (SLAs), ensuring projects were delivered within agreed requirements and controls.</li>
+                            <li>Drove process improvement initiatives by identifying operational bottlenecks and implementing revised workflows and documentation standards, contributing to more consistent project delivery and improved cross-team coordination.</li>
+                            <li>Engaged and coordinated with internal teams, vendors, and external stakeholders throughout the project lifecycle, facilitating issue resolution, progress reporting, and timely decision-making with senior stakeholders.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="work-details">
-                    <ul>
-                        <li>Managed backlog orders and delivery gaps for TM Consumer sales by coordinating service activation processes, reducing backlog orders by 20% within six months and improving activation turnaround time.</li>
-                        <li>Improved operational workflows and work processes for technical operations staff by converting management directives into standardised procedures, increasing team productivity and operational consistency.</li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="work-entry">
-                <div class="work-header" onclick="toggleWork(this)">
-                    <span class="toggle-icon">&#9654;</span>
-                    <em>Marketing &amp; Business Development Executive</em> <span class="dates">Apr 2015 &ndash; Mar 2016</span>
+                <div class="role-item" onclick="toggleRole(this)">
+                    <div class="role-date">Apr 2016 &mdash; Mar 2017</div>
+                    <div class="role-title">Business Support &amp; Network Operations Executive <span class="arrow">&#9654;</span></div>
+                    <div class="role-details">
+                        <ul>
+                            <li>Managed backlog orders and delivery gaps for TM Consumer sales by coordinating service activation processes, reducing backlog orders by 20% within six months and improving activation turnaround time.</li>
+                            <li>Improved operational workflows and work processes for technical operations staff by converting management directives into standardised procedures, increasing team productivity and operational consistency.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="work-details">
-                    <ul>
-                        <li>Led social media management initiatives by planning and executing content and engagement activities, increasing Facebook followers from approximately 800 to 10,000 within the role period.</li>
-                        <li>Assisted in the strategic relaunch of ACASIA Communications Sdn Bhd, supporting event planning and coordination for the ASEAN SME Showcase &amp; Conference 2015, contributing to a high-profile relaunch officiated by Malaysia's Minister of International Trade and Industry.</li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="work-entry">
-                <div class="work-header" onclick="toggleWork(this)">
-                    <span class="toggle-icon">&#9654;</span>
-                    <em>Marketing Events Executive</em> <span class="dates">Jun 2014 &ndash; Mar 2015</span>
+                <div class="role-item" onclick="toggleRole(this)">
+                    <div class="role-date">Apr 2015 &mdash; Mar 2016</div>
+                    <div class="role-title">Marketing &amp; Business Development Executive <span class="arrow">&#9654;</span></div>
+                    <div class="role-details">
+                        <ul>
+                            <li>Led social media management initiatives by planning and executing content and engagement activities, increasing Facebook followers from approximately 800 to 10,000 within the role period.</li>
+                            <li>Assisted in the strategic relaunch of ACASIA Communications Sdn Bhd, supporting event planning and coordination for the ASEAN SME Showcase &amp; Conference 2015, contributing to a high-profile relaunch officiated by Malaysia's Minister of International Trade and Industry.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="work-details">
-                    <ul>
-                        <li>Coordinated nationwide &ldquo;Go-To-Market&rdquo; marketing events across rural and urban districts to support sales of UniFi and Streamyx services, including deployments in Kuala Lumpur, Selangor, Pahang, Sabah, and Sarawak, contributing to increased market visibility and support for sales activities.</li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="work-entry">
-                <div class="work-header" onclick="toggleWork(this)">
-                    <span class="toggle-icon">&#9654;</span>
-                    <em>Campaign Management Executive</em> <span class="dates">May 2013 &ndash; May 2014</span>
+                <div class="role-item" onclick="toggleRole(this)">
+                    <div class="role-date">Jun 2014 &mdash; Mar 2015</div>
+                    <div class="role-title">Marketing Events Executive <span class="arrow">&#9654;</span></div>
+                    <div class="role-details">
+                        <ul>
+                            <li>Coordinated nationwide &ldquo;Go-To-Market&rdquo; marketing events across rural and urban districts to support sales of UniFi and Streamyx services, including deployments in Kuala Lumpur, Selangor, Pahang, Sabah, and Sarawak, contributing to increased market visibility and support for sales activities.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="work-details">
-                    <ul>
-                        <li>Assisted in campaign and product development for upselling initiatives across multiple channels, including retail outlets, resellers, contact centres, and online platforms, contributing to subscriber growth from 158,967 in 2012 to 195,439 in 2013.</li>
-                    </ul>
+
+                <div class="role-item" onclick="toggleRole(this)">
+                    <div class="role-date">May 2013 &mdash; May 2014</div>
+                    <div class="role-title">Campaign Management Executive <span class="arrow">&#9654;</span></div>
+                    <div class="role-details">
+                        <ul>
+                            <li>Assisted in campaign and product development for upselling initiatives across multiple channels, including retail outlets, resellers, contact centres, and online platforms, contributing to subscriber growth from 158,967 in 2012 to 195,439 in 2013.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -350,12 +449,14 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Hafiy Zakaria &middot; <a href="mailto:nazirul@hafiy.my">nazirul@hafiy.my</a> &middot; <a href="https://www.linkedin.com/in/hafiy/" target="_blank">LinkedIn</a></p>
+        <span>&copy; 2026 Hafiy Zakaria</span>
+        <span><a href="mailto:nazirul@hafiy.my">nazirul@hafiy.my</a> &middot; <a href="https://www.linkedin.com/in/hafiy/" target="_blank">LinkedIn</a></span>
     </footer>
+
     <script>
-        function toggleWork(header) {
-            var details = header.nextElementSibling;
-            header.classList.toggle('open');
+        function toggleRole(item) {
+            var details = item.querySelector('.role-details');
+            item.classList.toggle('open');
             details.classList.toggle('open');
         }
     </script>
