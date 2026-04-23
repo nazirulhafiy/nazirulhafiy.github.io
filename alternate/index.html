@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAZIRUL HAFIY — Project & Operations Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+          },
+          colors: {
+            'slate-850': '#1e293b',
+            'cyan-450': '#06b6d4',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #e2e8f0;
+    }
+
+    .glass-morphism {
+      background: rgba(30, 41, 59, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-card {
+      background: rgba(30, 41, 59, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(6, 182, 212, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px rgba(6, 182, 212, 0.15);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-border {
+      position: relative;
+    }
+
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .floating-particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(6, 182, 212, 0.3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+      50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 1px solid rgba(6, 182, 212, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 0.25rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #06b6d4;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover::before {
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
+      transform: scale(1.2);
+    }
+
+    .timeline-item:hover {
+      border-left-color: rgba(6, 182, 212, 0.5);
+    }
+
+    .contact-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      color: #e2e8f0;
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:last-child {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-link:hover {
+      padding-left: 1rem;
+      color: #06b6d4;
+    }
+
+    .contact-link:hover .contact-arrow {
+      transform: translateX(8px);
+      color: #06b6d4;
+    }
+
+    .contact-arrow {
+      transition: all 0.3s ease;
+      color: #64748b;
+    }
+
+    .nav-link {
+      position: relative;
+      color: #94a3b8;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #06b6d4, #3b82f6);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+    }
+
+    .btn-ghost {
+      border: 2px solid #06b6d4;
+      color: #06b6d4;
+      transition: all 0.3s ease;
+    }
+
+    .btn-ghost:hover {
+      background: #06b6d4;
+      color: white;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #06b6d4;
+      border-radius: 50%;
+      animation: pulse-glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse-glow {
+      from { box-shadow: 0 0 8px rgba(6, 182, 212, 0.6); }
+      to { box-shadow: 0 0 16px rgba(6, 182, 212, 0.9); }
+    }
+
+    .section-number {
+      font-size: clamp(4rem, 10vw, 8rem);
+      font-weight: 800;
+      line-height: 0.85;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(6, 182, 212, 0.2);
+      position: absolute;
+      top: -0.5em;
+      left: -0.05em;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-morphism">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="#" class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-gradient-to-r from-cyan-450 to-blue-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">NH</span>
+          </div>
+          <span class="text-white font-semibold text-lg tracking-tight">Nazirul Hafiy</span>
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="nav-link text-sm font-medium">About</a>
+          <a href="#experience" class="nav-link text-sm font-medium">Experience</a>
+          <a href="#experiments" class="nav-link text-sm font-medium">Experiments</a>
+          <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
+        </div>
+        <a href="#contact" class="btn-primary px-5 py-2 rounded-lg text-sm font-semibold hidden sm:inline-block">
+          Get in touch
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center relative pt-16">
+    <div class="floating-particles" id="particles"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="flex items-center justify-center gap-3 mb-8">
+          <span class="status-dot"></span>
+          <span class="text-cyan-400 text-sm font-semibold uppercase tracking-widest">Available for engagements</span>
+        </div>
+        <h1 class="text-5xl sm:text-6xl md:text-8xl font-extrabold text-white mb-6 tracking-tight">
+          <span class="gradient-text">Nazirul Hafiy</span>
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-4 max-w-2xl mx-auto font-light">
+          Project & Operations Manager
+        </p>
+        <p class="text-base sm:text-lg text-gray-400 mb-12 max-w-xl mx-auto leading-relaxed">
+          I turn complex, multi-stakeholder projects into structured execution and predictable outcomes. 12+ years across government, enterprise, and startups.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#contact" class="btn-primary px-8 py-4 rounded-xl font-semibold text-lg">
+            Get in touch
+          </a>
+          <a href="#experience" class="btn-ghost px-8 py-4 rounded-xl font-semibold text-lg">
+            View experience
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-6xl mx-auto">
+      <div class="relative mb-16 reveal">
+        <span class="section-number">01</span>
+        <span class="text-cyan-400 text-sm font-semibold uppercase tracking-widest relative z-10">About</span>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-4 relative z-10 max-w-lg leading-tight">
+          Turning complexity into structured execution.
+        </h2>
+      </div>
+      <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+        <div class="lg:col-span-3 reveal">
+          <div class="prose prose-lg prose-invert max-w-none">
+            <p class="text-gray-300 leading-relaxed mb-6">
+              Over the past <strong class="text-white">12+ years</strong>, I have delivered programs across government agencies, enterprise environments, and international startups — coordinating project delivery, operations, and technical teams to ensure reliable execution.
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-6">
+              At <strong class="text-white">Telekom Malaysia</strong>, I spent close to nine years progressing from campaign management into regional project leadership in Sarawak. I delivered multi-million ringgit connectivity and ICT initiatives, leading cross-functional teams, managing vendors, and ensuring delivery across both rural and urban environments.
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-6">
+              More recently, I worked independently with <strong class="text-white">US-based startups</strong>, supporting digital campaign operations, community engagement, and product feedback loops. My focus was on bringing structure and clarity to fast-moving, ambiguous environments.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              <strong class="text-white">PMP-trained.</strong> Based in Kuching, Sarawak.
+            </p>
+          </div>
+        </div>
+        <div class="lg:col-span-2 reveal">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="glass-card rounded-2xl p-6 text-center">
+              <div class="text-3xl sm:text-4xl font-bold gradient-text mb-2">12+</div>
+              <div class="text-gray-400 text-sm uppercase tracking-wider">Years</div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 text-center">
+              <div class="text-3xl sm:text-4xl font-bold gradient-text mb-2">9</div>
+              <div class="text-gray-400 text-sm uppercase tracking-wider">Years at TM</div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 text-center">
+              <div class="text-3xl sm:text-4xl font-bold gradient-text mb-2">PMP</div>
+              <div class="text-gray-400 text-sm uppercase tracking-wider">Trained</div>
+            </div>
+            <div class="glass-card rounded-2xl p-6 text-center">
+              <div class="text-3xl sm:text-4xl font-bold gradient-text mb-2">MY</div>
+              <div class="text-gray-400 text-sm uppercase tracking-wider">Kuching</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-4xl mx-auto">
+      <div class="relative mb-16 reveal">
+        <span class="section-number">02</span>
+        <span class="text-cyan-400 text-sm font-semibold uppercase tracking-widest relative z-10">Experience</span>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-4 relative z-10 leading-tight">
+          Career trajectory.
+        </h2>
+      </div>
+      <div class="space-y-12">
+        <div class="timeline-item pb-12 reveal">
+          <div class="text-cyan-400 text-sm font-semibold mb-2">Dec 2021 — Aug 2025</div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white mb-1">Independent Consultant</h3>
+          <p class="text-gray-400 text-sm mb-3">Digital Operations & Campaign Support</p>
+          <p class="text-gray-300 leading-relaxed max-w-2xl">
+            Supported US-based startups with digital campaign operations, community engagement, and product feedback loops. Brought structure and clarity to fast-moving, ambiguous environments.
+          </p>
+        </div>
+        <div class="timeline-item pb-12 reveal">
+          <div class="text-cyan-400 text-sm font-semibold mb-2">Apr 2017 — Nov 2021</div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white mb-1">Regional Project Manager</h3>
+          <p class="text-gray-400 text-sm mb-3">Telekom Malaysia Berhad — Sarawak</p>
+          <p class="text-gray-300 leading-relaxed max-w-2xl">
+            Led regional project delivery for multi-million ringgit connectivity and ICT initiatives. Managed cross-functional teams, vendor relationships, and delivery across rural and urban environments.
+          </p>
+        </div>
+        <div class="timeline-item pb-12 reveal">
+          <div class="text-cyan-400 text-sm font-semibold mb-2">Apr 2016 — Mar 2017</div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white mb-1">Project Manager</h3>
+          <p class="text-gray-400 text-sm mb-3">Telekom Malaysia Berhad</p>
+          <p class="text-gray-300 leading-relaxed max-w-2xl">
+            Managed project lifecycles from initiation through closure, ensuring scope, timeline, and budget adherence across multiple concurrent initiatives.
+          </p>
+        </div>
+        <div class="timeline-item pb-12 reveal">
+          <div class="text-cyan-400 text-sm font-semibold mb-2">Apr 2015 — Mar 2016</div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white mb-1">Associate Project Manager</h3>
+          <p class="text-gray-400 text-sm mb-3">Telekom Malaysia Berhad</p>
+          <p class="text-gray-300 leading-relaxed max-w-2xl">
+            Supported senior project managers in planning, execution, and stakeholder communication. Developed foundational skills in project governance and risk management.
+          </p>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="text-cyan-400 text-sm font-semibold mb-2">2013 — 2015</div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white mb-1">Business Support, Marketing & Events</h3>
+          <p class="text-gray-400 text-sm mb-3">Telekom Malaysia Berhad</p>
+          <p class="text-gray-300 leading-relaxed max-w-2xl">
+            Progressed through campaign management, marketing events, and business development roles — building a deep understanding of operations, customer engagement, and market dynamics.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experiments Section -->
+  <section id="experiments" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-4xl mx-auto">
+      <div class="relative mb-16 reveal">
+        <span class="section-number">03</span>
+        <span class="text-cyan-400 text-sm font-semibold uppercase tracking-widest relative z-10">Experiments</span>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-4 relative z-10 leading-tight">
+          Side projects & tools.
+        </h2>
+      </div>
+      <div class="glass-card rounded-2xl p-8 sm:p-10 reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-semibold uppercase tracking-wider border border-cyan-500/20">Live Tool</span>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">PCDS 2030 Project Tracker</h3>
+        <p class="text-gray-300 leading-relaxed max-w-2xl">
+          A project tracking tool for monitoring Sarawak's Post COVID-19 Development Strategy 2030 initiatives — major infrastructure, energy transition, digital economy, and sustainability projects shaping the state's future. Built to bring transparency and structure to large-scale public program oversight.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-4xl mx-auto">
+      <div class="relative mb-16 reveal">
+        <span class="section-number">04</span>
+        <span class="text-cyan-400 text-sm font-semibold uppercase tracking-widest relative z-10">Contact</span>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mt-4 relative z-10 leading-tight">
+          Let's talk.
+        </h2>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div class="reveal">
+          <p class="text-gray-300 leading-relaxed text-lg">
+            Open to project leadership, operations consulting, and program delivery engagements. Whether you're scaling a team, navigating a complex rollout, or need someone to bring order to ambiguity — let's discuss how I can help.
+          </p>
+        </div>
+        <div class="reveal">
+          <a href="mailto:nazirul@hafiy.my" class="contact-link">
+            <div>
+              <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">Email</div>
+              <div class="text-lg font-semibold">nazirul@hafiy.my</div>
+            </div>
+            <span class="contact-arrow text-2xl">&rarr;</span>
+          </a>
+          <a href="https://linkedin.com/in/nazirulhafiy" target="_blank" rel="noopener" class="contact-link">
+            <div>
+              <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">LinkedIn</div>
+              <div class="text-lg font-semibold">linkedin.com/in/nazirulhafiy</div>
+            </div>
+            <span class="contact-arrow text-2xl">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center space-x-2">
+        <div class="w-6 h-6 bg-gradient-to-r from-cyan-450 to-blue-500 rounded-md flex items-center justify-center">
+          <span class="text-white font-bold text-xs">NH</span>
+        </div>
+        <span class="text-white font-semibold">Nazirul Hafiy</span>
+      </div>
+      <p class="text-gray-500 text-sm">&copy; 2026 Nazirul Hafiy. Built in one shot.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Floating particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 6 + 's';
+      particle.style.animationDuration = (4 + Math.random() * 4) + 's';
+      particlesContainer.appendChild(particle);
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+<!-- cache-bust -->
