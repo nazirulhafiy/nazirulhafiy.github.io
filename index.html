@@ -155,30 +155,48 @@
       letter-spacing: -0.02em;
       position: relative;
       display: inline-block;
-      min-width: 150px;
+      width: 28px;
+      height: 1.4em;
+      overflow: hidden;
+      transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .nav-initials, .nav-fullname {
-      white-space: nowrap;
-      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .nav-fullname {
       position: absolute;
       left: 0;
       top: 0;
+      white-space: nowrap;
+      transition: opacity 0.42s ease,
+                  transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                  filter 0.42s ease;
+    }
+
+    .nav-initials {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      filter: blur(0);
+    }
+
+    .nav-fullname {
       opacity: 0;
-      transform: translateX(-12px);
+      transform: translateX(22px) scale(0.86);
+      filter: blur(4px);
+    }
+
+    nav.scrolled .nav-logo {
+      width: 150px;
     }
 
     nav.scrolled .nav-initials {
       opacity: 0;
-      transform: translateX(12px);
+      transform: translateX(-22px) scale(0.86);
+      filter: blur(4px);
     }
 
     nav.scrolled .nav-fullname {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateX(0) scale(1);
+      filter: blur(0);
     }
 
     .nav-links {
@@ -1267,15 +1285,24 @@
       });
     });
 
-    // Nav scroll effect
+    // Nav scroll effect — swap logo once About reaches the nav
     const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 0) {
+    const aboutSection = document.querySelector('#about');
+
+    function updateNavState() {
+      const navHeight = nav.offsetHeight || 64;
+      const aboutTop = aboutSection.getBoundingClientRect().top;
+
+      if (aboutTop <= navHeight + 8) {
         nav.classList.add('scrolled');
       } else {
         nav.classList.remove('scrolled');
       }
-    });
+    }
+
+    updateNavState();
+    window.addEventListener('scroll', updateNavState, { passive: true });
+    window.addEventListener('resize', updateNavState);
 
     // Shared expand/collapse
     const roleItems = document.querySelectorAll('.role-item');
