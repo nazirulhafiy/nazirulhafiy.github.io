@@ -155,10 +155,10 @@
       letter-spacing: -0.02em;
       position: relative;
       display: inline-block;
-      width: 28px;
+      width: var(--nav-logo-width, 28px);
       height: 1.4em;
       overflow: hidden;
-      transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: width 0.1s linear;
     }
 
     .nav-initials, .nav-fullname {
@@ -166,9 +166,10 @@
       left: 0;
       top: 0;
       white-space: nowrap;
-      transition: opacity 0.42s ease,
-                  transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-                  filter 0.42s ease;
+      will-change: opacity, transform, filter;
+      transition: opacity 0.05s linear,
+                  transform 0.05s linear,
+                  filter 0.05s linear;
     }
 
     .nav-initials {
@@ -181,22 +182,6 @@
       opacity: 0;
       transform: translateX(22px) scale(0.86);
       filter: blur(4px);
-    }
-
-    nav.scrolled .nav-logo {
-      width: 150px;
-    }
-
-    nav.scrolled .nav-initials {
-      opacity: 0;
-      transform: translateX(-22px) scale(0.86);
-      filter: blur(4px);
-    }
-
-    nav.scrolled .nav-fullname {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-      filter: blur(0);
     }
 
     .nav-links {
@@ -1285,19 +1270,30 @@
       });
     });
 
-    // Nav scroll effect — swap logo once About reaches the nav
+    // Nav scroll effect — scroll-linked swap based on About section progress
     const nav = document.querySelector('nav');
     const aboutSection = document.querySelector('#about');
+    const navLogo = document.querySelector('.nav-logo');
+    const navInitials = document.querySelector('.nav-initials');
+    const navFullname = document.querySelector('.nav-fullname');
 
     function updateNavState() {
       const navHeight = nav.offsetHeight || 64;
-      const aboutTop = aboutSection.getBoundingClientRect().top;
+      const aboutRect = aboutSection.getBoundingClientRect();
+      const start = window.innerHeight;
+      const end = navHeight + 8;
+      const range = Math.max(1, start - end);
+      const progress = Math.min(1, Math.max(0, (start - aboutRect.top) / range));
+      const eased = progress * progress * (3 - 2 * progress);
+      const width = 28 + (150 - 28) * eased;
 
-      if (aboutTop <= navHeight + 8) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
+      navLogo.style.setProperty('--nav-logo-width', `${width}px`);
+      navInitials.style.opacity = String(1 - eased);
+      navInitials.style.transform = `translateX(${-22 * eased}px) scale(${1 - 0.14 * eased})`;
+      navInitials.style.filter = `blur(${4 * eased}px)`;
+      navFullname.style.opacity = String(eased);
+      navFullname.style.transform = `translateX(${22 * (1 - eased)}px) scale(${0.86 + 0.14 * eased})`;
+      navFullname.style.filter = `blur(${4 * (1 - eased)}px)`;
     }
 
     updateNavState();
