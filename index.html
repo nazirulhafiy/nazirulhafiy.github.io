@@ -111,6 +111,18 @@
       transform: translateY(0);
     }
 
+    /* Hero fade-in-up animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* Nav */
     nav {
       position: fixed;
@@ -256,6 +268,8 @@
       line-height: 1.05;
       letter-spacing: -0.03em;
       margin-bottom: var(--space-md);
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
     }
 
     .hero h1 .accent {
@@ -281,6 +295,8 @@
       font-weight: 500;
       color: var(--color-secondary);
       margin-bottom: var(--space-lg);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
     }
 
     .hero .tagline {
@@ -288,6 +304,8 @@
       color: var(--color-secondary);
       max-width: 540px;
       line-height: 1.7;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.7s forwards;
     }
 
     /* Section headings */
