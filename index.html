@@ -153,6 +153,32 @@
       color: var(--color-primary);
       text-decoration: none;
       letter-spacing: -0.02em;
+      position: relative;
+      display: inline-block;
+      min-width: 150px;
+    }
+
+    .nav-initials, .nav-fullname {
+      white-space: nowrap;
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .nav-fullname {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transform: translateX(-12px);
+    }
+
+    .nav.scrolled .nav-initials {
+      opacity: 0;
+      transform: translateX(12px);
+    }
+
+    .nav.scrolled .nav-fullname {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .nav-links {
@@ -1009,7 +1035,10 @@
 </head>
 <body>
   <nav>
-    <a href="#" class="nav-logo">NH</a>
+    <a href="#" class="nav-logo">
+      <span class="nav-initials">NH</span>
+      <span class="nav-fullname">Nazirul Hafiy</span>
+    </a>
     <button class="nav-toggle" aria-label="Toggle menu">
       <span></span>
       <span></span>
