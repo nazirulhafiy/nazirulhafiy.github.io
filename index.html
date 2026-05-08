@@ -342,7 +342,7 @@
       letter-spacing: -0.04em;
       margin-bottom: var(--space-lg);
       opacity: 0;
-      animation: heroScaleReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation: heroScaleReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
     .hero h1 .accent {
@@ -358,7 +358,7 @@
       color: var(--color-accent);
       margin-bottom: var(--space-md);
       opacity: 0;
-      animation: heroSubtitleFade 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
+      animation: heroSubtitleFade 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
     }
 
     .hero .tagline {
@@ -368,7 +368,67 @@
       line-height: 1.6;
       margin: 0 auto;
       opacity: 0;
-      animation: heroTaglineSlide 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
+      animation: heroTaglineSlide 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+    }
+
+    .signal-reveal {
+      position: relative;
+      display: inline-block;
+      isolation: isolate;
+    }
+
+    .signal-reveal-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .signal-typed {
+      display: inline-block;
+      animation: signalLift 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero h1.signal-reveal .signal-typed {
+      animation-delay: 0.03s;
+    }
+
+    .hero .subtitle.signal-reveal .signal-typed {
+      animation-delay: 0.2s;
+    }
+
+    .hero .tagline.signal-reveal .signal-typed {
+      animation-delay: 0.34s;
+    }
+
+    @keyframes signalLift {
+      0% {
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(4px);
+      }
+      60% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero h1,
+      .hero .subtitle,
+      .hero .tagline {
+        opacity: 1;
+        animation: none;
+      }
+
+      .signal-typed {
+        animation: none;
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
     }
 
     /* Section headings */
@@ -1064,9 +1124,9 @@
 
   <section class="hero">
     <div class="container">
-      <h1>Nazirul <span class="accent">Hafiy</span></h1>
-      <p class="subtitle">Project & Operations Manager</p>
-      <p class="tagline">I turn complex, multi-stakeholder projects into structured execution and predictable outcomes.</p>
+      <h1 class="signal-reveal"><span class="signal-reveal-text"><span class="signal-typed">Nazirul <span class="accent">Hafiy</span></span></span></h1>
+      <p class="subtitle signal-reveal"><span class="signal-reveal-text"><span class="signal-typed">Project & Operations Manager</span></span></p>
+      <p class="tagline signal-reveal"><span class="signal-reveal-text"><span class="signal-typed">I turn complex, multi-stakeholder projects into structured execution and predictable outcomes.</span></span></p>
     </div>
   </section>
 
