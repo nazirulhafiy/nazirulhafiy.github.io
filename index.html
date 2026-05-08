@@ -111,15 +111,50 @@
       transform: translateY(0);
     }
 
-    /* Hero fade-in-up animation */
-    @keyframes fadeInUp {
-      from {
+    /* Hero entrance animations */
+    @keyframes heroNameEntrance {
+      0% {
         opacity: 0;
-        transform: translateY(30px) scale(0.95);
+        transform: translateY(-80px) scale(0.85);
+        letter-spacing: 0.15em;
       }
-      to {
+      50% {
+        opacity: 1;
+      }
+      70% {
+        transform: translateY(4px) scale(1.02);
+        letter-spacing: -0.03em;
+      }
+      100% {
         opacity: 1;
         transform: translateY(0) scale(1);
+        letter-spacing: -0.04em;
+      }
+    }
+
+    @keyframes heroSubtitleEntrance {
+      0% {
+        opacity: 0;
+        transform: translateX(-40px) scale(0.95);
+        filter: blur(2px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes heroTaglineEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(4px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
       }
     }
 
@@ -316,7 +351,7 @@
       letter-spacing: -0.04em;
       margin-bottom: var(--space-lg);
       opacity: 0;
-      animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      animation: heroNameEntrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
 
     .hero h1 .accent {
@@ -332,7 +367,7 @@
       color: var(--color-accent);
       margin-bottom: var(--space-md);
       opacity: 0;
-      animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
+      animation: heroSubtitleEntrance 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
     }
 
     .hero .tagline {
@@ -342,7 +377,7 @@
       line-height: 1.6;
       margin: 0 auto;
       opacity: 0;
-      animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards;
+      animation: heroTaglineEntrance 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
     }
 
     /* Section headings */
