@@ -111,51 +111,30 @@
       transform: translateY(0);
     }
 
-    /* Hero entrance animations */
-    @keyframes heroNameEntrance {
+    /* Word cascade animation */
+    @keyframes wordReveal {
       0% {
         opacity: 0;
-        transform: translateY(-80px) scale(0.85);
-        letter-spacing: 0.15em;
-      }
-      50% {
-        opacity: 1;
-      }
-      70% {
-        transform: translateY(4px) scale(1.02);
-        letter-spacing: -0.03em;
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        letter-spacing: -0.04em;
-      }
-    }
-
-    @keyframes heroSubtitleEntrance {
-      0% {
-        opacity: 0;
-        transform: translateX(-40px) scale(0.95);
-        filter: blur(2px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-        filter: blur(0);
-      }
-    }
-
-    @keyframes heroTaglineEntrance {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-        filter: blur(4px);
+        transform: translateY(24px);
+        filter: blur(6px);
       }
       100% {
         opacity: 1;
         transform: translateY(0);
         filter: blur(0);
       }
+    }
+
+    .word-cascade {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(24px);
+      filter: blur(6px);
+      animation: wordReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i) * 0.08s) forwards;
+    }
+
+    .word-cascade.accent {
+      color: var(--color-accent);
     }
 
     /* Nav */
@@ -350,8 +329,6 @@
       line-height: 0.88;
       letter-spacing: -0.04em;
       margin-bottom: var(--space-lg);
-      opacity: 0;
-      animation: heroNameEntrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
 
     .hero h1 .accent {
@@ -367,7 +344,7 @@
       color: var(--color-accent);
       margin-bottom: var(--space-md);
       opacity: 0;
-      animation: heroSubtitleEntrance 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
+      animation: wordReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
     }
 
     .hero .tagline {
@@ -377,7 +354,7 @@
       line-height: 1.6;
       margin: 0 auto;
       opacity: 0;
-      animation: heroTaglineEntrance 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
+      animation: wordReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards;
     }
 
     /* Section headings */
@@ -1073,7 +1050,7 @@
 
   <section class="hero">
     <div class="container">
-      <h1>Nazirul <span class="accent">Hafiy</span></h1>
+      <h1 style="opacity:0">Nazirul <span class="accent">Hafiy</span></h1>
       <p class="subtitle">Project & Operations Manager</p>
       <p class="tagline">I turn complex, multi-stakeholder projects into structured execution and predictable outcomes.</p>
     </div>
@@ -1285,6 +1262,39 @@
         navLinks.classList.remove('open');
       });
     });
+
+    // Word cascade hero entrance
+    (function() {
+      const heroTitle = document.querySelector('.hero h1');
+      if (!heroTitle) return;
+      const parts = [];
+      let wordIdx = 0;
+      function addWord(text, isAccent) {
+        text.split(/\s+/).forEach(word => {
+          if (!word) return;
+          const span = document.createElement('span');
+          span.className = isAccent ? 'word-cascade accent' : 'word-cascade';
+          span.style.setProperty('--i', wordIdx++);
+          span.textContent = word;
+          parts.push(span);
+        });
+      }
+      Array.from(heroTitle.childNodes).forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          addWord(node.textContent, false);
+        } else if (node.classList && node.classList.contains('accent')) {
+          addWord(node.textContent, true);
+        }
+      });
+      if (parts.length > 0) {
+        heroTitle.innerHTML = '';
+        parts.forEach((span, i) => {
+          if (i > 0) heroTitle.appendChild(document.createTextNode(' '));
+          heroTitle.appendChild(span);
+        });
+      }
+      heroTitle.style.opacity = '1';
+    })();
 
     // Nav scroll effect — scroll-linked swap based on About section progress
     const nav = document.querySelector('nav');
