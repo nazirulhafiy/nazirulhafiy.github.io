@@ -1,17 +1,671 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nazirul Hafiy — Project & Operations Manager</title>
-    <meta name="description" content="PMP-trained Project & Operations Manager based in Kuching, Sarawak with 12+ years of experience delivering ICT, connectivity, and infrastructure projects across government and enterprise environments in Malaysia." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/alt2/assets/index-WUhpPaJu.js"></script>
-    <link rel="stylesheet" crossorigin href="/alt2/assets/index-Bbq7MlGQ.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nazirul Hafiy — Project Delivery, Operations & AI Systems</title>
+  <meta name="description" content="Personal website of Nazirul Hafiy, focused on project delivery, operations, AI adoption, public-sector systems, and practical digital tools.">
+  <meta name="author" content="Nazirul Hafiy">
+  <link rel="canonical" href="https://hafiy.my/alt2/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fcfaf5;
+      --ink: #121416;
+      --muted: #5f6660;
+      --faint: #8a9087;
+      --line: #d9d4ca;
+      --line-2: #c6c0b4;
+      --accent: #4f5e58;
+      --accent-soft: #e7e2d8;
+      --max: 1120px;
+      --serif: 'Newsreader', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(18,20,22,.03) 1px, transparent 1px) 0 0 / 88px 88px,
+        var(--bg);
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+    a:hover { color: var(--accent); }
+    .shell { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .skip { position: absolute; left: -999px; top: 12px; background: var(--ink); color: white; padding: 10px 14px; z-index: 20; }
+    .skip:focus { left: 12px; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247,245,239,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(217,212,202,.8);
+    }
+    .nav-inner {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-2);
+      font-size: .82rem;
+      background: rgba(255,255,255,.5);
+    }
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    main { display: block; }
+    section { padding: 84px 0; border-bottom: 1px solid rgba(217,212,202,.85); }
+
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: grid;
+      align-items: center;
+      padding: 84px 0 72px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: clamp(32px, 6vw, 84px);
+      align-items: end;
+    }
+    .kicker {
+      margin: 0 0 22px;
+      color: var(--accent);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.02;
+      letter-spacing: -.04em;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(3.25rem, 8vw, 8rem);
+      max-width: 900px;
+    }
+    .hero p {
+      max-width: 690px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.45vw, 1.22rem);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: white;
+      font-weight: 800;
+      text-decoration: none;
+      font-size: .92rem;
+    }
+    .btn.secondary {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line-2);
+    }
+    .btn:hover { background: var(--accent); border-color: var(--accent); color: white; }
+    .btn.secondary:hover { background: rgba(79,94,88,.06); color: var(--ink); }
+
+    .meta-card {
+      background: rgba(252,250,245,.8);
+      border: 1px solid var(--line);
+      padding: 22px;
+    }
+    .meta-card .meta {
+      color: var(--faint);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .signal-list {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+    }
+    .signal-list li {
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .94rem;
+    }
+    .signal-list strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 3px;
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(150px, 220px) 1fr;
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 34px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.8vw, 4.5rem);
+      max-width: 860px;
+    }
+    .intro {
+      max-width: 720px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .cap-table {
+      border-top: 1px solid var(--line-2);
+      border-bottom: 1px solid var(--line-2);
+    }
+    .cap-row {
+      display: grid;
+      grid-template-columns: 100px 240px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+    .cap-row:first-child { border-top: 0; }
+    .cap-row .idx {
+      color: var(--accent);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .cap-row .title {
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .cap-row p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .principle-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line-2);
+    }
+    .principle {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 16px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .principle-num {
+      color: var(--accent);
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+    .aside {
+      border-left: 1px solid var(--line-2);
+      padding-left: 24px;
+      color: var(--muted);
+    }
+    .aside strong { color: var(--ink); }
+
+    .work-grid { display: grid; gap: 16px; }
+    .case {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr .9fr;
+      gap: 22px;
+      padding: 24px 0;
+      border-top: 1px solid var(--line-2);
+    }
+    .case:last-child { border-bottom: 1px solid var(--line-2); }
+    .case h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.65rem, 2.5vw, 2.3rem);
+      margin: 10px 0 0;
+    }
+    .case dl {
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .case dt {
+      color: var(--faint);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .case dd {
+      margin: 4px 0 0;
+      color: var(--ink);
+    }
+    .signal {
+      border-left: 1px solid var(--line);
+      padding-left: 18px;
+    }
+
+    .timeline {
+      border-top: 1px solid var(--line-2);
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 28px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .period {
+      color: var(--accent);
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .labs {
+      background: rgba(255,255,255,.34);
+      position: relative;
+    }
+    .labs .shell { position: relative; }
+    .lab-grid {
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 20px;
+    }
+    .featured {
+      padding: 30px;
+      border: 1px solid var(--line-2);
+      background: rgba(255,255,255,.5);
+    }
+    .featured h3 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.4vw, 4rem);
+      margin: 12px 0;
+    }
+    .lab-link {
+      display: inline-flex;
+      margin-top: 22px;
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .lab-link:hover { color: var(--accent); }
+    .topic-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+    }
+    .topic-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .note {
+      padding: 24px;
+      border: 1px solid var(--line-2);
+      background: rgba(255,255,255,.45);
+      min-height: 210px;
+    }
+    .note.empty { border-style: dashed; }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 32px;
+      padding: 30px;
+      border: 1px solid var(--line-2);
+      background: rgba(255,255,255,.5);
+    }
+    .contact h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.8vw, 4.6rem);
+      line-height: 1;
+      letter-spacing: -.045em;
+      margin: 0;
+    }
+    .contact-links {
+      display: grid;
+      gap: 12px;
+      align-content: end;
+    }
+    .contact-links a {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      font-weight: 800;
+    }
+    footer {
+      padding: 32px 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .section-head, .lab-grid, .contact { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .cap-row { grid-template-columns: 80px 180px 1fr; }
+      .case { grid-template-columns: 1fr; }
+      .signal { border-left: 0; border-top: 1px solid var(--line); padding: 16px 0 0; }
+      .notes-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 28px, var(--max)); }
+      .nav-inner { min-height: 60px; }
+      .brand span:last-child { display: none; }
+      section { padding: 60px 0; }
+      .hero { padding: 66px 0 56px; }
+      .hero h1 { font-size: clamp(3rem, 14vw, 5rem); }
+      .actions { flex-direction: column; }
+      .cap-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .aside {
+        border-left: 0;
+        border-top: 1px solid var(--line-2);
+        padding: 20px 0 0;
+      }
+      .principle { grid-template-columns: 42px 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+      .contact-links { align-content: start; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="Nazirul Hafiy home">
+        <span class="brand-mark">NH</span>
+        <span>Nazirul Hafiy</span>
+      </a>
+      <div class="nav-links" aria-label="Section links">
+        <a href="#work">Work</a>
+        <a href="#labs">Labs</a>
+        <a href="#notes">Notes</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="hero" id="top">
+      <div class="shell hero-grid">
+        <div>
+          <p class="kicker">Kuching, Sarawak · Project Delivery · Operations · AI Systems</p>
+          <h1>I help turn complex public-sector, infrastructure, and AI initiatives into structured execution.</h1>
+          <p>I’m Nazirul Hafiy, a Project & Operations Manager working across connectivity, ICT, government delivery, digital operations, startups, and practical AI adoption.</p>
+          <p>I focus on making complex initiatives clearer, more structured, and easier to execute.</p>
+          <div class="actions">
+            <a class="btn" href="#work">View selected work</a>
+            <a class="btn secondary" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <aside class="meta-card" aria-label="Profile signals">
+          <div class="meta">Operating profile</div>
+          <ul class="signal-list">
+            <li><strong>Primary role</strong> Project & Operations Manager</li>
+            <li><strong>Working area</strong> Project delivery, operations systems, AI adoption, public-sector innovation</li>
+            <li><strong>Operating mode</strong> Turn unclear goals, stakeholders, risks, and moving parts into trackable systems</li>
+          </ul>
+        </aside>
+      </div>
+    </header>
+
+    <section id="what-i-do" class="reveal">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">01 / What I Do</p>
+          <div>
+            <h2 class="section-title">I work across delivery, operations, and practical AI systems.</h2>
+            <p class="intro">My work sits between strategy and execution: translating unclear goals, moving parts, stakeholders, and constraints into systems that can be tracked, managed, and improved.</p>
+          </div>
+        </div>
+        <div class="cap-table">
+          <div class="cap-row"><div class="idx">01</div><div class="title">Project Delivery</div><p>Structuring timelines, vendors, risks, reporting, and execution routines for complex initiatives across government, enterprise, and infrastructure environments.</p></div>
+          <div class="cap-row"><div class="idx">02</div><div class="title">Operations Design</div><p>Turning workflows into systems: dashboards, documentation, follow-up routines, and repeatable processes that don’t depend on memory.</p></div>
+          <div class="cap-row"><div class="idx">03</div><div class="title">AI & Digital Experiments</div><p>Building practical tools, trackers, and prototypes that make information easier to monitor, summarise, and act on.</p></div>
+          <div class="cap-row"><div class="idx">04</div><div class="title">Public-Sector Systems</div><p>Working with multi-stakeholder environments, public priorities, implementation constraints, and long-term development goals.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="principles" class="reveal">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">02 / Operating Principles</p>
+          <div><h2 class="section-title">A simple rule set for complex work.</h2></div>
+        </div>
+        <div class="principle-list">
+          <div class="principle"><div class="principle-num">01</div><div><h3>Clarity before speed.</h3><p>Fast execution only helps when the direction is clear.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h3>Systems before heroics.</h3><p>Good systems reduce the need for constant firefighting.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h3>Documentation before memory.</h3><p>Important work should not depend on someone remembering everything.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h3>Execution before theatre.</h3><p>The work should move, not just look impressive in meetings.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h3>Useful tools over impressive demos.</h3><p>Technology should make decisions, coordination, or delivery easier.</p></div></div>
+        </div>
+        <p class="aside"><strong>Operating logic:</strong> reduce ambiguity, make work visible, and build tools that support decisions instead of adding theatre.</p>
+      </div>
+    </section>
+
+    <section id="work" class="reveal">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">03 / Selected Work</p>
+          <div>
+            <h2 class="section-title">Case notes, compressed into a clear record.</h2>
+            <p class="intro">A selection of work across project delivery, operations, connectivity, digital systems, and AI-related experiments.</p>
+          </div>
+        </div>
+        <div class="work-grid">
+          <article class="case">
+            <div><span class="case-kicker">Case 01</span><h3>Government & Enterprise Connectivity Projects</h3></div>
+            <dl>
+              <div><dt>Context</dt><dd>Complex ICT and connectivity delivery across Sarawak and enterprise environments.</dd></div>
+              <div><dt>Role</dt><dd>Coordinated project teams, stakeholders, vendors, risks, timelines, and delivery reporting.</dd></div>
+            </dl>
+            <p class="signal"><strong>Signal</strong><br>Experience across rural and urban districts, including high-value infrastructure and connectivity projects.</p>
+          </article>
+          <article class="case">
+            <div><span class="case-kicker">Case 02</span><h3>Digital Operations & Community Systems</h3></div>
+            <dl>
+              <div><dt>Context</dt><dd>Digital projects involving distributed teams, online communities, campaigns, content, and operational workflows.</dd></div>
+              <div><dt>Role</dt><dd>Supported coordination, quality assurance, community operations, campaign execution, and process improvement.</dd></div>
+            </dl>
+            <p class="signal"><strong>Signal</strong><br>Fast-moving environments reward clarity, feedback loops, and execution discipline.</p>
+          </article>
+          <article class="case">
+            <div><span class="case-kicker">Case 03</span><h3>AI Adoption & Practical Tooling</h3></div>
+            <dl>
+              <div><dt>Context</dt><dd>Exploration of AI agents, vibe coding, public-sector use cases, and practical automation workflows.</dd></div>
+              <div><dt>Role</dt><dd>Testing, building, and documenting tools that support visibility, research, tracking, and decision preparation.</dd></div>
+            </dl>
+            <p class="signal"><strong>Signal</strong><br>Useful AI adoption, not hype: tools that help people work with better context and less manual overhead.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="reveal">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">04 / Experience Timeline</p>
+          <div><h2 class="section-title">Compact timeline, enough detail to show depth.</h2></div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item"><div class="period">2017–2021</div><div><h3>Telekom Malaysia Berhad</h3><p>Regional project leadership and project management work across connectivity, ICT, infrastructure, stakeholders, and delivery operations.</p></div></article>
+          <article class="timeline-item"><div class="period">2021–2025</div><div><h3>Independent Consultant / Digital Operations</h3><p>Digital operations, campaign support, community operations, QA, product feedback loops, and practical system-building across startup and online environments.</p></div></article>
+          <article class="timeline-item"><div class="period">2013–2017</div><div><h3>Earlier Telekom Malaysia Roles</h3><p>Campaign management, marketing operations, business support, network operations, and customer-facing execution work.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="labs" class="labs reveal">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">05 / Labs & Experiments</p>
+          <div>
+            <h2 class="section-title">A visible test bench for practical tools.</h2>
+            <p class="intro">This section stays prominent, but the layout stays disciplined.</p>
+          </div>
+        </div>
+        <div class="lab-grid">
+          <article class="featured">
+            <span class="case-kicker">Featured experiment</span>
+            <h3>PCDS 2030 Project Tracker</h3>
+            <p>A project tracking experiment for monitoring Sarawak’s Post COVID-19 Development Strategy 2030 initiatives.</p>
+            <p>Public strategies often contain many initiatives, stakeholders, milestones, and moving parts. A tracker helps make that information easier to follow, review, and discuss.</p>
+            <a class="lab-link" href="https://tracker.hafiy.my" target="_blank" rel="noopener">View project tracker</a>
+          </article>
+          <aside class="meta-card">
+            <div class="meta">Future lab topics</div>
+            <ul class="topic-list">
+              <li>AI agents for personal productivity</li>
+              <li>Public-sector project visibility</li>
+              <li>Vibe coding useful government tools</li>
+              <li>Digital dashboards for execution tracking</li>
+              <li>AI-native workflows for research and decision preparation</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes" class="reveal">
+      <div class="shell">
+        <div class="section-head">
+          <p class="kicker">06 / Writing / Notes</p>
+          <div>
+            <h2 class="section-title">Notes in progress. Selective, not noisy.</h2>
+            <p class="intro">Selected notes on AI adoption, project delivery, public-sector systems, vibe coding, and the practical side of using technology to improve execution.</p>
+          </div>
+        </div>
+        <div class="notes-grid">
+          <article class="note"><span class="case-kicker">Topic</span><h3>Becoming AI-native at work</h3><p>How practical AI adoption changes daily operating habits, not just software choices.</p></article>
+          <article class="note"><span class="case-kicker">Topic</span><h3>Project tracking as public-sector capability</h3><p>Why visibility, rhythm, and shared context matter for large initiatives.</p></article>
+          <article class="note empty"><span class="case-kicker">Coming soon</span><h3>Notes are being shaped.</h3><p>For now, this site is being redesigned as the home base for my work, experiments, and thinking.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <div class="shell contact">
+        <div>
+          <p class="kicker">07 / Contact</p>
+          <h2>For conversations around project delivery, AI adoption, public-sector systems, or practical digital tools.</h2>
+          <p class="intro">If you are working on complex delivery, digital transformation, AI adoption, or public-sector systems, feel free to reach out.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:nazirul@hafiy.my">nazirul@hafiy.my</a>
+          <a href="https://www.linkedin.com/in/hafiy/" target="_blank" rel="noopener">linkedin.com/in/hafiy</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">Nazirul Hafiy · Kuching, Sarawak · Project Delivery, Operations & AI Systems</div>
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14 });
+      items.forEach((el) => obs.observe(el));
+    } else {
+      items.forEach((el) => el.classList.add('visible'));
+    }
+  </script>
+</body>
 </html>
