@@ -1,0 +1,347 @@
+# Design Direction
+
+## Core Design Concept
+
+A calm editorial interface for someone who brings structure to complex systems.
+
+The website should feel like a high-trust professional briefing: clear, structured, intelligent, and quietly distinctive.
+
+## Design Personality
+
+The design should feel:
+
+- calm
+- structured
+- editorial
+- credible
+- intelligent
+- grounded
+- slightly futuristic
+- personal but professional
+
+It should not feel:
+
+- generic
+- noisy
+- overdesigned
+- like a SaaS landing page
+- like an AI template
+- like a startup pitch deck
+- like a cyberpunk portfolio
+- like a plain resume page
+
+## Visual References in Words
+
+The design may take inspiration from:
+
+- briefing memos
+- field notes
+- project dashboards
+- operating systems
+- public-sector strategy documents
+- editorial profiles
+- intelligence reports
+- personal knowledge systems
+- project control rooms
+
+The design should combine editorial calm with operational structure.
+
+## Layout Principles
+
+Use:
+
+- generous whitespace
+- strong typographic hierarchy
+- clear section rhythm
+- thin dividers
+- calm spacing
+- structured content blocks
+- readable line lengths
+- simple navigation
+- consistent alignment
+- strong mobile layouts
+
+Avoid:
+
+- cluttered sections
+- too many cards
+- dense walls of text
+- centered everything
+- unnecessary visual decoration
+- complicated scroll effects
+- inconsistent spacing
+
+## Page Structure
+
+The homepage should be structured as:
+
+1. Hero
+2. What I Do
+3. Operating Principles
+4. Selected Work
+5. Experience Timeline
+6. Labs / Experiments
+7. Writing / Notes
+8. Contact
+
+Each section should have a clear job.
+
+Do not add sections unless they support the strategy.
+
+## Typography
+
+Typography should feel modern, readable, and confident.
+
+Preferred direction:
+
+- strong editorial heading style
+- clean body text
+- clear hierarchy
+- comfortable line height
+- restrained use of uppercase labels
+- metadata-style labels for dates, roles, and categories
+
+Rules:
+
+- headings should be direct and specific
+- body text should be easy to read
+- avoid tiny text
+- avoid overly decorative fonts
+- avoid excessive font weights
+- keep line lengths comfortable
+- use emphasis sparingly
+
+## Color Direction
+
+Use a restrained color palette.
+
+Preferred:
+
+- warm off-white or soft neutral background
+- dark ink text
+- muted grey secondary text
+- subtle borders
+- one restrained accent color
+- optional deep ink/dark section for contrast
+
+Avoid:
+
+- bright neon colors
+- generic blue-purple AI gradients
+- excessive glowing effects
+- too many accent colors
+- low-contrast text
+- loud backgrounds
+
+## Suggested Palette Direction
+
+This is a directional palette, not a strict requirement:
+
+- Background: warm off-white, ivory, or soft grey
+- Primary text: near-black or deep ink
+- Secondary text: muted grey
+- Borders: soft grey
+- Accent: muted blue, graphite, olive, or copper
+- Dark section: deep navy, charcoal, or ink
+
+The final implementation may choose exact values, but it must remain restrained.
+
+## Components
+
+### Navigation
+
+Navigation should be minimal and clear.
+
+Suggested nav items:
+
+- Work
+- Labs
+- Notes
+- Contact
+
+Avoid overloaded navigation.
+
+### Buttons
+
+Buttons should be simple and accessible.
+
+Primary button:
+
+- clear action
+- minimal styling
+- no excessive shadows
+- no unnecessary glow
+
+Secondary button:
+
+- subtle outline or text link
+- visually quieter than primary
+
+### Cards
+
+Cards should be used only when they improve structure.
+
+Avoid generic card grids.
+
+Preferred card style:
+
+- case-note blocks
+- briefing cards
+- quiet borders
+- clear headings
+- metadata labels
+- concise copy
+
+### Section Headers
+
+Section headers should feel like editorial labels or briefing sections.
+
+They can use:
+
+- small uppercase labels
+- numbered sections
+- short descriptive titles
+- thin dividers
+
+### Timeline
+
+The timeline should be compressed and clean.
+
+Use:
+
+- year range
+- organisation
+- role
+- short signal of work
+
+Avoid long resume bullets on the homepage.
+
+### Labs / Experiments
+
+The Labs section should feel slightly more exploratory while still credible.
+
+It should show that Hafiy builds practical tools and experiments around public-sector systems, AI adoption, and project visibility.
+
+## Motion and Interaction
+
+Motion should be subtle and purposeful.
+
+Allowed:
+
+- gentle hover states
+- soft reveals
+- subtle text transitions
+- small interaction feedback
+- calm page transitions if appropriate
+
+Avoid:
+
+- constant movement
+- heavy scroll animations
+- flashy text effects
+- cyberpunk glitch effects unless heavily restrained
+- animation that distracts from reading
+
+All motion should respect `prefers-reduced-motion`.
+
+## Imagery
+
+Avoid stock AI imagery.
+
+Do not use:
+
+- glowing brains
+- robot faces
+- neural network backgrounds
+- random circuit patterns
+- generic city-tech overlays
+- abstract AI blobs without purpose
+
+If imagery is used, prefer:
+
+- real project screenshots
+- clean interface screenshots
+- document-like visuals
+- maps or structured data visuals
+- subtle diagrams
+- personal but professional images
+
+## Hero Direction
+
+The hero should be text-led.
+
+It should communicate:
+
+- name
+- professional identity
+- positioning
+- location
+- credibility signal
+- primary action
+
+The hero should feel calm and strong, not loud.
+
+Avoid giant buzzword headlines.
+
+## Work Section Direction
+
+Selected work should feel like case notes.
+
+Each selected work item should include:
+
+- context
+- role
+- contribution
+- signal or outcome
+
+Avoid making the section read like a normal resume.
+
+## Writing Section Direction
+
+Writing should feel selective and editorial.
+
+It can start with placeholders or coming-soon items, but it should not feel empty.
+
+Suggested topics:
+
+- AI adoption
+- public-sector systems
+- project delivery
+- operations
+- vibe coding
+- personal AI agents
+- Sarawak digital economy
+
+## Contact Section Direction
+
+The contact section should be simple, direct, and calm.
+
+It should say what kinds of conversations are welcome.
+
+## What to Avoid
+
+Avoid:
+
+- generic AI startup aesthetic
+- stock tech visuals
+- loud gradients
+- excessive animations
+- glassmorphism everywhere
+- too many cards
+- vague copy
+- overcomplicated layouts
+- design elements that do not support meaning
+- making the site look like an agency landing page
+
+## Design Test
+
+Before accepting a design change, ask:
+
+1. Does this make the site feel more credible?
+2. Does this support the idea of structured execution?
+3. Does this avoid generic AI website patterns?
+4. Does it improve clarity?
+5. Does it work on mobile?
+6. Would this still feel good without animation?
+
+If the answer is no, revise the design.

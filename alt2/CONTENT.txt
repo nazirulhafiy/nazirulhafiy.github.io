@@ -1,0 +1,377 @@
+# Content
+
+This file contains draft content for the `hafiy.my` redesign.
+
+The tone should be clear, grounded, specific, and low-buzzword.
+
+Do not rewrite this file unless the task explicitly asks for content changes.
+
+## Site Title Options
+
+Option 1:
+
+Nazirul Hafiy — Project Delivery, Operations & AI Systems
+
+Option 2:
+
+Nazirul Hafiy — Project & Operations Manager
+
+Option 3:
+
+Nazirul Hafiy — Public-Sector Systems, AI Adoption & Project Delivery
+
+Preferred:
+
+Nazirul Hafiy — Project Delivery, Operations & AI Systems
+
+## Meta Description
+
+Personal website of Nazirul Hafiy, focused on project delivery, operations, AI adoption, public-sector systems, and practical digital tools.
+
+## Navigation
+
+Suggested navigation:
+
+- Work
+- Labs
+- Notes
+- Contact
+
+## Hero
+
+### Hero Label
+
+Kuching, Sarawak · Project Delivery · Operations · AI Systems
+
+### Hero Heading Option 1
+
+I help turn complex public-sector, infrastructure, and AI initiatives into structured execution.
+
+### Hero Heading Option 2
+
+Project delivery, operations, and AI systems for complex public-sector and digital initiatives.
+
+### Hero Heading Option 3
+
+I bring structure to complex projects, operations, and emerging AI systems.
+
+### Preferred Hero Heading
+
+I help turn complex public-sector, infrastructure, and AI initiatives into structured execution.
+
+### Hero Body
+
+I’m Nazirul Hafiy, a Project & Operations Manager based in Kuching, Sarawak. My work spans connectivity, ICT, government delivery, digital operations, startups, and practical AI adoption.
+
+I focus on making complex initiatives clearer, more structured, and easier to execute.
+
+### Hero CTAs
+
+Primary:
+
+View selected work
+
+Secondary:
+
+Get in touch
+
+## What I Do
+
+### Section Label
+
+What I Do
+
+### Section Heading
+
+I work across delivery, operations, and practical AI systems.
+
+### Section Intro
+
+My work sits between strategy and execution: translating unclear goals, moving parts, stakeholders, and constraints into systems that can be tracked, managed, and improved.
+
+### Capability 1
+
+#### Title
+
+Project Delivery
+
+#### Copy
+
+Structuring timelines, vendors, risks, reporting, and execution routines for complex initiatives across government, enterprise, and infrastructure environments.
+
+### Capability 2
+
+#### Title
+
+Operations Design
+
+#### Copy
+
+Turning messy workflows into clearer processes, dashboards, documentation, and repeatable systems that reduce dependency on memory and manual follow-up.
+
+### Capability 3
+
+#### Title
+
+AI & Digital Experiments
+
+#### Copy
+
+Building practical tools, trackers, and prototypes that help make information easier to monitor, summarise, and act on.
+
+### Capability 4
+
+#### Title
+
+Public-Sector Systems
+
+#### Copy
+
+Working with the realities of multi-stakeholder environments, public priorities, implementation constraints, and long-term development goals.
+
+## Operating Principles
+
+### Section Label
+
+Operating Principles
+
+### Section Heading
+
+How I approach complex work.
+
+### Principles
+
+#### Clarity before speed.
+
+Fast execution only helps when the direction is clear.
+
+#### Systems before heroics.
+
+Good systems reduce the need for constant firefighting.
+
+#### Documentation before memory.
+
+Important work should not depend on someone remembering everything.
+
+#### Execution before theatre.
+
+The work should move, not just look impressive in meetings.
+
+#### Useful tools over impressive demos.
+
+Technology should make decisions, coordination, or delivery easier.
+
+## Selected Work
+
+### Section Label
+
+Selected Work
+
+### Section Heading
+
+Experience translated into execution systems.
+
+### Section Intro
+
+A selection of work across project delivery, operations, connectivity, digital systems, and AI-related experiments.
+
+### Work Item 1
+
+#### Title
+
+Government & Enterprise Connectivity Projects
+
+#### Context
+
+Complex ICT and connectivity delivery across Sarawak and enterprise environments.
+
+#### Role
+
+Coordinated project teams, stakeholders, vendors, risks, timelines, and delivery reporting.
+
+#### Signal
+
+Experience across rural and urban districts, including high-value infrastructure and connectivity projects.
+
+### Work Item 2
+
+#### Title
+
+Digital Operations & Community Systems
+
+#### Context
+
+Digital projects involving distributed teams, online communities, campaigns, content, and operational workflows.
+
+#### Role
+
+Supported coordination, quality assurance, community operations, campaign execution, and process improvement.
+
+#### Signal
+
+Experience working across fast-moving environments where clarity, feedback loops, and execution discipline matter.
+
+### Work Item 3
+
+#### Title
+
+AI Adoption & Practical Tooling
+
+#### Context
+
+Exploration of AI agents, vibe coding, public-sector use cases, and practical automation workflows.
+
+#### Role
+
+Testing, building, and documenting tools that support visibility, research, tracking, and decision preparation.
+
+#### Signal
+
+Focus on useful AI adoption rather than hype: tools that help people work with better context and less manual overhead.
+
+## Experience Timeline
+
+### Section Label
+
+Experience
+
+### Section Heading
+
+A background across project delivery, operations, and digital systems.
+
+### Timeline Item 1
+
+#### Period
+
+2017–2021
+
+#### Organisation
+
+Telekom Malaysia Berhad
+
+#### Summary
+
+Regional project leadership and project management work across connectivity, ICT, infrastructure, stakeholders, and delivery operations.
+
+### Timeline Item 2
+
+#### Period
+
+2021–2025
+
+#### Organisation
+
+Independent Consultant / Digital Operations
+
+#### Summary
+
+Digital operations, campaign support, community operations, QA, product feedback loops, and practical system-building across startup and online environments.
+
+### Timeline Item 3
+
+#### Period
+
+2013–2017
+
+#### Organisation
+
+Earlier Telekom Malaysia Roles
+
+#### Summary
+
+Campaign management, marketing operations, business support, network operations, and customer-facing execution work.
+
+## Labs / Experiments
+
+### Section Label
+
+Labs
+
+### Section Heading
+
+Practical experiments for public-sector systems and AI-enabled work.
+
+### Section Intro
+
+This section collects tools, trackers, prototypes, and experiments that explore how complex information can become easier to monitor, understand, and act on.
+
+### Featured Experiment
+
+#### Title
+
+PCDS 2030 Project Tracker
+
+#### Description
+
+A project tracking experiment for monitoring Sarawak’s Post COVID-19 Development Strategy 2030 initiatives.
+
+#### Why It Matters
+
+Public strategies often contain many initiatives, stakeholders, milestones, and moving parts. A tracker helps make that information easier to follow, review, and discuss.
+
+#### CTA
+
+View project tracker
+
+### Future Lab Topics
+
+- AI agents for personal productivity
+- Public-sector project visibility
+- Vibe coding useful government tools
+- Digital dashboards for execution tracking
+- AI-native workflows for research and decision preparation
+
+## Writing / Notes
+
+### Section Label
+
+Notes
+
+### Section Heading
+
+Thinking in public about AI, operations, and systems.
+
+### Section Intro
+
+Selected notes on AI adoption, project delivery, public-sector systems, vibe coding, and the practical side of using technology to improve execution.
+
+### Suggested Writing Topics
+
+- Becoming AI-native at work
+- What government teams can actually build with vibe coding
+- Why AI adoption needs better workflows, not just better tools
+- Project tracking as a public-sector capability
+- Personal AI agents as an operating layer
+- Documentation as an execution advantage
+
+### Empty State Copy
+
+Notes are coming soon. For now, this site is being redesigned as the home base for my work, experiments, and thinking.
+
+## Contact
+
+### Section Label
+
+Contact
+
+### Section Heading
+
+For conversations around project delivery, AI adoption, public-sector systems, or practical digital tools.
+
+### Contact Body
+
+If you are working on complex delivery, digital transformation, AI adoption, or public-sector systems, feel free to reach out.
+
+### CTA
+
+Get in touch
+
+## Footer
+
+Suggested footer copy:
+
+Built as a personal operating profile for project delivery, operations, AI adoption, and public-sector systems.
+
+Alternative:
+
+Nazirul Hafiy · Kuching, Sarawak · Project Delivery, Operations & AI Systems

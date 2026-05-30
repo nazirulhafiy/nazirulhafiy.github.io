@@ -1,0 +1,220 @@
+# Strategy
+
+## Project
+
+Redesign of `hafiy.my`, the personal website of Nazirul Hafiy.
+
+## Strategic Direction
+
+The website should become an editorial operating profile.
+
+It should present Hafiy as someone who brings structure to complex work across project delivery, operations, AI adoption, and public-sector systems.
+
+The site should feel credible enough for government, modern enough for AI work, structured enough for project delivery, and personal enough to be memorable.
+
+## Core Positioning
+
+Nazirul Hafiy works at the intersection of project delivery, operations, AI adoption, and public-sector systems — helping turn complex initiatives into structured execution, useful tools, and clearer decisions.
+
+## Simpler Positioning Line
+
+Project delivery, operations, and AI systems for complex public-sector and digital initiatives.
+
+## Professional Identity
+
+Primary identity:
+
+- Project & Operations Manager
+
+Expanded identity:
+
+- Project Delivery
+- Operations Systems
+- AI Adoption
+- Public-Sector Innovation
+- Digital Transformation
+- Practical AI Tools
+
+## Audience
+
+The primary audience includes:
+
+- government leaders
+- public-sector innovation teams
+- AI and digital transformation teams
+- potential collaborators
+- potential employers or clients
+- people interested in Sarawak’s digital economy
+- people interested in practical AI adoption
+- builders working on civic, public, or operational systems
+
+## What Visitors Should Understand in the First 10 Seconds
+
+Visitors should quickly understand:
+
+1. Hafiy works on complex project and operations environments.
+2. His experience spans government, enterprise, startups, connectivity, ICT, and digital operations.
+3. He is moving toward practical AI adoption and public-sector systems.
+4. He builds and experiments with useful tools, not just ideas.
+5. He is credible, structured, and contactable.
+
+## Site Goals
+
+The redesigned website should:
+
+- create a strong first impression
+- clarify Hafiy’s professional positioning
+- make his experience easier to understand
+- show selected work as proof, not just history
+- make the experiments/labs section more prominent
+- support future writing and public thinking
+- make contact easy
+- avoid generic AI website patterns
+
+## Non-Goals
+
+The website should not:
+
+- look like a generic AI consultant site
+- look like a SaaS landing page
+- overuse gradients, glowing visuals, or futuristic clichés
+- become a long resume page only
+- over-explain every job role
+- use vague buzzwords
+- rely on stock AI imagery
+- add animation just for decoration
+
+## Core Message
+
+Hafiy helps turn complex initiatives into structured execution.
+
+That idea should appear through:
+
+- clear writing
+- structured layouts
+- case-note style work examples
+- calm visual hierarchy
+- strong but restrained design
+- practical labs/experiments
+
+## Recommended Homepage Flow
+
+### 1. Hero
+
+Purpose:
+
+- establish identity
+- communicate positioning
+- create a calm, confident first impression
+
+The hero should be text-led and direct.
+
+### 2. What I Do
+
+Purpose:
+
+- explain Hafiy’s main capabilities
+- make the site easier to scan
+- avoid forcing visitors to interpret everything from job history
+
+Suggested capability areas:
+
+- Project Delivery
+- Operations Design
+- AI & Digital Experiments
+- Public-Sector Systems
+
+### 3. Operating Principles
+
+Purpose:
+
+- make the site feel more personal and distinctive
+- communicate Hafiy’s way of working
+
+Suggested principles:
+
+- Clarity before speed.
+- Systems before heroics.
+- Documentation before memory.
+- Execution before theatre.
+- Useful tools over impressive demos.
+
+### 4. Selected Work
+
+Purpose:
+
+- convert experience into proof of work
+- show credibility through structured case notes
+
+Work should be written as short case-note blocks, not long CV bullets.
+
+### 5. Experience Timeline
+
+Purpose:
+
+- show career depth
+- provide credibility
+- keep it concise
+
+The timeline should be compressed and readable.
+
+### 6. Labs / Experiments
+
+Purpose:
+
+- show practical building
+- make the site distinctive
+- connect Hafiy’s project background with AI and public-sector systems
+
+The PCDS 2030 Project Tracker should be featured here.
+
+### 7. Writing / Notes
+
+Purpose:
+
+- create a future content layer
+- show thinking
+- support topics like AI adoption, operations, public-sector systems, vibe coding, and project delivery
+
+This can start small.
+
+### 8. Contact
+
+Purpose:
+
+- make it easy to reach out
+- clarify what types of conversations are welcome
+
+## Recommended Tone
+
+The site should sound:
+
+- clear
+- specific
+- grounded
+- confident
+- human
+- low-buzzword
+- professionally calm
+
+Avoid phrases like:
+
+- empowering innovation
+- unlocking potential
+- revolutionising the future
+- transforming tomorrow
+- AI-powered everything
+- next-generation solutions
+
+## Success Criteria
+
+The redesign is successful if:
+
+- the homepage feels distinct within 10 seconds
+- the positioning is clear
+- the site does not feel generic
+- the visual design supports the message of structure and clarity
+- the experience section is easier to scan
+- the labs/experiments section feels important
+- the mobile version feels polished
+- visitors know how to contact Hafiy
