@@ -741,7 +741,7 @@ nav a[aria-current="page"] {
   }
 }
 
-@media (max-width: 30rem) {
+@media (max-width: 22.5rem) {
   .section-heading {
     display: grid;
     grid-template-columns: auto 1fr;
