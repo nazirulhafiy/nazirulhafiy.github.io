@@ -171,7 +171,6 @@ nav a[aria-current="page"] {
   border-radius: 50%;
   overflow: hidden;
   background: var(--surface);
-  box-shadow: 0 0 0 0.7rem color-mix(in srgb, var(--foreground) 4%, transparent);
 }
 
 .portrait-slot img {
