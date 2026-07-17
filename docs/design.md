@@ -47,7 +47,7 @@ Guidance:
 
 - Keep headings compact with slight negative letter spacing.
 - Keep body text readable and calm; avoid very small paragraph text.
-- Use uppercase micro-labels sparingly for dates, kickers, and section context.
+- Use uppercase micro-labels sparingly for dates and section context.
 - Prefer short paragraphs and concrete verbs.
 
 ## Color and theming
@@ -94,7 +94,7 @@ Writing previews should include:
 
 ### Project links
 
-Experiment links should be simple block links with a small kicker, title, and one-sentence description.
+Experiment links should be simple block links with a title and one-sentence description. Do not add category, location, or other kicker labels above project titles.
 
 ## Accessibility
 

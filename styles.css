@@ -10,6 +10,7 @@
   --page: 48rem;
   --gutter: clamp(1.1rem, 4vw, 1.5rem);
   --mono: ui-monospace, "SFMono-Regular", "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -185,8 +186,7 @@ nav a[aria-current="page"] {
 }
 
 .eyebrow,
-.role-date,
-.project-kicker {
+.role-date {
   color: var(--muted);
   font-size: 0.78rem;
   letter-spacing: 0.07em;
@@ -212,6 +212,18 @@ nav a[aria-current="page"] {
   max-width: 35rem;
   margin-bottom: 1.25rem;
   color: var(--muted);
+}
+
+.hero-copy,
+.lede,
+.experience-role-preview > p:last-child,
+.history-role > p:not(.role-date):not(.role-hierarchy),
+.history-role .role-hierarchy,
+.history-role ul,
+.post-copy,
+.project p,
+.about-page section p {
+  word-spacing: -0.05em;
 }
 
 .inline-links {
@@ -309,6 +321,7 @@ nav a[aria-current="page"] {
 .section-index-link {
   display: inline-flex;
   align-items: center;
+  flex: none;
   margin-left: auto;
   padding: 0.3rem 0.6rem;
   border: 1px solid var(--muted);
@@ -318,6 +331,7 @@ nav a[aria-current="page"] {
   font-weight: 400;
   line-height: 1.2;
   text-decoration: none;
+  white-space: nowrap;
   transition: color 150ms ease, background 150ms ease, border-color 150ms ease, transform 150ms ease;
 }
 
@@ -565,6 +579,11 @@ nav a[aria-current="page"] {
   font-size: clamp(1rem, 2.5vw, 1.15rem);
 }
 
+.article-deck,
+.article-body {
+  font-family: var(--sans);
+}
+
 .article-body {
   padding-block: clamp(2.5rem, 7vw, 4rem);
   border-block: 1px solid var(--border);
@@ -612,7 +631,7 @@ nav a[aria-current="page"] {
 }
 
 .project h3 {
-  margin: 0.35rem 0 0.6rem;
+  margin: 0 0 0.6rem;
   color: var(--accent);
   font-size: 1.08rem;
 }
@@ -741,6 +760,10 @@ nav a[aria-current="page"] {
 }
 
 @media (max-width: 22.5rem) {
+  .hero h1 {
+    white-space: normal;
+  }
+
   .section-heading {
     display: grid;
     grid-template-columns: auto 1fr;
