@@ -50,6 +50,7 @@ The experience page carries the credibility detail:
 
 Writing currently focuses on AI-native work and project execution:
 
+- `Build to Learn`
 - `What Becoming AI-Native Means to Me`
 - `From Building the Thing to Directing the Build`
 - `Agentic AI as a Force Multiplier for Project Work`
