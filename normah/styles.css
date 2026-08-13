@@ -139,11 +139,29 @@ main,
 }
 
 .site-name {
-  flex: none;
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  display: grid;
+  gap: 0.1rem;
+  width: fit-content;
   text-decoration: none;
+}
+
+.site-name__full {
+  font-size: clamp(0.82rem, 2vw, 1rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.35;
+}
+
+.site-name__descriptor {
+  color: var(--muted);
+  font-size: clamp(0.55rem, 1.5vw, 0.68rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+.site-name:hover .site-name__descriptor {
+  color: var(--accent);
 }
 
 .hero {
