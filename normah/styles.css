@@ -584,7 +584,7 @@ main,
 
 .ci-instagram-post {
   display: grid;
-  grid-template-rows: 16% 44% 31% 9%;
+  grid-template-rows: 16% 48% 27% 9%;
   width: min(100%, 20rem);
   aspect-ratio: 1;
   margin: clamp(0.65rem, 2vw, 1rem) auto 0.65rem;
