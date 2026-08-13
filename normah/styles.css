@@ -381,6 +381,16 @@ main,
   margin: 0;
 }
 
+.card-panel .card-panel-option {
+  margin-top: 0.65rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #d9ddd9;
+}
+
+.card-panel-option strong {
+  color: #386c4b;
+}
+
 .panel-label {
   display: block;
   margin-bottom: 0.45rem;
@@ -727,6 +737,206 @@ main,
 
 .ci-instagram-action--single {
   justify-content: flex-end;
+}
+
+.ci-instagram-post--package {
+  grid-template-rows: 16% 18% 57% 9%;
+}
+
+.ci-package-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.38rem 0.65rem;
+  background: #ddb857;
+  color: #173426;
+  font-family: var(--sans);
+}
+
+.ci-package-hero > div:first-child {
+  display: grid;
+}
+
+.ci-package-hero span,
+.ci-package-hero small {
+  font-size: clamp(0.34rem, 0.9vw, 0.42rem);
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.ci-package-hero > div:first-child > strong {
+  font-size: clamp(0.82rem, 2.35vw, 1.08rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.ci-package-price {
+  display: grid;
+  justify-items: end;
+  line-height: 1;
+}
+
+.ci-package-price del {
+  font-size: clamp(0.38rem, 1vw, 0.46rem);
+  font-weight: 650;
+}
+
+.ci-package-price strong {
+  font-size: clamp(1rem, 3vw, 1.35rem);
+  letter-spacing: -0.055em;
+}
+
+.ci-package-body {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 0.5rem;
+  padding: 0.48rem 0.65rem;
+  background: #ffffff;
+  color: #173426;
+  font-family: var(--sans);
+}
+
+.ci-package-body section {
+  min-width: 0;
+  padding: 0.35rem 0.4rem;
+  background: #f7f8f6;
+}
+
+.ci-package-body section > span {
+  display: block;
+  margin-bottom: 0.22rem;
+  padding-bottom: 0.14rem;
+  border-bottom: 1px solid #ddb857;
+  font-size: clamp(0.38rem, 0.95vw, 0.44rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ci-package-body ul {
+  display: grid;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ci-package-body li {
+  position: relative;
+  padding-left: 0.44rem;
+  font-size: clamp(0.36rem, 0.9vw, 0.42rem);
+  font-weight: 620;
+  line-height: 1.2;
+}
+
+.ci-package-body li::before {
+  position: absolute;
+  left: 0;
+  color: #b18725;
+  content: "•";
+}
+
+.ci-instagram-post--booking {
+  grid-template-rows: 16% 21% 47% 16%;
+}
+
+.ci-booking-title {
+  display: grid;
+  align-content: center;
+  padding: 0.42rem 0.65rem;
+  background: #ddb857;
+  color: #173426;
+  font-family: var(--sans);
+}
+
+.ci-booking-title span {
+  font-size: clamp(0.32rem, 0.82vw, 0.38rem);
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ci-booking-title strong {
+  font-size: clamp(0.86rem, 2.5vw, 1.15rem);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.ci-booking-title small {
+  margin-top: 0.15rem;
+  font-size: clamp(0.3rem, 0.78vw, 0.36rem);
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.ci-booking-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.38rem;
+  padding: 0.48rem 0.65rem;
+  background: #f3f0e8;
+  color: #173426;
+  font-family: var(--sans);
+}
+
+.ci-booking-grid section {
+  display: grid;
+  align-content: center;
+  padding: 0.32rem 0.4rem;
+  border-left: 0.16rem solid #ddb857;
+  background: #ffffff;
+}
+
+.ci-booking-grid span {
+  font-size: clamp(0.3rem, 0.76vw, 0.35rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ci-booking-grid strong {
+  font-size: clamp(0.39rem, 1.05vw, 0.48rem);
+  line-height: 1.18;
+}
+
+.ci-booking-grid small {
+  margin-top: 0.12rem;
+  font-size: clamp(0.28rem, 0.72vw, 0.33rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.ci-booking-contact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.65rem;
+  background: #173426;
+  color: #ffffff;
+  font-family: var(--sans);
+}
+
+.ci-booking-contact span {
+  display: grid;
+  font-size: clamp(0.28rem, 0.72vw, 0.33rem);
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.ci-booking-contact strong {
+  font-size: clamp(0.48rem, 1.3vw, 0.6rem);
+  line-height: 1.1;
+}
+
+.ci-booking-contact strong small {
+  font-size: 0.75em;
 }
 
 .story-card--ci-example h3 {
