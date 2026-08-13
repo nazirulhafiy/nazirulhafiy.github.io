@@ -511,36 +511,25 @@ main,
   font-size: clamp(1.65rem, 5vw, 2.35rem);
 }
 
-.query-evidence {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.65rem;
-  margin-top: clamp(1rem, 3.5vw, 1.5rem);
-}
-
-.query-evidence div {
-  padding: clamp(0.7rem, 2vw, 0.9rem);
+.competition-search-results {
+  display: block;
+  height: clamp(13.5rem, 42vw, 17rem);
+  margin: clamp(0.75rem, 2.5vw, 1.05rem) 0 0;
+  overflow: hidden;
   border: 1px solid #d9ddd9;
   border-radius: 0.45rem;
   background: #ffffff;
 }
 
-.query-evidence span {
-  display: block;
-  margin-bottom: 0.35rem;
-  color: #386c4b;
-  font-family: var(--mono);
-  font-size: clamp(0.58rem, 1.4vw, 0.68rem);
-  font-weight: 700;
+.competition-search-results img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: top center;
 }
 
-.query-evidence p {
-  margin: 0;
-  font-size: clamp(0.66rem, 1.65vw, 0.8rem);
-  line-height: 1.4;
-}
-
-.story-card--competition .card-panel {
+.story-card--competition .card-footnote {
   margin-top: auto;
 }
 
@@ -1247,14 +1236,22 @@ main,
 }
 
 @media (max-width: 27rem) {
+  .carousel-toolbar {
+    min-height: 2.75rem;
+    padding-right: 6rem;
+  }
+
   .carousel-controls {
-    right: -0.4rem;
-    left: -0.4rem;
+    top: 0;
+    right: 0;
+    left: auto;
+    gap: 0.5rem;
+    justify-content: flex-end;
   }
 
   .carousel-button {
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 2.75rem;
+    height: 2.75rem;
   }
 
   .carousel-button::before {
@@ -1298,8 +1295,36 @@ main,
   }
 
   .ci-instagram-post {
-    width: min(100%, 14.5rem);
+    width: min(100%, 17.5rem);
     margin: 0.55rem auto 0.48rem;
+  }
+
+  .story-card--ci-example h3 {
+    display: none;
+  }
+
+  .ci-package-body section > span {
+    font-size: 0.46rem;
+  }
+
+  .ci-package-body li {
+    font-size: 0.46rem;
+  }
+
+  .ci-booking-title small {
+    font-size: 0.4rem;
+  }
+
+  .ci-booking-grid strong {
+    font-size: 0.5rem;
+  }
+
+  .ci-booking-grid small {
+    font-size: 0.4rem;
+  }
+
+  .ci-booking-contact strong {
+    font-size: 0.6rem;
   }
 
   .story-card--samples h3 {
@@ -1397,21 +1422,9 @@ main,
     font-size: 1.25rem;
   }
 
-  .query-evidence {
-    gap: 0.4rem;
+  .competition-search-results {
+    height: 10rem;
     margin-top: 0.65rem;
-  }
-
-  .query-evidence div {
-    padding: 0.55rem;
-  }
-
-  .query-evidence span {
-    font-size: 0.52rem;
-  }
-
-  .query-evidence p {
-    font-size: 0.57rem;
   }
 
   .story-card--brand-result h3 {
@@ -1448,7 +1461,7 @@ main,
 
   .card-panel {
     padding: 0.58rem 0.65rem;
-    font-size: 0.59rem;
+    font-size: 0.65rem;
     line-height: 1.38;
   }
 
@@ -1463,13 +1476,52 @@ main,
 
   .card-footnote {
     margin-top: 0.5rem;
-    font-size: 0.5rem;
+    font-size: 0.58rem;
   }
 
   .plain-list {
     gap: 0.25rem;
   }
 
+  .carousel-dots {
+    gap: 0.125rem;
+    padding-top: 0.4rem;
+  }
+
+  .carousel-dot,
+  .carousel-dot[aria-current="true"] {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 0;
+    background: transparent;
+  }
+
+  .carousel-dot::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.52rem;
+    height: 0.52rem;
+    border: 1px solid var(--muted);
+    border-radius: 50%;
+    background: var(--background);
+    content: "";
+    transform: translate(-50%, -50%);
+  }
+
+  .carousel-dot[aria-current="true"]::before {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+}
+
+@media (max-width: 22.5rem) {
+  .story-card {
+    height: 23rem;
+    aspect-ratio: auto;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
