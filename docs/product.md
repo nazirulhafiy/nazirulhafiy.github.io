@@ -62,6 +62,7 @@ The writing should stay personal, practical, and tied to how work actually gets 
 Current linked experiments:
 
 - `PCDS 2030 Project Tracker` at `pcds2030.com`
+- `SDE 2030 Blueprint Explorer` at `sde2030.com`
 - `AI.Sarawak.News` at `ai.sarawak.news`
 
 These links demonstrate public, Sarawak-aware digital exploration without turning the portfolio into a full product directory.
