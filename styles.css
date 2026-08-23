@@ -513,11 +513,15 @@ nav a[aria-current="page"] {
 }
 
 .post h3 a {
+  display: inline-block;
   color: inherit;
   text-decoration: none;
+  transition: transform 150ms ease;
 }
 
-.post h3 a:hover {
+.post h3 a:hover,
+.post h3 a:focus-visible {
+  transform: translateX(0.3rem);
   text-decoration: underline;
   text-decoration-style: dashed;
   text-underline-offset: 0.25em;
@@ -634,6 +638,7 @@ nav a[aria-current="page"] {
   margin: 0 0 0.6rem;
   color: var(--accent);
   font-size: 1.08rem;
+  transition: transform 150ms ease;
 }
 
 .project p {
@@ -641,6 +646,27 @@ nav a[aria-current="page"] {
   margin-bottom: 0;
   color: var(--muted);
   font-size: 0.9rem;
+  transition: color 150ms ease, transform 150ms ease;
+}
+
+.project:hover h3,
+.project:hover p,
+.project:focus-visible h3,
+.project:focus-visible p {
+  transform: translateX(0.3rem);
+}
+
+.project:hover h3,
+.project:focus-visible h3 {
+  text-decoration-line: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-style: dashed;
+  text-underline-offset: 0.3em;
+}
+
+.project:hover p,
+.project:focus-visible p {
+  color: var(--foreground);
 }
 
 .arrow-link {
