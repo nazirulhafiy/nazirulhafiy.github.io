@@ -204,7 +204,7 @@ nav a[aria-current="page"] {
 }
 
 .hero h1 {
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.65rem;
   font-size: clamp(1.5rem, 4vw, 1.85rem);
   white-space: nowrap;
 }
