@@ -111,7 +111,6 @@ h4 {
   transform: translateY(0);
 }
 
-.site-header,
 main,
 .site-footer {
   width: min(100%, var(--page));
@@ -120,7 +119,14 @@ main,
 }
 
 .site-header {
-  padding-top: 1.35rem;
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
 }
 
 .header-row {
@@ -128,7 +134,9 @@ main,
   align-items: baseline;
   justify-content: space-between;
   gap: 1.5rem;
-  padding-bottom: 1.25rem;
+  width: min(100%, var(--page));
+  margin-inline: auto;
+  padding: 1.35rem var(--gutter) 1.25rem;
 }
 
 .site-name {
@@ -152,7 +160,8 @@ main,
 }
 
 .nav-checkbox,
-.nav-toggle {
+.nav-toggle,
+.nav-backdrop {
   display: none;
 }
 
@@ -849,14 +858,38 @@ nav a[aria-current="page"] {
     transform: rotate(-45deg);
   }
 
+  .site-name,
+  .nav-toggle {
+    position: relative;
+    z-index: 2;
+  }
+
+  .nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .nav-checkbox:checked ~ .nav-backdrop {
+    display: block;
+  }
+
   .primary-nav {
     display: none;
-    grid-column: 1 / -1;
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    right: var(--gutter);
+    z-index: 2;
+    min-width: 11.5rem;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
     gap: 0;
-    padding-top: 0.35rem;
+    padding: 0.35rem 0;
+    background: var(--background);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--foreground) 10%, transparent);
   }
 
   .nav-checkbox:checked ~ .primary-nav {
@@ -864,7 +897,10 @@ nav a[aria-current="page"] {
   }
 
   .primary-nav a {
-    padding: 0.7rem 0;
+    padding: 0.7rem 1rem;
+  }
+
+  .primary-nav a + a {
     border-top: 1px solid var(--border);
   }
 
