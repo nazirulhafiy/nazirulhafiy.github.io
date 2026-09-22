@@ -210,12 +210,19 @@ nav a[aria-current="page"] {
 
 .hero-copy {
   max-width: 35rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.65rem;
   color: var(--muted);
   font-size: 0.9rem;
 }
 
+.hero-pitch {
+  max-width: 35rem;
+  margin-bottom: 1.25rem;
+  color: var(--muted);
+}
+
 .hero-copy,
+.hero-pitch,
 .lede,
 .experience-role-preview > p:last-child,
 .history-role > p:not(.role-date):not(.role-hierarchy),
@@ -779,7 +786,8 @@ nav a[aria-current="page"] {
     width: min(13rem, 58vw);
   }
 
-  .hero-copy {
+  .hero-copy,
+  .hero-pitch {
     margin-inline: auto;
   }
 
