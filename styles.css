@@ -213,8 +213,10 @@ nav a[aria-current="page"] {
   max-width: 35rem;
   margin-bottom: 1.5rem;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   line-height: 1.45;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 .hero-copy,
