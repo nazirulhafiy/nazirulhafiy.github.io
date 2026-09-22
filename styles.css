@@ -836,12 +836,17 @@ nav a[aria-current="page"] {
     background: transparent;
   }
 
+  .nav-checkbox:checked + .nav-toggle .nav-bars::before,
+  .nav-checkbox:checked + .nav-toggle .nav-bars::after {
+    top: 0;
+  }
+
   .nav-checkbox:checked + .nav-toggle .nav-bars::before {
-    transform: translateY(0.35rem) rotate(45deg);
+    transform: rotate(45deg);
   }
 
   .nav-checkbox:checked + .nav-toggle .nav-bars::after {
-    transform: translateY(-0.35rem) rotate(-45deg);
+    transform: rotate(-45deg);
   }
 
   .primary-nav {
