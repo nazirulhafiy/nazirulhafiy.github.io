@@ -208,17 +208,19 @@ nav a[aria-current="page"] {
   white-space: nowrap;
 }
 
-.hero-copy {
+.hero-intro {
   max-width: 35rem;
-  margin-bottom: 0.65rem;
+  margin-bottom: 1.25rem;
   color: var(--muted);
   font-size: 0.9rem;
 }
 
-.hero-pitch {
-  max-width: 35rem;
-  margin-bottom: 1.25rem;
-  color: var(--muted);
+.hero-intro p {
+  margin-bottom: 0.35rem;
+}
+
+.hero-intro p:last-child {
+  margin-bottom: 0;
 }
 
 .hero-copy,
@@ -786,8 +788,7 @@ nav a[aria-current="page"] {
     width: min(13rem, 58vw);
   }
 
-  .hero-copy,
-  .hero-pitch {
+  .hero-intro {
     margin-inline: auto;
   }
 
