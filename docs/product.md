@@ -52,9 +52,9 @@ Writing currently focuses on AI-native work and project execution:
 
 - `The Future of Agentic AI`
 - `Build to Learn`
-- `What Becoming AI-Native Means to Me`
-- `From Building the Thing to Directing the Build`
-- `Agentic AI as a Force Multiplier for Project Work`
+- `Becoming AI-Native`
+- `Directing the Build`
+- `Agentic AI as a Force Multiplier`
 
 The writing should stay personal, practical, and tied to how work actually gets planned, coordinated, shipped, and improved.
 
