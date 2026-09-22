@@ -574,7 +574,7 @@ nav a[aria-current="page"] {
 .article-intro h1 {
   max-width: 42rem;
   margin-bottom: 1rem;
-  font-size: clamp(2rem, 7vw, 3.2rem);
+  font-size: clamp(1.5rem, 4.6vw, 2.6rem);
 }
 
 .article-deck {
