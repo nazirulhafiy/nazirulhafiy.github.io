@@ -204,27 +204,20 @@ nav a[aria-current="page"] {
 }
 
 .hero h1 {
+  margin-bottom: 0.65rem;
   font-size: clamp(1.5rem, 4vw, 1.85rem);
   white-space: nowrap;
 }
 
-.hero-intro {
+.hero-copy {
   max-width: 35rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   color: var(--muted);
   font-size: 0.9rem;
-}
-
-.hero-intro p {
-  margin-bottom: 0.35rem;
-}
-
-.hero-intro p:last-child {
-  margin-bottom: 0;
+  line-height: 1.45;
 }
 
 .hero-copy,
-.hero-pitch,
 .lede,
 .experience-role-preview > p:last-child,
 .history-role > p:not(.role-date):not(.role-hierarchy),
@@ -788,7 +781,7 @@ nav a[aria-current="page"] {
     width: min(13rem, 58vw);
   }
 
-  .hero-intro {
+  .hero-copy {
     margin-inline: auto;
   }
 
