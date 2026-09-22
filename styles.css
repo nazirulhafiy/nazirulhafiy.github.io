@@ -212,6 +212,7 @@ nav a[aria-current="page"] {
   max-width: 35rem;
   margin-bottom: 1.25rem;
   color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .hero-copy,
