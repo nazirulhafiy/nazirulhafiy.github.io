@@ -6,7 +6,7 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 
 - [ ] Remove stale README assumptions from future edits. The old README mentioned an `about.html` page that no longer exists; this has been corrected, but future documentation should keep matching the actual route map.
 - [ ] Decide whether `archive.html`, `alt/`, and `alt2/` should stay publicly reachable. If they remain, document their purpose clearly; if not, decide whether to move them out of public serving without losing the reference snapshots.
-- [ ] Standardize metadata theme colors. The homepage uses `#f7f5f0` / `#1f2428`, while inner pages use `#ffffff` / `#111111`; choose whether this difference is intentional.
+- [ ] Standardize dark metadata theme colors. Light `theme-color` is `#ffffff` on public pages. The homepage dark value is still `#1f2428`, while inner pages use `#111111`.
 
 ## Should improve soon
 
