@@ -131,12 +131,12 @@ main,
 
 .header-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
   width: min(100%, var(--page));
   margin-inline: auto;
-  padding: 1.35rem var(--gutter) 1.25rem;
+  padding: 0.45rem var(--gutter);
 }
 
 .site-name {
@@ -173,12 +173,26 @@ main,
   font-size: 0.9rem;
 }
 
+.primary-nav a {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.28em;
+  transition: text-decoration-color 150ms ease, color 150ms ease;
+}
+
+.primary-nav a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
 nav a {
   text-decoration: none;
 }
 
 nav a[aria-current="page"] {
   color: var(--accent);
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
 .hero {
@@ -805,7 +819,7 @@ nav a[aria-current="page"] {
     grid-row: 1;
     width: 2.75rem;
     height: 2.75rem;
-    margin: -0.65rem -0.55rem;
+    margin: -0.2rem -0.35rem;
     color: inherit;
     cursor: pointer;
     background: transparent;
@@ -898,6 +912,12 @@ nav a[aria-current="page"] {
 
   .primary-nav a {
     padding: 0.7rem 1rem;
+    text-decoration-color: transparent;
+  }
+
+  .primary-nav a:hover {
+    background: var(--accent-soft);
+    text-decoration-color: transparent;
   }
 
   .primary-nav a + a {
