@@ -523,7 +523,12 @@ nav a[aria-current="page"] {
 
 .writing-list {
   display: grid;
-  gap: clamp(1.9rem, 5vw, 2.6rem);
+}
+
+.post + .post {
+  margin-top: clamp(1.15rem, 3vw, 1.45rem);
+  padding-top: clamp(1.15rem, 3vw, 1.45rem);
+  border-top: 1px solid var(--border);
 }
 
 .post {
