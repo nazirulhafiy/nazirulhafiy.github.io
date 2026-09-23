@@ -33,7 +33,7 @@ Supporting themes:
 The homepage is the fast scan:
 
 - portrait and one-line professional pitch;
-- email, LinkedIn, and GitHub links;
+- email, LinkedIn, X, and GitHub links;
 - compact experience preview;
 - latest writing preview;
 - public experiment links.
