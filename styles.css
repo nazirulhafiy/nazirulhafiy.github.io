@@ -204,6 +204,11 @@ nav a[aria-current="page"] {
   text-align: left;
 }
 
+.hero > div {
+  min-width: 0;
+  container-type: inline-size;
+}
+
 .portrait-slot {
   margin: 0;
   display: grid;
@@ -252,11 +257,13 @@ nav a[aria-current="page"] {
 }
 
 .hero-copy {
-  max-width: 35rem;
+  max-width: 100%;
   margin-bottom: 1.5rem;
   color: var(--muted);
   font-size: 0.82rem;
+  font-size: min(0.82rem, 3.2cqi);
   line-height: 1.45;
+  white-space: nowrap;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -951,6 +958,11 @@ nav a[aria-current="page"] {
 
   .hero-copy {
     margin-inline: auto;
+  }
+
+  .hero > div {
+    width: 100%;
+    justify-self: stretch;
   }
 
   .inline-links {
