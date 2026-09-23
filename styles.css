@@ -430,16 +430,10 @@ nav a[aria-current="page"] {
   font-size: 0.9rem;
 }
 
-.experience-page {
-  max-width: 43rem;
-  margin-inline: auto;
-  padding-bottom: 4rem;
-}
-
+.experience-page,
 .posts-page {
   max-width: 43rem;
   margin-inline: auto;
-  padding-bottom: 4rem;
 }
 
 .experience-history {
@@ -525,12 +519,6 @@ nav a[aria-current="page"] {
 .history-role li::marker,
 .principles li::marker {
   color: var(--accent);
-}
-
-.back-home {
-  margin: 2rem 0 0;
-  font-size: 0.85rem;
-  font-weight: 600;
 }
 
 .writing-list {
@@ -671,6 +659,7 @@ nav a[aria-current="page"] {
 
 .article-end a {
   font-weight: 600;
+  text-decoration: none;
 }
 
 .project {
