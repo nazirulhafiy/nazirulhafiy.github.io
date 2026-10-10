@@ -40,3 +40,6 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 ## Done
 
 - [x] Created project documentation structure: `AGENTS.md`, `README.md`, `docs/product.md`, `docs/design.md`, and `docs/backlog.md`.
+- [x] Removed `CLAUDE.md` after folding the notes that still matched the site into `AGENTS.md`. The `about.html` route and the Exabytes DNS note were already out of date.
+- [x] Documented `/normah/`, the polah.app redirects on `/sifir-sprint/` and `/kracked-quest/`, and that `/cat-pinball-game/` is published from its own repo.
+- [x] Added the docs-check workflow for CSS and JS changes. See `docs/ci-docs-check.md`.

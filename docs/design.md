@@ -9,7 +9,7 @@ The current public design is closer to editorial documentation than marketing co
 ## Visual language
 
 - Monochrome palette with soft surfaces and subtle borders.
-- System monospace typography for a technical, operational feel.
+- System monospace typography for the interface. Article decks and article bodies use the system sans stack (`--sans`).
 - Narrow content measure for readability.
 - Generous vertical spacing.
 - Dashed underlines and light hover movement as the main interaction language.
@@ -19,7 +19,8 @@ The current public design is closer to editorial documentation than marketing co
 
 - Shared page width is controlled by `--page` in `styles.css`.
 - Horizontal padding is controlled by `--gutter`.
-- The homepage hero uses a two-column layout on wider screens and stacks on small screens.
+- The homepage hero uses a two-column layout on wider screens and stacks on small screens. The homepage has no site header.
+- Experience, writing, and article pages share a header: site name plus a primary nav (Experience, Writing, Experiments). At `38rem` and below the nav becomes a CSS checkbox menu. There is no menu script.
 - Secondary pages use a centered article-style column.
 - Sections are separated by thin borders and clear headings.
 
@@ -37,10 +38,16 @@ When adding new sections, prefer the existing patterns:
 
 ## Typography
 
-Current font stack:
+Interface font stack (`--mono`):
 
 ```css
 ui-monospace, "SFMono-Regular", "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", Menlo, monospace
+```
+
+Article text (`--sans`):
+
+```css
+-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
 ```
 
 Guidance:
@@ -54,15 +61,17 @@ Guidance:
 
 The site defines light and dark variables in `:root` and a `prefers-color-scheme: dark` media query.
 
-Use the existing tokens:
+Portfolio tokens in `styles.css`:
 
-- `--background`
-- `--surface`
-- `--foreground`
-- `--muted`
-- `--border`
-- `--accent`
-- `--accent-soft`
+| Token | Light | Dark |
+| --- | --- | --- |
+| `--background` | `#ffffff` | `#111111` |
+| `--surface` | `#f6f6f6` | `#1b1b1b` |
+| `--foreground` | `#111111` | `#f5f5f5` |
+| `--muted` | `#5f5f5f` | `#b4b4b4` |
+| `--border` | `#dedede` | `#2d2d2d` |
+| `--accent` | `#111111` | `#f5f5f5` |
+| `--accent-soft` | `#f1f1f1` | `#1a1a1a` |
 
 Do not hard-code one-off colors unless there is a strong reason. New UI should remain legible in both light and dark mode.
 
@@ -96,6 +105,25 @@ Writing previews should include:
 
 Experiment links should be simple block links with a title and one-sentence description. Do not add category, location, or other kicker labels above project titles.
 
+## Navigation
+
+Experience and writing pages use the shared header in `styles.css`:
+
+- wide screens show the links in a row;
+- narrow screens (`max-width: 38rem`) show a menu button. Checking `#nav-toggle` opens the nav and a backdrop. Both are `<label>` elements, so the menu works without JavaScript;
+- the current page sets `aria-current="page"`.
+
+The homepage does not include this header.
+
+## `/normah/`
+
+`/normah/` is a separate page with its own stylesheet and script. It is not part of the portfolio chrome.
+
+- Wider page (`--page: 72rem`) and a green accent (`#0b5d38` light, `#82d0a2` dark). Surfaces lean slightly green rather than pure grey.
+- Same mono interface stack. Sans is used inside cards and panels.
+- Three carousels (corporate identity, email-signature campaigns, hyperlocal event promotion). `normah/script.js` wires previous/next, dots, arrow keys, and scroll sync. It respects `prefers-reduced-motion`.
+- `noindex`. Not linked from the homepage.
+
 ## Accessibility
 
 Preserve:
@@ -124,3 +152,5 @@ Avoid inflated claims, buzzword-heavy copy, and generic portfolio language.
 ## Historical variants
 
 `archive.html`, `alt/`, and `alt2/` contain older or alternate visual directions. Use them as references only when explicitly exploring design alternatives. The current production direction is the minimalist shared-CSS version at `/`, `/experience.html`, and `/posts/`.
+
+`/cat-pinball-game/`, `/sifir-sprint/`, and `/kracked-quest/` are published from other repositories. They are not part of this design system. Where those games send visitors, and why, is in `README.md`.

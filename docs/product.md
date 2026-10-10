@@ -68,6 +68,14 @@ Current linked experiments:
 
 These links demonstrate public, Sarawak-aware digital exploration without turning the portfolio into a full product directory.
 
+### Normah microsite
+
+`/normah/` is an unlisted page in this repo: marketing suggestions for Normah Medical Specialist Centre. It is `noindex`, absent from the homepage, and absent from the sitemap. It is not one of the public experiments above.
+
+### Games on the same host
+
+`/cat-pinball-game/` is published from its own repository. `/sifir-sprint/` and `/kracked-quest/` are too, and those pages redirect visitors to `https://polah.app/sifir/` and `https://polah.app/kracked/`. None of those games are source files here, and they are not homepage experiments.
+
 ## Product principles
 
 - Clarity over volume. A visitor should understand the site within seconds.
