@@ -154,3 +154,9 @@ Avoid inflated claims, buzzword-heavy copy, and generic portfolio language.
 `archive.html`, `alt/`, and `alt2/` contain older or alternate visual directions. Use them as references only when explicitly exploring design alternatives. The current production direction is the minimalist shared-CSS version at `/`, `/experience.html`, and `/posts/`.
 
 `/cat-pinball-game/`, `/sifir-sprint/`, and `/kracked-quest/` are published from other repositories. They are not part of this design system. Where those games send visitors, and why, is in `README.md`.
+
+## Analytics
+
+- Google Analytics 4: measurement ID `G-JTQGL6WQYW`, tag in `<head>` of every served HTML page (home, archive, experience, posts, alt, alt2, normah). Add it to any new page.
+- Cloudflare Web Analytics: hafiy.my is on GitHub Pages (not proxied by Cloudflare), so each page loads the beacon manually with token `57920823ff68472c8e325232c7b86127` (Web Analytics site for hafiy.my).
+- No Content-Security-Policy is set; if one is added, allow `www.googletagmanager.com`, `*.google-analytics.com` and `static.cloudflareinsights.com`.
