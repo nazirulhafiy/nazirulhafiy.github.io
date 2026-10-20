@@ -1,0 +1,11 @@
+{
+  "name": "hafiy-my",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "layout-check": "node scripts/layout-check.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.0"
+  }
+}
