@@ -8,7 +8,7 @@ This is the source for `hafiy.my`, a static personal portfolio and writing site.
 
 The production site is static HTML and CSS:
 
-- no package manager;
+- no package manager for the published site (CI uses `package.json` only for the Playwright layout check);
 - a small Python build (`scripts/build.py`) renders homepage, experience, and writing pages from `data/site.json` and `site/templates/`; run it after changing site-wide copy;
 - no framework and no CSS library;
 - no environment variables;
@@ -74,6 +74,7 @@ When agents, QA, or cloud agents open the **live** portfolio site ([https://hafi
 After changes, verify as relevant:
 
 - `git diff --check`
+- `npm run layout-check` after template or layout changes (see `docs/ci-layout-check.md`)
 - local preview with `python3 -m http.server 8000`
 - homepage loads at `/`
 - `/experience.html` loads

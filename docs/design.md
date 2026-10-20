@@ -159,3 +159,11 @@ Portfolio pages (home, experience, writing) get **one** build-time analytics loa
 **CI.** After `scripts/build.py`, `scripts/check_analytics_dist.py` fails if any generated page has zero or multiple loaders, if GA4 / CF values drift from the registry, or if cookie / `spa` values drift.
 
 No Content-Security-Policy is set; if one is added, allow `www.googletagmanager.com`, `*.google-analytics.com` and `static.cloudflareinsights.com`.
+
+## Layout check
+
+Pull requests run a Playwright layout check on `/`, `/experience.html`, and `/posts/` in Chromium and WebKit. See [ci-layout-check.md](ci-layout-check.md).
+
+`[data-box]` marks layout regions the check watches for overlap and clipping (for example the homepage hero text column, section headings, and the experience header row). `[data-one-line]` marks copy that must stay on one line at the tested viewports — notably the homepage `.hero-copy` tagline, which broke in Safari when the role line wrapped after a font-size change ([PR #21](https://github.com/nazirulhafiy/nazirulhafiy.github.io/pull/21)).
+
+Markers live in `site/templates/`; run `python3 scripts/build.py` after editing them. CI-only Node dependencies are listed in `package.json` at the repo root; production Pages deploy remains static HTML and CSS with no runtime package manager.
