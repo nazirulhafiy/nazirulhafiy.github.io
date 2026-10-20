@@ -12,20 +12,12 @@ The site is hand-written HTML and CSS. There is no package manager, no framework
 - `experience.html` — full professional experience timeline.
 - `posts/` — writing index and individual static article pages.
 - `styles.css` — shared styling for the portfolio pages.
-- `normah/` — unlisted, `noindex` microsite. See below.
 - `assets/profile.png` — square monochrome illustrated portrait used on the homepage.
-- `sitemap.xml` and `robots.txt` — search-engine discovery files. `/normah/` is omitted.
+- `sitemap.xml` and `robots.txt` — search-engine discovery files.
 - `CNAME` — GitHub Pages custom domain `hafiy.my`.
-- `archive.html`, `alt/`, and `alt2/` — older or alternate design snapshots kept for reference, not the primary production route.
 - `docs/` — product, design, backlog, and CI notes.
 
-The portfolio pages (`/`, `/experience.html`, `/posts/`) do not use JavaScript. `/normah/` loads `normah/script.js` for its carousels.
-
-## `/normah/`
-
-[https://hafiy.my/normah/](https://hafiy.my/normah/) is a marketing-suggestions page for Normah Medical Specialist Centre, dated 28 August 2026. It covers corporate identity, email-signature campaigns, and hyperlocal event promotion.
-
-It lives in this repo (`normah/index.html`, `normah/styles.css`, `normah/script.js`). It uses its own stylesheet (green accent, wider page) and a small carousel script. It is not linked from the homepage, sends `noindex, nofollow, noarchive`, and is not in `sitemap.xml`.
+The portfolio pages (`/`, `/experience.html`, `/posts/`) do not use JavaScript.
 
 ## Paths published from other repositories
 
@@ -67,7 +59,7 @@ The current public portfolio uses a minimalist editorial system:
 - low-motion interactions;
 - automatic light/dark styling through `prefers-color-scheme`.
 
-`/normah/` keeps the same typography habits and uses a green accent of its own. Read [docs/design.md](docs/design.md) before making layout, visual, or interaction changes.
+Read [docs/design.md](docs/design.md) before making layout, visual, or interaction changes.
 
 ## Local development
 

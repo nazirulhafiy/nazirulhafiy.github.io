@@ -12,8 +12,8 @@ The check uses a three-dot diff (`base.sha...head.sha`). The workflow checks out
 
 Kept in sync at the top of the workflow and in [`scripts/docs_check_pr.py`](../scripts/docs_check_pr.py):
 
-- `*.css` in any directory (`styles.css`, `normah/styles.css`, and any later stylesheet)
-- `*.js` in any directory (`normah/script.js`, and any later script)
+- `*.css` in any directory (`styles.css` and any later stylesheet)
+- `*.js` in any directory (any script added under the repo root)
 
 ## Not watched
 
@@ -25,8 +25,6 @@ These paths are watched in addition to `*.css` and `*.js` (see `scripts/docs_che
 - `scripts/build.py`, `scripts/analytics_registry.py`, `scripts/analytics_loader.py`, `scripts/check_analytics_dist.py`, `scripts/docs_check_pr.py`
 - `.github/workflows/*`
 - `data/site.json`, `data/analytics.json`
-
-`archive.html`, `alt/`, and `alt2/` are reference snapshots. Editing their HTML does not trip this check. A stylesheet or script added beside them would.
 
 ## Escape hatch
 

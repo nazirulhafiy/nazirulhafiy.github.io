@@ -117,15 +117,6 @@ Experience and writing pages use the shared header in `styles.css`:
 
 The homepage does not include this header.
 
-## `/normah/`
-
-`/normah/` is a separate page with its own stylesheet and script. It is not part of the portfolio chrome.
-
-- Wider page (`--page: 72rem`) and a green accent (`#0b5d38` light, `#82d0a2` dark). Surfaces lean slightly green rather than pure grey.
-- Same mono interface stack. Sans is used inside cards and panels.
-- Three carousels (corporate identity, email-signature campaigns, hyperlocal event promotion). `normah/script.js` wires previous/next, dots, arrow keys, and scroll sync. It respects `prefers-reduced-motion`.
-- `noindex`. Not linked from the homepage.
-
 ## Accessibility
 
 Preserve:
@@ -151,15 +142,13 @@ The writing style should be:
 
 Avoid inflated claims, buzzword-heavy copy, and generic portfolio language.
 
-## Historical variants
-
-`archive.html`, `alt/`, and `alt2/` contain older or alternate visual directions. Use them as references only when explicitly exploring design alternatives. The current production direction is the minimalist shared-CSS version at `/`, `/experience.html`, and `/posts/`.
+## Other paths on the host
 
 `/cat-pinball-game/`, `/sifir-sprint/`, and `/kracked-quest/` are published from other repositories. They are not part of this design system. Where those games send visitors, and why, is in `README.md`.
 
 ## Analytics
 
-Portfolio pages (home, experience, writing) get **one** build-time analytics loader from `data/analytics.json`. Historical paths (`archive.html`, `alt/`, `alt2/`) and `/normah/` keep their own hand-placed tags and are out of scope for the registry.
+Portfolio pages (home, experience, writing) get **one** build-time analytics loader from `data/analytics.json`.
 
 **Registry.** `data/analytics.json` (kit shape `version: 1`) holds the shared `internal_cookie` (`sn_internal`), fleet `spa` (`false`), and the `hafiy.my` host entry: GA4 `G-JTQGL6WQYW`, Cloudflare Web Analytics token `57920823ff68472c8e325232c7b86127`, aliases `www.hafiy.my` and `nazirulhafiy.github.io`. `scripts/analytics_registry.py` validates the file.
 
