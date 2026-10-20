@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "internal_cookie": "sn_internal",
+  "spa": false,
+  "hosts": {
+    "hafiy.my": {
+      "ga4_measurement_id": "G-JTQGL6WQYW",
+      "cf_beacon_token": "57920823ff68472c8e325232c7b86127",
+      "aliases": ["www.hafiy.my", "nazirulhafiy.github.io"],
+      "legacy_internal_cookies": []
+    }
+  }
+}

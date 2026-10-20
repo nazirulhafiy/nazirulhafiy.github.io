@@ -12,11 +12,22 @@ from pathlib import Path
 # Watched paths (keep in sync with .github/workflows/docs-check.yml and docs/ci-docs-check.md):
 # - *.css in any directory
 # - *.js in any directory
-# Not watched: HTML pages, posts, images, sitemap.xml, robots.txt, CNAME, docs/.
-# This repo has no HTML templates, build scripts, or framework config.
+# - portfolio build / analytics registry (see docs/ci-docs-check.md)
+# Not watched: generated HTML at repo root, posts bodies, images, sitemap.xml, robots.txt, CNAME.
 WATCHED_SUFFIXES = (
     ".css",
     ".js",
+)
+WATCH_PATTERNS = (
+    "site/templates/*",
+    "scripts/build.py",
+    "scripts/analytics_registry.py",
+    "scripts/analytics_loader.py",
+    "scripts/check_analytics_dist.py",
+    "scripts/docs_check_pr.py",
+    ".github/workflows/*",
+    "data/site.json",
+    "data/analytics.json",
 )
 
 DOCS_PREFIX = "docs/"
@@ -31,8 +42,21 @@ def normalize_path(path: str) -> str:
     return path.replace("\\", "/").lstrip("./")
 
 
+def _match_pattern(path: str, pattern: str) -> bool:
+    import fnmatch
+
+    norm = normalize_path(path)
+    if pattern.endswith("/*"):
+        prefix = pattern[:-1]
+        return norm.startswith(prefix)
+    return fnmatch.fnmatch(norm, pattern)
+
+
 def is_watched(path: str) -> bool:
-    return normalize_path(path).endswith(WATCHED_SUFFIXES)
+    norm = normalize_path(path)
+    if norm.endswith(WATCHED_SUFFIXES):
+        return True
+    return any(_match_pattern(norm, pattern) for pattern in WATCH_PATTERNS)
 
 
 def is_docs_change(path: str) -> bool:

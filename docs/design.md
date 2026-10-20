@@ -159,6 +159,14 @@ Avoid inflated claims, buzzword-heavy copy, and generic portfolio language.
 
 ## Analytics
 
-- Google Analytics 4: measurement ID `G-JTQGL6WQYW`, tag in `<head>` of every served HTML page (home, archive, experience, posts, alt, alt2, normah). Add it to any new page.
-- Cloudflare Web Analytics: hafiy.my is on GitHub Pages (not proxied by Cloudflare), so each page loads the beacon manually with token `57920823ff68472c8e325232c7b86127` (Web Analytics site for hafiy.my).
-- No Content-Security-Policy is set; if one is added, allow `www.googletagmanager.com`, `*.google-analytics.com` and `static.cloudflareinsights.com`.
+Portfolio pages (home, experience, writing) get **one** build-time analytics loader from `data/analytics.json`. Historical paths (`archive.html`, `alt/`, `alt2/`) and `/normah/` keep their own hand-placed tags and are out of scope for the registry.
+
+**Registry.** `data/analytics.json` (kit shape `version: 1`) holds the shared `internal_cookie` (`sn_internal`), fleet `spa` (`false`), and the `hafiy.my` host entry: GA4 `G-JTQGL6WQYW`, Cloudflare Web Analytics token `57920823ff68472c8e325232c7b86127`, aliases `www.hafiy.my` and `nazirulhafiy.github.io`. `scripts/analytics_registry.py` validates the file.
+
+**Single loader.** `scripts/analytics_loader.py` defines the production loader; `scripts/build.py` substitutes `@@ANALYTICS_LOADER@@` in `site/templates/` with one inline `<script data-sn-analytics-loader>` per page. GA4 and the CF beacon load only on registry hostnames (not `localhost` or arbitrary preview hosts).
+
+**Internal traffic.** `?internal=1` sets `sn_internal=1` (~1 year, `Path=/`, `SameSite=Lax`, plus `Secure` on HTTPS). `?internal=0` clears it. While that cookie is set, GA4 config includes `traffic_type: 'internal'` and the Cloudflare beacon is not loaded. Agents and automation that open the live site should use `?internal=1` (see `AGENTS.md`).
+
+**CI.** After `scripts/build.py`, `scripts/check_analytics_dist.py` fails if any generated page has zero or multiple loaders, if GA4 / CF values drift from the registry, or if cookie / `spa` values drift.
+
+No Content-Security-Policy is set; if one is added, allow `www.googletagmanager.com`, `*.google-analytics.com` and `static.cloudflareinsights.com`.

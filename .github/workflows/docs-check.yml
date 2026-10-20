@@ -2,7 +2,7 @@
 # - *.css (any directory)
 # - *.js (any directory)
 # Not watched: HTML pages, posts, images, sitemap.xml, robots.txt, CNAME, docs/.
-# This repo has no HTML templates, build scripts, or framework config.
+# Also watched: site/templates/, scripts/build.py, analytics registry, data/site.json, data/analytics.json (see docs/ci-docs-check.md).
 name: docs check
 
 on:

@@ -19,7 +19,12 @@ Kept in sync at the top of the workflow and in [`scripts/docs_check_pr.py`](../s
 
 Portfolio page bodies, article copy, images, `sitemap.xml`, `robots.txt`, and `CNAME` are content or publishing files, so the check leaves them alone. Site-wide title, tagline, description, and intro lead are not watched here; see [ci-site-copy.md](ci-site-copy.md).
 
-`scripts/build.py` and `data/site.json` are also out of scope for this job.
+These paths are watched in addition to `*.css` and `*.js` (see `scripts/docs_check_pr.py`):
+
+- `site/templates/*`
+- `scripts/build.py`, `scripts/analytics_registry.py`, `scripts/analytics_loader.py`, `scripts/check_analytics_dist.py`, `scripts/docs_check_pr.py`
+- `.github/workflows/*`
+- `data/site.json`, `data/analytics.json`
 
 `archive.html`, `alt/`, and `alt2/` are reference snapshots. Editing their HTML does not trip this check. A stylesheet or script added beside them would.
 

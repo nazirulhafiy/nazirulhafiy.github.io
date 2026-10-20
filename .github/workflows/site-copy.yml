@@ -21,3 +21,9 @@ jobs:
 
       - name: Site copy source-of-truth test
         run: python3 -m unittest tests.test_site_copy -v
+
+      - name: Check analytics dist against registry
+        run: python3 scripts/check_analytics_dist.py
+
+      - name: Analytics registry tests
+        run: python3 -m unittest tests.test_analytics_registry -v
