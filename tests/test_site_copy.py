@@ -14,9 +14,6 @@ SITE_JSON = ROOT / "data" / "site.json"
 
 SKIP_DIR_NAMES = {
     ".git",
-    "alt",
-    "alt2",
-    "normah",
     "__pycache__",
     ".venv",
     "node_modules",
@@ -64,11 +61,6 @@ GENERATED_PATHS = {
     "posts/the-future-of-agentic-ai.html",
 }
 
-SKIP_FILES = {
-    "archive.html",
-}
-
-
 def load_copy() -> dict[str, str]:
     payload = json.loads(SITE_JSON.read_text(encoding="utf-8"))
     required = (
@@ -103,7 +95,7 @@ def iter_source_files() -> list[Path]:
         if not path.is_file():
             continue
         rel = path.relative_to(ROOT).as_posix()
-        if rel in SKIP_FILES or rel in generated:
+        if rel in generated:
             continue
         if any(part in SKIP_DIR_NAMES for part in path.parts):
             continue

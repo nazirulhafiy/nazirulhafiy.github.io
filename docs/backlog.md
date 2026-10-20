@@ -5,7 +5,6 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 ## Must fix before larger content expansion
 
 - [ ] Remove stale README assumptions from future edits. The old README mentioned an `about.html` page that no longer exists; this has been corrected, but future documentation should keep matching the actual route map.
-- [ ] Decide whether `archive.html`, `alt/`, and `alt2/` should stay publicly reachable. If they remain, document their purpose clearly; if not, decide whether to move them out of public serving without losing the reference snapshots.
 - [ ] Standardize dark metadata theme colors. Light `theme-color` is `#ffffff` on public pages. The homepage dark value is still `#1f2428`, while inner pages use `#111111`.
 
 ## Should improve soon
@@ -41,5 +40,6 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 
 - [x] Created project documentation structure: `AGENTS.md`, `README.md`, `docs/product.md`, `docs/design.md`, and `docs/backlog.md`.
 - [x] Removed `CLAUDE.md` after folding the notes that still matched the site into `AGENTS.md`. The `about.html` route and the Exabytes DNS note were already out of date.
-- [x] Documented `/normah/`, the polah.app redirects on `/sifir-sprint/` and `/kracked-quest/`, and that `/cat-pinball-game/` is published from its own repo.
+- [x] Documented the polah.app redirects on `/sifir-sprint/` and `/kracked-quest/`, and that `/cat-pinball-game/` is published from its own repo.
+- [x] Removed legacy `archive.html`, `alt/`, `alt2/`, and `/normah/` from the public site (October 2026). Content was backed up outside the repo before removal.
 - [x] Added the docs-check workflow for CSS and JS changes. See `docs/ci-docs-check.md`.

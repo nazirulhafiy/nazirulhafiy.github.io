@@ -23,4 +23,4 @@ Pull requests and pushes to `main` run the **site-copy** job in [`.github/workfl
 
 The job treats root `index.html`, `experience.html`, and `posts/*.html` as build output (like `dist/` in sister repos). Templates under `site/templates/` use `@@…@@` tokens; the build substitutes escaped values.
 
-Historical paths (`archive.html`, `alt/`, `alt2/`) and `/normah/` are out of scope for the copy scan.
+Only portfolio templates, `data/site.json`, and other scanned text files are in scope; paths published from other repositories are not part of this repo.
