@@ -8,6 +8,11 @@ import json
 import sys
 from pathlib import Path
 
+_SCRIPTS = Path(__file__).resolve().parent
+if str(_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS))
+from analytics_loader import render_analytics_loader  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 TEMPLATES = ROOT / "site" / "templates"
@@ -93,10 +98,12 @@ def substitution_map(site: dict[str, str]) -> dict[str, str]:
 
 
 def render_template(text: str, site: dict[str, str]) -> str:
-    rendered = text
+    rendered = text.replace("@@ANALYTICS_LOADER@@", render_analytics_loader())
     for key, value in substitution_map(site).items():
         rendered = rendered.replace(key, value)
     leftovers = [token for token in substitution_map(site) if token in rendered]
+    if "@@ANALYTICS_LOADER@@" in rendered:
+        raise SystemExit("unresolved template token: @@ANALYTICS_LOADER@@")
     if leftovers:
         raise SystemExit(f"unresolved template tokens: {', '.join(sorted(set(leftovers)))}")
     return rendered
