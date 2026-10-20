@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`hafiy.my` is Nazirul Hafiy’s professional home on the web. It should quickly communicate who Hafiy is, what kind of work he does, and why a reader should trust him with complex delivery and operations work.
+`hafiy.my` is Hafiy’s professional home on the web. It should quickly communicate who Hafiy is, what kind of work he does, and why a reader should trust him with complex delivery and operations work.
 
 The site is not trying to be a large portfolio platform. It is a focused personal site: clear positioning, credible experience, selected writing, and a small set of public experiments.
 

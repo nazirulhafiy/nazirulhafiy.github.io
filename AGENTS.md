@@ -4,12 +4,12 @@ Guidance for AI coding assistants and contributors working in this repository.
 
 ## Project snapshot
 
-This is the source for `hafiy.my`, a static personal portfolio and writing site for Nazirul Hafiy.
+This is the source for `hafiy.my`, a static personal portfolio and writing site. Homepage title, tagline, meta description, and intro lead live only in `data/site.json`; `scripts/build.py` fills every wired surface from that file.
 
-The production site is hand-authored HTML and CSS:
+The production site is static HTML and CSS:
 
 - no package manager;
-- no build step;
+- a small Python build (`scripts/build.py`) renders homepage, experience, and writing pages from `data/site.json` and `site/templates/`; run it after changing site-wide copy;
 - no framework and no CSS library;
 - no environment variables;
 - no JavaScript on the portfolio pages (`/`, `/experience.html`, `/posts/`);

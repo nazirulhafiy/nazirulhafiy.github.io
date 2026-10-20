@@ -82,9 +82,11 @@ Do not hard-code one-off colors unless there is a strong reason. New UI should r
 The hero should remain concise:
 
 - square monochrome portrait;
-- greeting;
-- one professional pitch;
+- greeting (`about_lead` in `data/site.json`);
+- one professional pitch (`tagline` in `data/site.json`);
 - icon contact links.
+
+Homepage `<title>`, meta description, Open Graph / Twitter tags, and footer brand text are filled by `scripts/build.py` from the same file. Do not hand-type those strings in templates, scripts, or docs; `tests/test_site_copy.py` fails CI if they appear elsewhere.
 
 Avoid adding multiple CTAs, badges, or long summaries here.
 

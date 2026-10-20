@@ -1,6 +1,6 @@
 # hafiy.my
 
-Personal portfolio and writing site for Nazirul Hafiy, a Project & Operations Manager based in Kuching, Sarawak.
+Personal portfolio and writing site for [hafiy.my](https://hafiy.my/), a Project & Operations Manager based in Kuching, Sarawak. Site title, tagline, description, and intro lead are owned by [`data/site.json`](data/site.json); run `python3 scripts/build.py` after editing them.
 
 Live site: [https://hafiy.my](https://hafiy.my)
 
