@@ -17,7 +17,9 @@ Kept in sync at the top of the workflow and in [`scripts/docs_check_pr.py`](../s
 
 ## Not watched
 
-This repo has no HTML templates, build scripts, or framework config. Hand-written HTML, posts, experience copy, images, `sitemap.xml`, `robots.txt`, and `CNAME` are content or publishing files, so the check leaves them alone.
+Portfolio page bodies, article copy, images, `sitemap.xml`, `robots.txt`, and `CNAME` are content or publishing files, so the check leaves them alone. Site-wide title, tagline, description, and intro lead are not watched here; see [ci-site-copy.md](ci-site-copy.md).
+
+`scripts/build.py` and `data/site.json` are also out of scope for this job.
 
 `archive.html`, `alt/`, and `alt2/` are reference snapshots. Editing their HTML does not trip this check. A stylesheet or script added beside them would.
 
