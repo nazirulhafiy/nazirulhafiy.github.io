@@ -15,6 +15,23 @@ The current public design is closer to editorial documentation than marketing co
 - Dashed underlines and light hover movement as the main interaction language.
 - Automatic dark mode through `prefers-color-scheme`, not a visible theme control.
 
+## Interaction motion
+
+Portfolio **hover / press** polish is CSS-only (no JavaScript). It does not stagger sections and is separate from the homepage hero one-shot load entrance (see Hero below). Shared tokens in `styles.css`:
+
+| Token | Value | Role |
+| --- | --- | --- |
+| `--ease-out` | `cubic-bezier(0.23, 1, 0.32, 1)` | Strong ease-out for UI feedback |
+| `--duration-ui` | `160ms` | Color / border / background transitions |
+| `--duration-press` | `140ms` | Transform / press feedback |
+
+Rules:
+
+- Transition only the properties that change (never `transition: all`).
+- Hover **transforms** (lift / nudge) are gated behind `@media (hover: hover) and (pointer: fine)` so touch devices do not stick mid-lift. Color and underline hover can stay outside that query.
+- Pressable bars and similar links (`.contact-bar`, `.inline-links a`, `.section-index-link`, `.project`, writing title links) use `:active { transform: scale(0.97) }` with the press duration.
+- Under `prefers-reduced-motion: reduce`, drop interaction transforms (hover lift, press scale, focus nudge) while keeping near-instant color/underline changes via the global short `transition-duration`. The same reduce block also disables the hero load entrance.
+
 ## Layout system
 
 - Shared page width is controlled by `--page` in `styles.css`.

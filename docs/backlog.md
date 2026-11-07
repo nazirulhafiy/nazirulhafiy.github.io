@@ -28,12 +28,12 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 - [ ] Test the portrait crop across common mobile widths and high-density displays.
 - [ ] Review whether the homepage hero greeting should allow wrapping on very narrow-but-not-stacked widths.
 - [ ] Confirm dark-mode contrast for muted text, borders, and icon links on real devices.
-- [ ] Keep interaction hover movement subtle; homepage hero already has a one-shot load entrance (see `docs/design.md`).
+- [x] Interaction polish on shared `styles.css` (custom ease-out, hover media query for transforms, `:active` scale, reduced-motion transform drop). Homepage hero one-shot load entrance from main is preserved separately (see `docs/design.md`).
 
 ## Technical cleanup
 
 - [ ] Remove `.DS_Store` from the repository if it is tracked; otherwise ensure `.gitignore` prevents it from being added.
-- [ ] If CSS changes, update the `styles.css?v=` cache-busting query consistently across public pages (currently `v=41` after homepage hero load entrance).
+- [ ] If CSS changes, update the `styles.css?v=` cache-busting query consistently across public pages (currently `v=42` after rebasing interaction polish onto hero load entrance).
 - [ ] PCDS and SDE declared production-browser favicons share a solid-S silhouette (colour only). Contact page keeps those declared marks as mono sources; no alternate favicon substitution.
 - [ ] Homepage LinkedIn still points at the older `/in/hafiy/` profile URL; `/contact/` uses `/in/nazirulhafiy/`. Align the homepage (and JSON-LD `sameAs`) in a follow-up if the newer URL is canonical site-wide.
 - [ ] Consider centralizing repeated SVG icons only if duplication becomes painful; avoid adding build tooling solely for this.
