@@ -120,6 +120,7 @@ Experiment links should be simple block links with a title and one-sentence desc
 - Projects bars only: `pcds2030.com`, `sde2030.com`, `ai.sarawak.news` using monochrome local marks derived from each site’s currently declared production-browser favicon (`favicon-production-browser.png`; no coloured logos on the page). Shared solid-S silhouettes after mono are acceptable when that is what the live marks are;
 - phone number lives in the vCard (and WhatsApp digits), not as a separate `tel:` row;
 - keep hafiy.my monospace/monochrome tokens and automatic light/dark; do not copy third-party branding or invent logos.
+- social sharing reuses the homepage Open Graph / Twitter card (`assets/social-card.png?v=2`, 1200×630, `summary_large_image`). Meta description, `og:description`, and `twitter:description` come from `@@SITE_CONTACT_META@@` in `scripts/build.py` (site title + tagline, then WhatsApp / email / LinkedIn / project links — not a phone dump).
 
 ## Navigation
 

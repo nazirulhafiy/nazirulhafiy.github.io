@@ -96,12 +96,12 @@ def substitution_map(site: dict[str, str]) -> dict[str, str]:
             quote=True,
         ),
         "@@SITE_CONTACT_META@@": (
-            f"Contact {title} — email, phone, WhatsApp, LinkedIn, "
-            "and links to portfolio work and experiments."
+            f"Contact {title} — {tagline}. "
+            "WhatsApp, email, LinkedIn, and project links."
         ),
         "@@SITE_CONTACT_META_ESC@@": html.escape(
-            f"Contact {title} — email, phone, WhatsApp, LinkedIn, "
-            "and links to portfolio work and experiments.",
+            f"Contact {title} — {tagline}. "
+            "WhatsApp, email, LinkedIn, and project links.",
             quote=True,
         ),
     }
