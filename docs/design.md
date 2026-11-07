@@ -21,7 +21,7 @@ The current public design is closer to editorial documentation than marketing co
 - Horizontal padding is controlled by `--gutter`.
 - The homepage hero uses a two-column layout on wider screens and stacks on small screens. The homepage has no site header.
 - Experience, writing, and article pages share a header: site name plus a primary nav (Experience, Writing, Experiments). At `38rem` and below the nav becomes a CSS checkbox menu. There is no menu script.
-- The contact microsite (`/contact/`) uses the same header shell with only the site name (no primary nav), then a compact identity block and stacked `.project` action rows. It is built for a fast mobile scan without changing homepage or shared nav.
+- The contact microsite (`/contact/`) uses the same header shell with only the site name (no primary nav), then a centred portrait, short pitch, large rounded action buttons, and a compact secondary Projects list. It borrows link-hub composition (stacked CTAs), not Linktree branding, and does not change homepage or shared nav.
 - Secondary pages use a centered article-style column.
 - Sections are separated by thin borders and clear headings.
 
@@ -112,10 +112,12 @@ Experiment links should be simple block links with a title and one-sentence desc
 
 `/contact/` is a mobile-first link hub rendered from `site/templates/contact/index.html`:
 
-- identity uses the site title from `data/site.json` plus two short pitch lines for the page;
-- Reach actions are plain `.project` rows (email, phone, WhatsApp, LinkedIn) — no icon-only CTAs;
-- Work rows reuse the same pattern for portfolio, experience, writing, and the three public experiments already linked on the homepage;
-- keep the page event-agnostic; do not invent handles, phone numbers, or event details.
+- centred existing portrait (`assets/profile.png`) with the site title and two short pitch lines;
+- primary actions are large rounded full-width `.contact-btn` controls in this order: WhatsApp, Save Contact (downloads `contact/nazirul-hafiy.vcf`), Email, LinkedIn;
+- phone number lives in the vCard (and WhatsApp digits), not as a separate `tel:` row on the page;
+- Projects is a smaller secondary list with short labels (portfolio, experience, writing, experiments);
+- keep hafiy.my monospace/monochrome tokens and automatic light/dark; do not imitate third-party link-hub branding;
+- keep the page event-agnostic; do not invent handles, company fields, or event details.
 
 ## Navigation
 

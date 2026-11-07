@@ -438,37 +438,121 @@ nav a[aria-current="page"] {
 }
 
 .experience-page,
-.posts-page,
-.contact-page {
+.posts-page {
   max-width: 43rem;
   margin-inline: auto;
 }
 
-.contact-page .page-intro {
-  padding-block: clamp(2.25rem, 8vw, 4.5rem);
+.contact-page {
+  width: min(100%, 22.5rem);
+  margin-inline: auto;
+  padding-block: clamp(1.5rem, 5vw, 2.75rem) clamp(2rem, 6vw, 3.5rem);
+  text-align: center;
+}
+
+.contact-intro {
+  margin-bottom: 1.75rem;
+}
+
+.contact-avatar {
+  width: min(7.5rem, 42%);
+  margin: 0 auto 1.15rem;
+}
+
+.contact-intro h1 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.45rem, 5vw, 1.75rem);
 }
 
 .contact-pitch {
-  max-width: 36rem;
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.55rem;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
 }
 
 .contact-pitch:last-child {
   margin-bottom: 0;
 }
 
-.contact-block {
-  padding-top: 0;
+.contact-actions {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0 0 2.25rem;
 }
 
-.contact-block .section-heading {
-  margin-bottom: 0.35rem;
+.contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3.15rem;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--foreground);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease, transform 150ms ease;
 }
 
-.contact-list .project:first-child {
-  border-top: 1px solid var(--border);
+.contact-btn:hover {
+  border-color: color-mix(in srgb, var(--foreground) 45%, var(--border));
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+.contact-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.contact-projects h2 {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-secondary {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-secondary a {
+  display: inline-block;
+  color: var(--muted);
+  font-size: 0.86rem;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.28em;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+.contact-secondary a:hover,
+.contact-secondary a:focus-visible {
+  color: var(--foreground);
+  text-decoration-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-btn {
+    transition: none;
+  }
+
+  .contact-btn:hover {
+    transform: none;
+  }
 }
 
 .experience-history {

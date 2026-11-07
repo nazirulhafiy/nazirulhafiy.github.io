@@ -70,7 +70,7 @@ These links demonstrate public, Sarawak-aware digital exploration without turnin
 
 ### Contact
 
-`/contact/` is a compact, mobile-first contact hub for people who need reach and work links quickly (for example after scanning a card). It stays neutral and reusable: identity, email / phone / WhatsApp / LinkedIn actions, and the same portfolio and experiment destinations already published on the site. It is not a second homepage and does not add a site-wide nav item.
+`/contact/` is a compact, mobile-first contact hub for people who need reach and work links quickly (for example after scanning a card). It stays neutral and reusable: centred identity, primary WhatsApp / Save Contact (vCard) / Email / LinkedIn actions, and a short Projects list of destinations already published on the site. Phone details ship via the downloadable vCard. It is not a second homepage and does not add a site-wide nav item.
 
 ### Games on the same host
 

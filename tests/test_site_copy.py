@@ -54,6 +54,7 @@ GENERATED_PATHS = {
     "index.html",
     "experience.html",
     "contact/index.html",
+    "contact/nazirul-hafiy.vcf",
     "posts/index.html",
     "posts/agentic-ai-force-multiplier.html",
     "posts/becoming-ai-native.html",
