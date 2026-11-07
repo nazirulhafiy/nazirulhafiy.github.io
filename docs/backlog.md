@@ -12,7 +12,7 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 - [ ] Add a lightweight internal-link check to the verification workflow. A small script or manual checklist is enough; avoid adding a heavy toolchain just for this.
 - [ ] Review all public pages for repeated header/footer markup and define a safe manual update pattern in the README if the site stays framework-free.
 - [ ] Refresh `sitemap.xml` `lastmod` values whenever public pages materially change.
-- [ ] Consider adding Open Graph image support if sharing previews become important. Keep it optional unless there is a clear social-sharing need.
+- [x] Identity pages (`/`, `/contact/`, `/experience.html`, `/posts/`) share one social card: site title, tagline, `assets/profile.png?v=2` (1024×1024), `twitter:card=summary`. Article pages keep article-specific OG title/description.
 - [ ] Review article reading times after any substantial article edits.
 
 ## Content opportunities

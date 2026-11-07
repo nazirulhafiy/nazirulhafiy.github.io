@@ -89,6 +89,17 @@ The hero should remain concise:
 
 Homepage `<title>`, meta description, Open Graph / Twitter tags, and footer brand text are filled by `scripts/build.py` from the same file. Do not hand-type those strings in templates, scripts, or docs; `tests/test_site_copy.py` fails CI if they appear elsewhere.
 
+### Social sharing (identity pages)
+
+Portfolio identity pages (`/`, `/contact/`, `/experience.html`, `/posts/`) share one Open Graph / Twitter card contract from `scripts/build.py` tokens (`@@SITE_SOCIAL_IMAGE@@`, `@@SITE_TWITTER_CARD@@`, plus title / tagline from `data/site.json`):
+
+- `og:title` / `twitter:title`: `title` from `data/site.json`
+- `og:description` / `twitter:description`: `tagline` from `data/site.json`
+- image: `assets/profile.png?v=2` (absolute `https://hafiy.my/assets/profile.png?v=2`, 1024×1024 PNG), alt `Portrait of {title}`
+- `twitter:card`: `summary` (square portrait; not `summary_large_image`)
+
+Contact also uses the site title for the browser `<title>` and the tagline for meta description. Homepage keeps `home_document_title` / long meta description for the document head while social tags follow the shared contract. Experience and writing index keep page-specific browser titles and search meta descriptions. Individual article pages keep article-specific `og:title` / `og:description` and do not use this identity card.
+
 Avoid adding multiple CTAs, badges, or long summaries here.
 
 ### Experience preview
@@ -120,6 +131,7 @@ Experiment links should be simple block links with a title and one-sentence desc
 - Projects bars only: `pcds2030.com`, `sde2030.com`, `ai.sarawak.news` using monochrome local marks derived from each site’s currently declared production-browser favicon (`favicon-production-browser.png`; no coloured logos on the page). Shared solid-S silhouettes after mono are acceptable when that is what the live marks are;
 - phone number lives in the vCard (and WhatsApp digits), not as a separate `tel:` row;
 - keep hafiy.my monospace/monochrome tokens and automatic light/dark; do not copy third-party branding or invent logos.
+- social sharing follows the shared identity-page card (site title + tagline + `assets/profile.png?v=2`, `twitter:card=summary`); see Social sharing above.
 
 ## Navigation
 
