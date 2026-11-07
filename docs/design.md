@@ -120,7 +120,7 @@ Experiment links should be simple block links with a title and one-sentence desc
 - Projects bars only: `pcds2030.com`, `sde2030.com`, `ai.sarawak.news` using monochrome local marks derived from each site’s currently declared production-browser favicon (`favicon-production-browser.png`; no coloured logos on the page). Shared solid-S silhouettes after mono are acceptable when that is what the live marks are;
 - phone number lives in the vCard (and WhatsApp digits), not as a separate `tel:` row;
 - keep hafiy.my monospace/monochrome tokens and automatic light/dark; do not copy third-party branding or invent logos.
-- social sharing uses the site portrait (`assets/profile.png?v=2`, 1024×1024) for `og:image` / `twitter:image`, with `twitter:card` set to `summary` because the asset is square (a large-image card is for ~1.91:1 artwork like the homepage Strata promo). Browser `<title>`, `og:title`, and `twitter:title` share `@@SITE_CONTACT_DOCUMENT_TITLE@@` (`{title} - Contact`). Meta description / `og:description` / `twitter:description` share `@@SITE_CONTACT_META@@` from `scripts/build.py` (owner-specified contact pitch, not the homepage tagline).
+- social sharing uses the site portrait (`assets/profile.png?v=2`, 1024×1024) for `og:image` / `twitter:image`, with `twitter:card` set to `summary` because the asset is square (a large-image card is for ~1.91:1 artwork like the homepage Strata promo). Browser `<title>`, `og:title`, and `twitter:title` share `@@SITE_CONTACT_DOCUMENT_TITLE@@` (`{title} - Contact`). Meta description / `og:description` / `twitter:description` share `@@SITE_CONTACT_META@@`, which is the site tagline from `data/site.json`.
 
 ## Navigation
 

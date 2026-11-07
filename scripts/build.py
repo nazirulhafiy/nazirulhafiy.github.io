@@ -99,12 +99,9 @@ def substitution_map(site: dict[str, str]) -> dict[str, str]:
         "@@SITE_CONTACT_DOCUMENT_TITLE_ESC@@": html.escape(
             f"{title} - Contact", quote=True
         ),
-        # Contact social/meta copy is owner-specified (not the homepage tagline).
-        "@@SITE_CONTACT_META@@": "AI Native Project, Marketing, Operations Manager",
-        "@@SITE_CONTACT_META_ESC@@": html.escape(
-            "AI Native Project, Marketing, Operations Manager",
-            quote=True,
-        ),
+        # Contact social/meta description uses the site tagline from data/site.json.
+        "@@SITE_CONTACT_META@@": tagline,
+        "@@SITE_CONTACT_META_ESC@@": html.escape(tagline, quote=True),
     }
 
 
