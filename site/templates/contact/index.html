@@ -47,14 +47,14 @@
             <span class="contact-bar-title">WhatsApp</span>
             <span class="contact-bar-spacer" aria-hidden="true"></span>
           </a>
-          <a class="contact-bar" href="/contact/nazirul-hafiy.vcf" download="nazirul-hafiy.vcf">
+          <a class="contact-bar" href="/contact/nazirul-hafiy.vcf" download="nazirul-hafiy.vcf" data-sn-event="contact_download">
             <span class="contact-bar-thumb" aria-hidden="true">
               <img src="/assets/contact/download.png?v=3" alt="" width="128" height="128">
             </span>
             <span class="contact-bar-title">Save Contact</span>
             <span class="contact-bar-spacer" aria-hidden="true"></span>
           </a>
-          <a class="contact-bar" href="mailto:nazirul@hafiy.my">
+          <a class="contact-bar" href="mailto:nazirul@hafiy.my" data-sn-event="email_click">
             <span class="contact-bar-thumb" aria-hidden="true">
               <img src="/assets/contact/email.png?v=3" alt="" width="128" height="128">
             </span>
@@ -104,5 +104,29 @@
     <hr>
     <div><span>@@SITE_COPYRIGHT@@</span></div>
   </footer>
+  <script data-sn-contact-events>
+  (function () {
+    var ALLOWED = { email_click: 1, contact_download: 1 };
+    function send(name) {
+      try {
+        if (typeof gtag !== "function") return;
+        gtag("event", name, { surface: "contact" });
+      } catch (e) {}
+    }
+    document.addEventListener(
+      "click",
+      function (ev) {
+        var t = ev.target;
+        if (!t || !t.closest) return;
+        var a = t.closest("a[data-sn-event]");
+        if (!a) return;
+        var name = a.getAttribute("data-sn-event");
+        if (!name || !ALLOWED[name]) return;
+        send(name);
+      },
+      false
+    );
+  })();
+  </script>
 </body>
 </html>

@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "layout-check": "node scripts/layout-check.mjs"
+    "layout-check": "node scripts/layout-check.mjs",
+    "contact-events-check": "node scripts/contact-events-check.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.51.0"
