@@ -91,19 +91,19 @@ class ContactVCardTests(unittest.TestCase):
             flags=re.DOTALL,
         )
         expected = [
-            ("https://wa.me/60135623005", "/assets/contact/whatsapp.png", "WhatsApp"),
-            ("/contact/nazirul-hafiy.vcf", "/assets/contact/download.png", "Save Contact"),
-            ("mailto:nazirul@hafiy.my", "/assets/contact/email.png", "Email"),
+            ("https://wa.me/60135623005", "/assets/contact/whatsapp.png?v=2", "WhatsApp"),
+            ("/contact/nazirul-hafiy.vcf", "/assets/contact/download.png?v=2", "Save Contact"),
+            ("mailto:nazirul@hafiy.my", "/assets/contact/email.png?v=2", "Email"),
             (
                 "https://www.linkedin.com/in/nazirulhafiy/",
-                "/assets/contact/linkedin.png",
+                "/assets/contact/linkedin.png?v=2",
                 "LinkedIn",
             ),
-            ("https://pcds2030.com", "/assets/contact/pcds2030.png", "pcds2030.com"),
-            ("https://sde2030.com", "/assets/contact/sde2030.png", "sde2030.com"),
+            ("https://pcds2030.com", "/assets/contact/pcds2030.png?v=2", "pcds2030.com"),
+            ("https://sde2030.com", "/assets/contact/sde2030.png?v=2", "sde2030.com"),
             (
                 "https://ai.sarawak.news",
-                "/assets/contact/ai-sarawak-news.png",
+                "/assets/contact/ai-sarawak-news.png?v=2",
                 "ai.sarawak.news",
             ),
         ]
@@ -112,11 +112,11 @@ class ContactVCardTests(unittest.TestCase):
         self.assertIn('download="nazirul-hafiy.vcf"', html)
 
         for _, src, _ in expected:
-            asset = ROOT / src.lstrip("/")
+            path_only = src.split("?", 1)[0]
+            asset = ROOT / path_only.lstrip("/")
             self.assertTrue(asset.is_file(), f"missing asset {src}")
             self.assertGreater(asset.stat().st_size, 100)
-            # PNG icons only
-            self.assertTrue(src.endswith(".png"))
+            self.assertTrue(path_only.endswith(".png"))
 
     def test_built_contact_page_keeps_actions(self):
         if not CONTACT_BUILT.is_file():
