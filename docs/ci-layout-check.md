@@ -11,6 +11,7 @@ Pages checked:
 - `/` (home)
 - `/experience.html`
 - `/posts/`
+- `/contact/`
 
 Viewports: 375×667, 390×844, 390×680, and 1280×800. Each combination is tested in **light** and **dark** (`prefers-color-scheme`).
 
@@ -24,7 +25,7 @@ The script fails when any checked page has:
 - a `[data-one-line]` element that wraps onto more than one line;
 - no `[data-box]` markers on the page.
 
-Markers live in `site/templates/` for the homepage, experience page, and writing index. Run `python3 scripts/build.py` after changing templates.
+Markers live in `site/templates/` for the homepage, experience page, writing index, and contact hub. Run `python3 scripts/build.py` after changing templates.
 
 ## Local run
 

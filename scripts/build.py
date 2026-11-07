@@ -30,6 +30,7 @@ SITE_COPY_FIELDS = (
 OUTPUTS: dict[str, str] = {
     "index.html": "index.html",
     "experience.html": "experience.html",
+    "contact/index.html": "contact/index.html",
     "posts/index.html": "posts/index.html",
     "posts/agentic-ai-force-multiplier.html": "posts/agentic-ai-force-multiplier.html",
     "posts/becoming-ai-native.html": "posts/becoming-ai-native.html",
@@ -94,6 +95,15 @@ def substitution_map(site: dict[str, str]) -> dict[str, str]:
             "operations, connectivity, marketing, and digital communities.",
             quote=True,
         ),
+        "@@SITE_CONTACT_META@@": (
+            f"Contact {title} — email, phone, WhatsApp, LinkedIn, "
+            "and links to portfolio work and experiments."
+        ),
+        "@@SITE_CONTACT_META_ESC@@": html.escape(
+            f"Contact {title} — email, phone, WhatsApp, LinkedIn, "
+            "and links to portfolio work and experiments.",
+            quote=True,
+        ),
     }
 
 
@@ -109,6 +119,39 @@ def render_template(text: str, site: dict[str, str]) -> str:
     return rendered
 
 
+def vcard_escape(value: str) -> str:
+    return (
+        value.replace("\\", "\\\\")
+        .replace(";", "\\;")
+        .replace(",", "\\,")
+        .replace("\n", "\\n")
+    )
+
+
+def render_contact_vcard(site: dict[str, str]) -> bytes:
+    """Build a CRLF vCard 3.0 for the contact download (no invented org/title)."""
+    title = site["title"]
+    parts = title.split()
+    if len(parts) >= 2:
+        family = parts[-1]
+        given = " ".join(parts[:-1])
+    else:
+        family = title
+        given = ""
+    lines = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        f"N:{vcard_escape(family)};{vcard_escape(given)};;;",
+        f"FN:{vcard_escape(title)}",
+        "TEL;TYPE=CELL:+60135623005",
+        "EMAIL;TYPE=INTERNET:nazirul@hafiy.my",
+        "URL:https://hafiy.my",
+        "URL:https://www.linkedin.com/in/nazirulhafiy/",
+        "END:VCARD",
+    ]
+    return ("\r\n".join(lines) + "\r\n").encode("utf-8")
+
+
 def build(dist: Path = ROOT) -> None:
     site = load_site()
     for rel_template, rel_output in OUTPUTS.items():
@@ -119,11 +162,17 @@ def build(dist: Path = ROOT) -> None:
         out_path.parent.mkdir(parents=True, exist_ok=True)
         rendered = render_template(template_path.read_text(encoding="utf-8"), site)
         out_path.write_text(rendered, encoding="utf-8", newline="\n")
+    vcard_path = dist / "contact" / "nazirul-hafiy.vcf"
+    vcard_path.parent.mkdir(parents=True, exist_ok=True)
+    vcard_path.write_bytes(render_contact_vcard(site))
 
 
 def main() -> int:
     build()
-    print(f"Built {len(OUTPUTS)} page(s) from {SITE_JSON.relative_to(ROOT)}.")
+    print(
+        f"Built {len(OUTPUTS)} page(s) and contact vCard from "
+        f"{SITE_JSON.relative_to(ROOT)}."
+    )
     return 0
 
 

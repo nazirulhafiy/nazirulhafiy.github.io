@@ -443,6 +443,146 @@ nav a[aria-current="page"] {
   margin-inline: auto;
 }
 
+.contact-page {
+  width: min(100%, 23.5rem);
+  margin-inline: auto;
+  padding-block: clamp(1.75rem, 6vw, 3rem) clamp(2rem, 6vw, 3.5rem);
+  padding-inline: var(--gutter);
+  text-align: center;
+}
+
+.contact-intro {
+  margin-bottom: 1.65rem;
+}
+
+.contact-avatar {
+  width: min(7.5rem, 42%);
+  margin: 0 auto 1.15rem;
+}
+
+.contact-intro h1 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.45rem, 5vw, 1.75rem);
+}
+
+.contact-bio {
+  max-width: 22rem;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.contact-section,
+.contact-projects {
+  margin: 0 0 1.85rem;
+}
+
+.contact-section h2,
+.contact-projects h2 {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+.contact-actions,
+.contact-project-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.contact-bar {
+  --contact-thumb: 2.55rem;
+  display: grid;
+  grid-template-columns: var(--contact-thumb) minmax(0, 1fr) var(--contact-thumb);
+  align-items: center;
+  column-gap: 0.55rem;
+  width: 100%;
+  min-height: 3.55rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 1.05rem;
+  background: var(--surface);
+  color: var(--foreground);
+  text-decoration: none;
+  transition: border-color 150ms ease, background-color 150ms ease, transform 150ms ease;
+}
+
+.contact-bar:hover {
+  border-color: color-mix(in srgb, var(--foreground) 40%, var(--border));
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+.contact-bar:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.contact-bar-thumb {
+  display: grid;
+  width: var(--contact-thumb);
+  height: var(--contact-thumb);
+  place-items: center;
+  border-radius: 0.55rem;
+  overflow: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+.contact-bar-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .contact-bar-thumb img {
+    filter: invert(1);
+  }
+}
+
+.contact-bar-title {
+  justify-self: center;
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--foreground);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-bar-spacer {
+  width: var(--contact-thumb);
+  height: var(--contact-thumb);
+}
+
+.contact-footer {
+  width: min(100%, 23.5rem);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-bar {
+    transition: none;
+  }
+
+  .contact-bar:hover {
+    transform: none;
+  }
+}
+
 .experience-history {
   border-top: 1px solid var(--border);
 }

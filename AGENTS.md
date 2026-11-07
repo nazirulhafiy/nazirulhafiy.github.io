@@ -12,7 +12,7 @@ The production site is static HTML and CSS:
 - a small Python build (`scripts/build.py`) renders homepage, experience, and writing pages from `data/site.json` and `site/templates/`; run it after changing site-wide copy;
 - no framework and no CSS library;
 - no environment variables;
-- no JavaScript on the portfolio pages (`/`, `/experience.html`, `/posts/`);
+- no JavaScript on the portfolio pages (`/`, `/experience.html`, `/contact/`, `/posts/`);
 - hosted as the GitHub Pages user site `nazirulhafiy.github.io`, with the custom domain in `CNAME` (`hafiy.my`).
 
 `/cat-pinball-game/` is published from [nazirulhafiy/cat-pinball-game](https://github.com/nazirulhafiy/cat-pinball-game), not from this repo. `/sifir-sprint/` and `/kracked-quest/` are published from their own repos and client-redirect to `https://polah.app/sifir/` and `https://polah.app/kracked/`. The short paths `/sifir` and `/kracked` are not files here. See `README.md`.
@@ -78,6 +78,7 @@ After changes, verify as relevant:
 - local preview with `python3 -m http.server 8000`
 - homepage loads at `/`
 - `/experience.html` loads
+- `/contact/` loads
 - `/posts/` and article pages load
 - no broken internal links
 - mobile layout remains readable

@@ -68,6 +68,10 @@ Current linked experiments:
 
 These links demonstrate public, Sarawak-aware digital exploration without turning the portfolio into a full product directory.
 
+### Contact
+
+`/contact/` is a compact, mobile-first contact hub for people who need reach and project links quickly (for example after scanning a card). It stays neutral and reusable: centred identity with the site tagline, Contact and Projects sections, WhatsApp / Save Contact (vCard) / Email / LinkedIn bars, and project bars for `pcds2030.com`, `sde2030.com`, and `ai.sarawak.news`. Phone details ship via the downloadable vCard. It is not a second homepage and does not add a site-wide nav item.
+
 ### Games on the same host
 
 `/cat-pinball-game/` is published from its own repository. `/sifir-sprint/` and `/kracked-quest/` are too, and those pages redirect visitors to `https://polah.app/sifir/` and `https://polah.app/kracked/`. None of those games are source files here, and they are not homepage experiments.

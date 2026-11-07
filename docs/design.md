@@ -21,6 +21,7 @@ The current public design is closer to editorial documentation than marketing co
 - Horizontal padding is controlled by `--gutter`.
 - The homepage hero uses a two-column layout on wider screens and stacks on small screens. The homepage has no site header.
 - Experience, writing, and article pages share a header: site name plus a primary nav (Experience, Writing, Experiments). At `38rem` and below the nav becomes a CSS checkbox menu. There is no menu script.
+- The contact microsite (`/contact/`) has no site header. It uses a centred portrait, one bio paragraph, stacked rounded-rectangular bars (left square thumbnail + centred title), and a Projects list of public experiment domains. It borrows link-hub bar geometry, not third-party branding, and does not change homepage or shared nav on other pages.
 - Secondary pages use a centered article-style column.
 - Sections are separated by thin borders and clear headings.
 
@@ -107,6 +108,19 @@ Writing previews should include:
 
 Experiment links should be simple block links with a title and one-sentence description. Do not add category, location, or other kicker labels above project titles.
 
+### Contact microsite
+
+`/contact/` is a mobile-first link hub rendered from `site/templates/contact/index.html`:
+
+- no top navbar on this page only;
+- centred existing portrait (`assets/profile.png`), site title, and the site tagline from `data/site.json` as the single line under the name;
+- section headings are title-case **Contact** and **Projects**;
+- every action uses a `.contact-bar`: rounded rectangle (not a pill), left equal square thumbnail, title centred in the row, no kebab menus;
+- contact order: WhatsApp, Save Contact (`contact/nazirul-hafiy.vcf`), Email, LinkedIn — local monochrome PNGs under `assets/contact/` with matched optical size;
+- Projects bars only: `pcds2030.com`, `sde2030.com`, `ai.sarawak.news` using monochrome local marks derived from each site’s currently declared production-browser favicon (`favicon-production-browser.png`; no coloured logos on the page). Shared solid-S silhouettes after mono are acceptable when that is what the live marks are;
+- phone number lives in the vCard (and WhatsApp digits), not as a separate `tel:` row;
+- keep hafiy.my monospace/monochrome tokens and automatic light/dark; do not copy third-party branding or invent logos.
+
 ## Navigation
 
 Experience and writing pages use the shared header in `styles.css`:
@@ -115,7 +129,7 @@ Experience and writing pages use the shared header in `styles.css`:
 - narrow screens (`max-width: 38rem`) show a menu button. Checking `#nav-toggle` opens the nav and a backdrop. Both are `<label>` elements, so the menu works without JavaScript;
 - the current page sets `aria-current="page"`.
 
-The homepage does not include this header.
+The homepage does not include this header. The contact page omits the header entirely so the hub stays scan-first.
 
 ## Accessibility
 
@@ -162,7 +176,7 @@ No Content-Security-Policy is set; if one is added, allow `www.googletagmanager.
 
 ## Layout check
 
-Pull requests run a Playwright layout check on `/`, `/experience.html`, and `/posts/` in Chromium and WebKit. See [ci-layout-check.md](ci-layout-check.md).
+Pull requests run a Playwright layout check on `/`, `/experience.html`, `/posts/`, and `/contact/` in Chromium and WebKit. See [ci-layout-check.md](ci-layout-check.md).
 
 `[data-box]` marks layout regions the check watches for overlap and clipping (for example the homepage hero text column, section headings, and the experience header row). `[data-one-line]` marks copy that must stay on one line at the tested viewports — notably the homepage `.hero-copy` tagline, which broke in Safari when the role line wrapped after a font-size change ([PR #21](https://github.com/nazirulhafiy/nazirulhafiy.github.io/pull/21)).
 
