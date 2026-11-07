@@ -5,7 +5,7 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 ## Must fix before larger content expansion
 
 - [ ] Remove stale README assumptions from future edits. The old README mentioned an `about.html` page that no longer exists; this has been corrected, but future documentation should keep matching the actual route map.
-- [ ] Standardize dark metadata theme colors. Light `theme-color` is `#ffffff` on public pages. The homepage dark value is still `#1f2428`, while inner pages use `#111111`.
+- [x] Light-only decision: drop system-dark CSS and dual `theme-color` metas; public pages use a single `#ffffff` `theme-color`. (Supersedes dark metadata standardization.)
 
 ## Should improve soon
 
@@ -27,13 +27,13 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 
 - [ ] Test the portrait crop across common mobile widths and high-density displays.
 - [ ] Review whether the homepage hero greeting should allow wrapping on very narrow-but-not-stacked widths.
-- [ ] Confirm dark-mode contrast for muted text, borders, and icon links on real devices.
+- [x] Dark-mode contrast check retired: site is light-only under both system preferences.
 - [x] Interaction polish on shared `styles.css` (custom ease-out, hover media query for transforms, `:active` scale, reduced-motion transform drop). Homepage hero one-shot load entrance from main is preserved separately (see `docs/design.md`).
 
 ## Technical cleanup
 
 - [ ] Remove `.DS_Store` from the repository if it is tracked; otherwise ensure `.gitignore` prevents it from being added.
-- [ ] If CSS changes, update the `styles.css?v=` cache-busting query consistently across public pages (currently `v=44` after direct Evil Rabbit load recipe on home + contact).
+- [ ] If CSS changes, update the `styles.css?v=` cache-busting query consistently across public pages (currently `v=45` after light-only theme).
 - [ ] PCDS and SDE declared production-browser favicons share a solid-S silhouette (colour only). Contact page keeps those declared marks as mono sources; no alternate favicon substitution.
 - [ ] Homepage LinkedIn still points at the older `/in/hafiy/` profile URL; `/contact/` uses `/in/nazirulhafiy/`. Align the homepage (and JSON-LD `sameAs`) in a follow-up if the newer URL is canonical site-wide.
 - [ ] Consider centralizing repeated SVG icons only if duplication becomes painful; avoid adding build tooling solely for this.

@@ -56,7 +56,7 @@ When agents, QA, or cloud agents open the **live** portfolio site ([https://hafi
 ## Design rules
 
 - Use `styles.css` for shared portfolio styling.
-- Respect the existing design system: narrow readable width, monochrome palette, system monospace font stack for the interface, system sans for article text, subtle borders, dashed underlines, and automatic light/dark colors.
+- Respect the existing design system: narrow readable width, monochrome palette, system monospace font stack for the interface, system sans for article text, subtle borders, dashed underlines, and light-only colors (`color-scheme: light`; no `prefers-color-scheme: dark` overrides).
 - Keep responsive behavior simple and test small screens.
 - Preserve keyboard focus styles, skip links, semantic headings, and descriptive link labels.
 - The inner-page menu is a checkbox in the HTML, styled in CSS. Do not replace it with JavaScript.
@@ -82,5 +82,5 @@ After changes, verify as relevant:
 - `/posts/` and article pages load
 - no broken internal links
 - mobile layout remains readable
-- dark mode remains legible
+- emulated dark system preference still shows the approved light appearance
 - keyboard focus remains visible

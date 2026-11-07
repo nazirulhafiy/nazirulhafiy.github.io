@@ -13,7 +13,7 @@ Pages checked:
 - `/posts/`
 - `/contact/`
 
-Viewports: 375×667, 390×844, 390×680, and 1280×800. Each combination is tested in **light** and **dark** (`prefers-color-scheme`).
+Viewports: 375×667, 390×844, 390×680, and 1280×800. Each combination is tested under emulated **light** and **dark** `prefers-color-scheme`. The site is light-only, so both preferences must pass with the same light layout (and computed light tokens).
 
 ## Failure conditions
 
@@ -23,7 +23,8 @@ The script fails when any checked page has:
 - overlapping `[data-box]` border boxes (nested boxes are ignored);
 - a clipped `[data-box]` (scroll size exceeds the client box on a clipping overflow axis, or a clipping ancestor cuts the border box);
 - a `[data-one-line]` element that wraps onto more than one line;
-- no `[data-box]` markers on the page.
+- no `[data-box]` markers on the page;
+- computed theme tokens / `color-scheme` / body background that are not the approved light palette (asserted under both emulated preferences).
 
 Markers live in `site/templates/` for the homepage, experience page, writing index, and contact hub. Run `python3 scripts/build.py` after changing templates.
 
