@@ -92,7 +92,7 @@ class ContactVCardTests(unittest.TestCase):
         expected = [
             ("https://hafiy.my/", "/assets/contact/portfolio.png?v=3", "Portfolio"),
             ("https://wa.me/60135623005", "/assets/contact/whatsapp.png?v=3", "WhatsApp"),
-            ("/contact/nazirul-hafiy.vcf", "/assets/contact/phone.png?v=5", "Save Contact"),
+            ("/contact/nazirul-hafiy.vcf", "/assets/contact/phone.png?v=6", "Save Contact"),
             ("mailto:nazirul@hafiy.my", "/assets/contact/email.png?v=3", "Email"),
             (
                 "https://www.linkedin.com/in/nazirulhafiy/",
