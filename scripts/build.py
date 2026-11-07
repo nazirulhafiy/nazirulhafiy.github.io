@@ -95,13 +95,17 @@ def substitution_map(site: dict[str, str]) -> dict[str, str]:
             "operations, connectivity, marketing, and digital communities.",
             quote=True,
         ),
-        "@@SITE_CONTACT_DOCUMENT_TITLE@@": f"{title} - Contact",
-        "@@SITE_CONTACT_DOCUMENT_TITLE_ESC@@": html.escape(
-            f"{title} - Contact", quote=True
+        # Shared social card for identity pages (/, /contact/, /experience.html, /posts/).
+        # Title/tagline come from data/site.json; image is the site portrait (square → summary).
+        "@@SITE_SOCIAL_IMAGE@@": "https://hafiy.my/assets/profile.png?v=2",
+        "@@SITE_SOCIAL_IMAGE_TYPE@@": "image/png",
+        "@@SITE_SOCIAL_IMAGE_WIDTH@@": "1024",
+        "@@SITE_SOCIAL_IMAGE_HEIGHT@@": "1024",
+        "@@SITE_SOCIAL_IMAGE_ALT@@": f"Portrait of {title}",
+        "@@SITE_SOCIAL_IMAGE_ALT_ESC@@": html.escape(
+            f"Portrait of {title}", quote=True
         ),
-        # Contact social/meta description uses the site tagline from data/site.json.
-        "@@SITE_CONTACT_META@@": tagline,
-        "@@SITE_CONTACT_META_ESC@@": html.escape(tagline, quote=True),
+        "@@SITE_TWITTER_CARD@@": "summary",
     }
 
 
