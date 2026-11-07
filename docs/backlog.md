@@ -12,7 +12,7 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 - [ ] Add a lightweight internal-link check to the verification workflow. A small script or manual checklist is enough; avoid adding a heavy toolchain just for this.
 - [ ] Review all public pages for repeated header/footer markup and define a safe manual update pattern in the README if the site stays framework-free.
 - [ ] Refresh `sitemap.xml` `lastmod` values whenever public pages materially change.
-- [x] Contact `/contact/` Open Graph / Twitter image now matches the homepage card (`assets/social-card.png?v=2`, `summary_large_image`). Remaining pages (experience, writing index) still lack large-image cards if sharing previews matter there.
+- [x] Contact `/contact/` Open Graph / Twitter image uses the site portrait (`assets/profile.png?v=2`, 1024×1024, `twitter:card=summary`). Remaining pages (experience, writing index) still lack dedicated share cards if sharing previews matter there.
 - [ ] Review article reading times after any substantial article edits.
 
 ## Content opportunities

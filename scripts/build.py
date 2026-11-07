@@ -95,13 +95,14 @@ def substitution_map(site: dict[str, str]) -> dict[str, str]:
             "operations, connectivity, marketing, and digital communities.",
             quote=True,
         ),
-        "@@SITE_CONTACT_META@@": (
-            f"Contact {title} — {tagline}. "
-            "WhatsApp, email, LinkedIn, and project links."
+        "@@SITE_CONTACT_DOCUMENT_TITLE@@": f"{title} - Contact",
+        "@@SITE_CONTACT_DOCUMENT_TITLE_ESC@@": html.escape(
+            f"{title} - Contact", quote=True
         ),
+        # Contact social/meta copy is owner-specified (not the homepage tagline).
+        "@@SITE_CONTACT_META@@": "AI Native Project, Marketing, Operations Manager",
         "@@SITE_CONTACT_META_ESC@@": html.escape(
-            f"Contact {title} — {tagline}. "
-            "WhatsApp, email, LinkedIn, and project links.",
+            "AI Native Project, Marketing, Operations Manager",
             quote=True,
         ),
     }
