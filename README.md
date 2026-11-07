@@ -58,7 +58,7 @@ The current public portfolio uses a minimalist editorial system:
 - narrow readable measure;
 - system monospace for the interface, system sans for article text;
 - low-motion interactions;
-- automatic light/dark styling through `prefers-color-scheme`.
+- light-only styling (`color-scheme: light`; no system-dark override).
 
 Read [docs/design.md](docs/design.md) before making layout, visual, or interaction changes.
 
@@ -90,7 +90,7 @@ None.
 2. Update repeated navigation/footer patterns consistently across pages.
 3. When adding or renaming public pages, update `sitemap.xml`.
 4. When changing visible content, check metadata, canonical URLs, Open Graph data, and structured data where relevant.
-5. Test narrow mobile widths, desktop widths, light mode, dark mode, and keyboard focus states.
+5. Test narrow mobile widths, desktop widths, and keyboard focus states. Emulated dark system preference should still show the same light UI.
 6. Design or behaviour changes on watched CSS and JS files must update `docs/` in the same pull request. See [docs/ci-docs-check.md](docs/ci-docs-check.md).
 
 ## Deployment

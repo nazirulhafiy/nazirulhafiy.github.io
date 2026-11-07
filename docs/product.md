@@ -88,7 +88,7 @@ These links demonstrate public, Sarawak-aware digital exploration without turnin
 
 - Do not turn the site into a full resume builder, blog engine, dashboard, or CMS.
 - Do not add analytics, tracking, forms, or third-party scripts without a clear reason.
-- Do not introduce a theme toggle merely because the site supports dark mode automatically.
+- Do not introduce a theme toggle. The site is light-only and does not follow system dark preference.
 - Do not expand into many project case studies unless the new content is polished and clearly strengthens the professional narrative.
 
 ## Success signals

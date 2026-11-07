@@ -13,7 +13,7 @@ The current public design is closer to editorial documentation than marketing co
 - Narrow content measure for readability.
 - Generous vertical spacing.
 - Dashed underlines and light hover movement as the main interaction language.
-- Automatic dark mode through `prefers-color-scheme`, not a visible theme control.
+- Light-only presentation. The site does not follow `prefers-color-scheme: dark` and has no theme toggle.
 
 ## Interaction motion
 
@@ -80,21 +80,21 @@ Guidance:
 
 ## Color and theming
 
-The site defines light and dark variables in `:root` and a `prefers-color-scheme: dark` media query.
+The site is light-only. `:root` sets `color-scheme: light` and the approved light tokens. There is no `prefers-color-scheme: dark` override in `styles.css`. Public pages declare a single `theme-color` of `#ffffff` (no dark media alternate).
 
 Portfolio tokens in `styles.css`:
 
-| Token | Light | Dark |
-| --- | --- | --- |
-| `--background` | `#ffffff` | `#111111` |
-| `--surface` | `#f6f6f6` | `#1b1b1b` |
-| `--foreground` | `#111111` | `#f5f5f5` |
-| `--muted` | `#5f5f5f` | `#b4b4b4` |
-| `--border` | `#dedede` | `#2d2d2d` |
-| `--accent` | `#111111` | `#f5f5f5` |
-| `--accent-soft` | `#f1f1f1` | `#1a1a1a` |
+| Token | Value |
+| --- | --- |
+| `--background` | `#ffffff` |
+| `--surface` | `#f6f6f6` |
+| `--foreground` | `#111111` |
+| `--muted` | `#5f5f5f` |
+| `--border` | `#dedede` |
+| `--accent` | `#111111` |
+| `--accent-soft` | `#f1f1f1` |
 
-Do not hard-code one-off colors unless there is a strong reason. New UI should remain legible in both light and dark mode.
+Do not hard-code one-off colors unless there is a strong reason. New UI should stay within these light tokens.
 
 ## Components
 
@@ -163,10 +163,10 @@ Experiment links should be simple block links with a title and one-sentence desc
 - centred existing portrait (`assets/profile.png`), site title, and the site tagline from `data/site.json` as the single line under the name (`.contact-bio`, same fluid one-line treatment as homepage `.hero-copy`: `container-type` on `.contact-intro`, `font-size: min(0.82rem, 3.2cqi)`, `white-space: nowrap`, `data-one-line`);
 - section headings are title-case **Contact** and **Projects**;
 - every action uses a `.contact-bar`: rounded rectangle (not a pill), left equal square thumbnail, title centred in the row, no kebab menus;
-- contact order: WhatsApp, Call (`tel:+60135623005`, same number as WhatsApp / vCard `TEL`), Email, LinkedIn — local monochrome PNGs under `assets/contact/` with matched optical size (Call uses the classic handset mark at `assets/contact/phone.png`; same `#111` / dark-invert treatment as the other bars). No Portfolio bar on this page;
+- contact order: WhatsApp, Call (`tel:+60135623005`, same number as WhatsApp / vCard `TEL`), Email, LinkedIn — local monochrome PNGs under `assets/contact/` with matched optical size (Call uses the classic handset mark at `assets/contact/phone.png`; same `#111` light treatment as the other bars). No Portfolio bar on this page;
 - Projects bars only: `pcds2030.com`, `sde2030.com`, `ai.sarawak.news` using monochrome local marks derived from each site’s currently declared production-browser favicon (`favicon-production-browser.png`; no coloured logos on the page). Shared solid-S silhouettes after mono are acceptable when that is what the live marks are;
 - phone number is reachable via the Call `tel:` bar (and WhatsApp digits); `contact/nazirul-hafiy.vcf` remains published for direct URL use but is not linked from the contact bars;
-- keep hafiy.my monospace/monochrome tokens and automatic light/dark; do not copy third-party branding or invent logos.
+- keep hafiy.my monospace/monochrome light tokens; do not copy third-party branding or invent logos.
 - social sharing follows the shared identity-page card (site title + tagline + `assets/profile.png?v=2`, `twitter:card=summary`); see Social sharing above.
 
 ## Navigation
@@ -187,7 +187,7 @@ Preserve:
 - semantic headings in order;
 - descriptive `aria-label` values for icon-only links;
 - visible `:focus-visible` outlines;
-- readable color contrast in light and dark modes;
+- readable color contrast on the light palette;
 - `prefers-reduced-motion` handling.
 
 Avoid interactions that require hover only, precise pointer use, or JavaScript to access important content.

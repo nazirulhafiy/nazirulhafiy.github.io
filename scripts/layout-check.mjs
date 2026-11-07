@@ -101,6 +101,9 @@ function describeFailures(failures) {
     if (failure.kind === 'missing-markers') {
       return `  missing markers: page has no [data-box] elements`
     }
+    if (failure.kind === 'theme-not-light') {
+      return `  theme not light: ${failure.detail}`
+    }
     return `  ${JSON.stringify(failure)}`
   })
 }
@@ -113,6 +116,51 @@ async function settle(page) {
         new Promise((resolve) => setTimeout(resolve, 8000)),
       ])
     }
+  })
+}
+
+async function assertLightTheme(page) {
+  return page.evaluate(() => {
+    const root = getComputedStyle(document.documentElement)
+    const expected = {
+      '--background': '#ffffff',
+      '--surface': '#f6f6f6',
+      '--foreground': '#111111',
+      '--muted': '#5f5f5f',
+      '--border': '#dedede',
+      '--accent': '#111111',
+      '--accent-soft': '#f1f1f1',
+    }
+    const failures = []
+    const colorScheme = root.getPropertyValue('color-scheme').trim()
+    if (colorScheme !== 'light') {
+      failures.push({
+        kind: 'theme-not-light',
+        detail: `color-scheme is "${colorScheme}" (expected "light")`,
+      })
+    }
+    for (const [token, value] of Object.entries(expected)) {
+      const actual = root.getPropertyValue(token).trim().toLowerCase()
+      if (actual !== value) {
+        failures.push({
+          kind: 'theme-not-light',
+          detail: `${token} is "${actual}" (expected "${value}")`,
+        })
+      }
+    }
+    const bodyBg = getComputedStyle(document.body).backgroundColor
+    // rgb(255, 255, 255) or #ffffff depending on engine serialization
+    const isWhite =
+      bodyBg === 'rgb(255, 255, 255)' ||
+      bodyBg === 'rgba(255, 255, 255, 1)' ||
+      bodyBg.toLowerCase() === '#ffffff'
+    if (!isWhite) {
+      failures.push({
+        kind: 'theme-not-light',
+        detail: `body backgroundColor is "${bodyBg}" (expected white)`,
+      })
+    }
+    return failures
   })
 }
 
@@ -262,6 +310,7 @@ async function runBrowser(name, port) {
             const page = await openPage(context, pageDef, port)
             try {
               const found = await measure(page)
+              found.push(...(await assertLightTheme(page)))
               const boxes = await page.locator('[data-box]').count()
               if (boxes < 1) found.push({ kind: 'missing-markers' })
               if (found.length > 0) {

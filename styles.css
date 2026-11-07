@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --background: #ffffff;
   --surface: #f6f6f6;
   --foreground: #111111;
@@ -19,18 +19,6 @@
   --ease-load: ease-out;
   --duration-load: 500ms;
   --load-rise: 10px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #111111;
-    --surface: #1b1b1b;
-    --foreground: #f5f5f5;
-    --muted: #b4b4b4;
-    --border: #2d2d2d;
-    --accent: #f5f5f5;
-    --accent-soft: #1a1a1a;
-  }
 }
 
 *,
@@ -650,12 +638,6 @@ main > .section:nth-child(4) {
   height: 100%;
   object-fit: contain;
   object-position: center;
-}
-
-@media (prefers-color-scheme: dark) {
-  .contact-bar-thumb img {
-    filter: invert(1);
-  }
 }
 
 .contact-bar-title {
