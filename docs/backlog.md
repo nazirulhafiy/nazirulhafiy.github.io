@@ -33,7 +33,7 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 ## Technical cleanup
 
 - [ ] Remove `.DS_Store` from the repository if it is tracked; otherwise ensure `.gitignore` prevents it from being added.
-- [ ] If CSS changes, update the `styles.css?v=` cache-busting query consistently across public pages (currently `v=42` after rebasing interaction polish onto hero load entrance).
+- [ ] If CSS changes, update the `styles.css?v=` cache-busting query consistently across public pages (currently `v=43` after Evil Rabbit–inspired load stagger on home + contact).
 - [ ] PCDS and SDE declared production-browser favicons share a solid-S silhouette (colour only). Contact page keeps those declared marks as mono sources; no alternate favicon substitution.
 - [ ] Homepage LinkedIn still points at the older `/in/hafiy/` profile URL; `/contact/` uses `/in/nazirulhafiy/`. Align the homepage (and JSON-LD `sameAs`) in a follow-up if the newer URL is canonical site-wide.
 - [ ] Consider centralizing repeated SVG icons only if duplication becomes painful; avoid adding build tooling solely for this.

@@ -17,20 +17,23 @@ The current public design is closer to editorial documentation than marketing co
 
 ## Interaction motion
 
-Portfolio **hover / press** polish is CSS-only (no JavaScript). It does not stagger sections and is separate from the homepage hero one-shot load entrance (see Hero below). Shared tokens in `styles.css`:
+Portfolio **hover / press** polish is CSS-only (no JavaScript). It is separate from the one-shot load entrance (see Hero / Contact below). Shared tokens in `styles.css`:
 
 | Token | Value | Role |
 | --- | --- | --- |
 | `--ease-out` | `cubic-bezier(0.23, 1, 0.32, 1)` | Strong ease-out for UI feedback |
 | `--duration-ui` | `160ms` | Color / border / background transitions |
 | `--duration-press` | `140ms` | Transform / press feedback |
+| `--ease-load` | `cubic-bezier(0.16, 1, 0.3, 1)` | Soft ease-out for page load entrance |
+| `--duration-load` | `220ms` | Load entrance duration (≤250ms) |
+| `--load-rise` | `8px` | Load entrance `translateY` distance |
 
 Rules:
 
 - Transition only the properties that change (never `transition: all`).
 - Hover **transforms** (lift / nudge) are gated behind `@media (hover: hover) and (pointer: fine)` so touch devices do not stick mid-lift. Color and underline hover can stay outside that query.
 - Pressable bars and similar links (`.contact-bar`, `.inline-links a`, `.section-index-link`, `.project`, writing title links) use `:active { transform: scale(0.97) }` with the press duration.
-- Under `prefers-reduced-motion: reduce`, drop interaction transforms (hover lift, press scale, focus nudge) while keeping near-instant color/underline changes via the global short `transition-duration`. The same reduce block also disables the hero load entrance.
+- Under `prefers-reduced-motion: reduce`, drop interaction transforms (hover lift, press scale, focus nudge) while keeping near-instant color/underline changes via the global short `transition-duration`. The same reduce block also disables load entrances.
 
 ## Layout system
 
@@ -104,7 +107,7 @@ The hero should remain concise:
 - one professional pitch (`tagline` in `data/site.json`);
 - icon contact links.
 
-**Load entrance (homepage only).** `.hero` plays a one-shot entrance on first paint: opacity `0` → `1` with `translateY(8px)` and `scale(0.98)` settling to rest. Duration is `220ms` with ease-out `cubic-bezier(0.16, 1, 0.3, 1)`. Prefer `@starting-style` + transition where `transition-behavior: allow-discrete` is supported; otherwise a matching `@keyframes hero-load-enter` fallback. Do not stagger other sections, nav, or project blocks. Contact uses `.contact-intro`, not `.hero`, and does not share this entrance. Under `prefers-reduced-motion: reduce`, the entrance is disabled (no transform or opacity motion). CSS-only — no portfolio-page JavaScript.
+**Load entrance (homepage + contact).** Inspired by evilrabbit.com’s CSS band stagger (`opacity` + slight `translateY`, short delays) but quieter and scoped. Shared `@keyframes load-enter`: opacity `0` → `1` with `translateY(var(--load-rise))` (`8px`), duration `--duration-load` (`220ms`), easing `--ease-load`. No blur, no scale. Homepage: `.hero` at 0 delay (prefer `@starting-style` + transition where `transition-behavior: allow-discrete` is supported; otherwise the keyframe), then `main > .section` bands at **50 / 100 / 150ms** (experience → writing → experiments). Contact: `.contact-intro` at 0, `.contact-section` at 50ms, `.contact-projects` at 100ms. Do not animate nav, footer, experience/writing inner pages, or individual contact bars. Under `prefers-reduced-motion: reduce`, all load entrances are disabled (no transform or opacity motion). CSS-only — no portfolio-page JavaScript.
 
 Homepage `<title>`, meta description, Open Graph / Twitter tags, and footer brand text are filled by `scripts/build.py` from the same file. Do not hand-type those strings in templates, scripts, or docs; `tests/test_site_copy.py` fails CI if they appear elsewhere.
 
