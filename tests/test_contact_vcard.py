@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 import unittest
 from pathlib import Path
@@ -12,11 +13,17 @@ VCARD = ROOT / "contact" / "nazirul-hafiy.vcf"
 CONTACT_TEMPLATE = ROOT / "site" / "templates" / "contact" / "index.html"
 CONTACT_BUILT = ROOT / "contact" / "index.html"
 SITE_JSON = ROOT / "data" / "site.json"
+CONTACT_ASSETS = ROOT / "assets" / "contact"
+
+EXACT_BIO = (
+    "Brings together experience in marketing, project management, and operations "
+    "across government, enterprise, and start-up environments. PMP-trained and "
+    "skilled in AI-assisted workflows, with a practical approach to planning, "
+    "delivery, and performance tracking.."
+)
 
 
 def site_title() -> str:
-    import json
-
     payload = json.loads(SITE_JSON.read_text(encoding="utf-8"))
     title = payload.get("title")
     if not isinstance(title, str) or not title.strip():
@@ -25,8 +32,6 @@ def site_title() -> str:
 
 
 def unfold_vcard(text: str) -> list[str]:
-    """Unfold RFC 2425/6350 soft line breaks and return logical lines."""
-    # Soft wrap: CRLF + space/tab
     unfolded = re.sub(r"\r\n[ \t]", "", text)
     return [line for line in unfolded.split("\r\n") if line != ""]
 
@@ -60,33 +65,55 @@ class ContactVCardTests(unittest.TestCase):
             by_name["URL"],
             ["https://hafiy.my", "https://www.linkedin.com/in/nazirulhafiy/"],
         )
-        # No invented org/job-title/address fields (vCard TITLE property).
         for forbidden in ("ORG", "TITLE", "ADR", "NOTE"):
             self.assertNotIn(forbidden, by_name)
 
-    def test_contact_page_action_order_and_hrefs(self):
+    def test_contact_page_bars_order_and_assets(self):
         html = CONTACT_TEMPLATE.read_text(encoding="utf-8")
-        # Built page should match after build; assert template source of truth.
-        actions = re.findall(
-            r'<a class="contact-btn"[^>]*href="([^"]+)"[^>]*>([^<]+)</a>',
-            html,
-        )
-        self.assertEqual(
-            [(href, label.strip()) for href, label in actions],
-            [
-                ("https://wa.me/60135623005", "WhatsApp"),
-                ("/contact/nazirul-hafiy.vcf", "Save Contact"),
-                ("mailto:nazirul@hafiy.my", "Email"),
-                ("https://www.linkedin.com/in/nazirulhafiy/", "LinkedIn"),
-            ],
-        )
-        wa = actions[0][0]
-        self.assertRegex(wa, r"^https://wa\.me/\d+$")
-        self.assertEqual(wa, "https://wa.me/60135623005")
-        self.assertIn('download="nazirul-hafiy.vcf"', html)
+        self.assertNotIn("site-header", html)
+        self.assertIn(EXACT_BIO, html)
+        self.assertNotIn("AI Native —", html)
+        self.assertNotIn("Portfolio", html)
+        self.assertNotIn("/experience.html", html)
+        self.assertNotIn('href="/posts/"', html)
         self.assertNotIn("tel:", html)
         self.assertNotIn("/in/hafiy/", html)
-        self.assertNotIn('class="project"', html)
+        self.assertNotIn("contact-btn", html)
+        self.assertNotIn("nav-toggle", html)
+
+        bars = re.findall(
+            r'<a class="contact-bar" href="([^"]+)"[^>]*>\s*'
+            r'<span class="contact-bar-thumb"[^>]*>\s*'
+            r'<img src="([^"]+)"[^>]*>\s*</span>\s*'
+            r'<span class="contact-bar-title">([^<]+)</span>',
+            html,
+            flags=re.DOTALL,
+        )
+        expected = [
+            ("https://wa.me/60135623005", "/assets/contact/whatsapp.svg", "WhatsApp"),
+            ("/contact/nazirul-hafiy.vcf", "/assets/contact/download.svg", "Save Contact"),
+            ("mailto:nazirul@hafiy.my", "/assets/contact/email.svg", "Email"),
+            (
+                "https://www.linkedin.com/in/nazirulhafiy/",
+                "/assets/contact/linkedin.svg",
+                "LinkedIn",
+            ),
+            ("https://pcds2030.com", "/assets/contact/pcds2030.png", "pcds2030.com"),
+            ("https://sde2030.com", "/assets/contact/sde2030.png", "sde2030.com"),
+            (
+                "https://ai.sarawak.news",
+                "/assets/contact/ai-sarawak-news.svg",
+                "ai.sarawak.news",
+            ),
+        ]
+        self.assertEqual([(h, s, t.strip()) for h, s, t in bars], expected)
+        self.assertRegex(bars[0][0], r"^https://wa\.me/\d+$")
+        self.assertIn('download="nazirul-hafiy.vcf"', html)
+
+        for _, src, _ in expected:
+            asset = ROOT / src.lstrip("/")
+            self.assertTrue(asset.is_file(), f"missing asset {src}")
+            self.assertGreater(asset.stat().st_size, 100)
 
     def test_built_contact_page_keeps_actions(self):
         if not CONTACT_BUILT.is_file():
@@ -96,6 +123,8 @@ class ContactVCardTests(unittest.TestCase):
         self.assertIn('href="mailto:nazirul@hafiy.my"', html)
         self.assertIn('href="/contact/nazirul-hafiy.vcf"', html)
         self.assertIn("data-sn-analytics-loader", html)
+        self.assertIn(EXACT_BIO, html)
+        self.assertNotIn("site-header", html)
 
 
 if __name__ == "__main__":

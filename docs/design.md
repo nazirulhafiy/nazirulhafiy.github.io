@@ -21,7 +21,7 @@ The current public design is closer to editorial documentation than marketing co
 - Horizontal padding is controlled by `--gutter`.
 - The homepage hero uses a two-column layout on wider screens and stacks on small screens. The homepage has no site header.
 - Experience, writing, and article pages share a header: site name plus a primary nav (Experience, Writing, Experiments). At `38rem` and below the nav becomes a CSS checkbox menu. There is no menu script.
-- The contact microsite (`/contact/`) uses the same header shell with only the site name (no primary nav), then a centred portrait, short pitch, large rounded action buttons, and a compact secondary Projects list. It borrows link-hub composition (stacked CTAs), not Linktree branding, and does not change homepage or shared nav.
+- The contact microsite (`/contact/`) has no site header. It uses a centred portrait, one bio paragraph, stacked rounded-rectangular bars (left square thumbnail + centred title), and a Projects list of public experiment domains. It borrows link-hub bar geometry, not third-party branding, and does not change homepage or shared nav on other pages.
 - Secondary pages use a centered article-style column.
 - Sections are separated by thin borders and clear headings.
 
@@ -112,12 +112,13 @@ Experiment links should be simple block links with a title and one-sentence desc
 
 `/contact/` is a mobile-first link hub rendered from `site/templates/contact/index.html`:
 
-- centred existing portrait (`assets/profile.png`) with the site title and two short pitch lines;
-- primary actions are large rounded full-width `.contact-btn` controls in this order: WhatsApp, Save Contact (downloads `contact/nazirul-hafiy.vcf`), Email, LinkedIn;
-- phone number lives in the vCard (and WhatsApp digits), not as a separate `tel:` row on the page;
-- Projects is a smaller secondary list with short labels (portfolio, experience, writing, experiments);
-- keep hafiy.my monospace/monochrome tokens and automatic light/dark; do not imitate third-party link-hub branding;
-- keep the page event-agnostic; do not invent handles, company fields, or event details.
+- no top navbar on this page only;
+- centred existing portrait (`assets/profile.png`), site title, and one bio paragraph;
+- every action uses a `.contact-bar`: rounded rectangle (not a pill), left square thumbnail, title centred in the row, no kebab menus;
+- contact order: WhatsApp, Save Contact (`contact/nazirul-hafiy.vcf`), Email, LinkedIn — local icons under `assets/contact/`;
+- Projects bars only: `pcds2030.com`, `sde2030.com`, `ai.sarawak.news` with their own hosted favicons/marks under `assets/contact/`;
+- phone number lives in the vCard (and WhatsApp digits), not as a separate `tel:` row;
+- keep hafiy.my monospace/monochrome tokens and automatic light/dark; do not copy third-party branding or invent logos.
 
 ## Navigation
 
@@ -127,7 +128,7 @@ Experience and writing pages use the shared header in `styles.css`:
 - narrow screens (`max-width: 38rem`) show a menu button. Checking `#nav-toggle` opens the nav and a backdrop. Both are `<label>` elements, so the menu works without JavaScript;
 - the current page sets `aria-current="page"`.
 
-The homepage does not include this header. The contact page keeps the site-name link home and omits the primary nav so the hub stays scan-first.
+The homepage does not include this header. The contact page omits the header entirely so the hub stays scan-first.
 
 ## Accessibility
 

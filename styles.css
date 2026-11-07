@@ -444,14 +444,15 @@ nav a[aria-current="page"] {
 }
 
 .contact-page {
-  width: min(100%, 22.5rem);
+  width: min(100%, 23.5rem);
   margin-inline: auto;
-  padding-block: clamp(1.5rem, 5vw, 2.75rem) clamp(2rem, 6vw, 3.5rem);
+  padding-block: clamp(1.75rem, 6vw, 3rem) clamp(2rem, 6vw, 3.5rem);
+  padding-inline: var(--gutter);
   text-align: center;
 }
 
 .contact-intro {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.65rem;
 }
 
 .contact-avatar {
@@ -464,51 +465,107 @@ nav a[aria-current="page"] {
   font-size: clamp(1.45rem, 5vw, 1.75rem);
 }
 
-.contact-pitch {
-  margin: 0 0 0.55rem;
+.contact-bio {
+  max-width: 22rem;
+  margin: 0 auto;
   color: var(--muted);
-  font-size: 0.82rem;
-  line-height: 1.45;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  text-wrap: pretty;
 }
 
-.contact-pitch:last-child {
-  margin-bottom: 0;
+.contact-actions,
+.contact-project-list {
+  display: grid;
+  gap: 0.7rem;
 }
 
 .contact-actions {
-  display: grid;
-  gap: 0.7rem;
-  margin: 0 0 2.25rem;
+  margin: 0 0 2rem;
 }
 
-.contact-btn {
-  display: flex;
+.contact-bar {
+  --contact-thumb: 2.55rem;
+  display: grid;
+  grid-template-columns: var(--contact-thumb) minmax(0, 1fr) var(--contact-thumb);
   align-items: center;
-  justify-content: center;
+  column-gap: 0.55rem;
   width: 100%;
-  min-height: 3.15rem;
-  padding: 0.85rem 1.2rem;
+  min-height: 3.55rem;
+  padding: 0.45rem 0.55rem;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 1.05rem;
   background: var(--surface);
   color: var(--foreground);
-  font: inherit;
-  font-weight: 600;
-  font-size: 0.95rem;
-  line-height: 1.2;
   text-decoration: none;
-  transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease, transform 150ms ease;
+  transition: border-color 150ms ease, background-color 150ms ease, transform 150ms ease;
 }
 
-.contact-btn:hover {
-  border-color: color-mix(in srgb, var(--foreground) 45%, var(--border));
+.contact-bar:hover {
+  border-color: color-mix(in srgb, var(--foreground) 40%, var(--border));
   background: var(--accent-soft);
   transform: translateY(-1px);
 }
 
-.contact-btn:focus-visible {
+.contact-bar:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+
+.contact-bar-thumb {
+  display: grid;
+  width: var(--contact-thumb);
+  height: var(--contact-thumb);
+  place-items: center;
+  border-radius: 0.55rem;
+  overflow: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+.contact-bar-thumb img {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+  object-fit: contain;
+}
+
+@media (prefers-color-scheme: dark) {
+  .contact-actions .contact-bar-thumb img[src$=".svg"],
+  .contact-project-list .contact-bar-thumb img[src$=".svg"] {
+    filter: invert(1);
+  }
+}
+
+.contact-project-list .contact-bar-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-project-list .contact-bar-thumb img[src$=".svg"] {
+  width: 1.45rem;
+  height: 1.45rem;
+  object-fit: contain;
+}
+
+.contact-bar-title {
+  justify-self: center;
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--foreground);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-bar-spacer {
+  width: var(--contact-thumb);
+  height: var(--contact-thumb);
 }
 
 .contact-projects h2 {
@@ -520,37 +577,18 @@ nav a[aria-current="page"] {
   text-transform: uppercase;
 }
 
-.contact-secondary {
-  display: grid;
-  gap: 0.55rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.contact-secondary a {
-  display: inline-block;
-  color: var(--muted);
-  font-size: 0.86rem;
-  text-decoration-line: underline;
-  text-decoration-style: dashed;
-  text-decoration-color: transparent;
-  text-underline-offset: 0.28em;
-  transition: color 150ms ease, text-decoration-color 150ms ease;
-}
-
-.contact-secondary a:hover,
-.contact-secondary a:focus-visible {
-  color: var(--foreground);
-  text-decoration-color: var(--accent);
+.contact-footer {
+  width: min(100%, 23.5rem);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-btn {
+  .contact-bar {
     transition: none;
   }
 
-  .contact-btn:hover {
+  .contact-bar:hover {
     transform: none;
   }
 }
