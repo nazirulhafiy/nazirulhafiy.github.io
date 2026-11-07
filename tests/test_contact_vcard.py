@@ -91,19 +91,19 @@ class ContactVCardTests(unittest.TestCase):
             flags=re.DOTALL,
         )
         expected = [
-            ("https://wa.me/60135623005", "/assets/contact/whatsapp.png?v=2", "WhatsApp"),
-            ("/contact/nazirul-hafiy.vcf", "/assets/contact/download.png?v=2", "Save Contact"),
-            ("mailto:nazirul@hafiy.my", "/assets/contact/email.png?v=2", "Email"),
+            ("https://wa.me/60135623005", "/assets/contact/whatsapp.png?v=3", "WhatsApp"),
+            ("/contact/nazirul-hafiy.vcf", "/assets/contact/download.png?v=3", "Save Contact"),
+            ("mailto:nazirul@hafiy.my", "/assets/contact/email.png?v=3", "Email"),
             (
                 "https://www.linkedin.com/in/nazirulhafiy/",
-                "/assets/contact/linkedin.png?v=2",
+                "/assets/contact/linkedin.png?v=3",
                 "LinkedIn",
             ),
-            ("https://pcds2030.com", "/assets/contact/pcds2030.png?v=2", "pcds2030.com"),
-            ("https://sde2030.com", "/assets/contact/sde2030.png?v=2", "sde2030.com"),
+            ("https://pcds2030.com", "/assets/contact/pcds2030.png?v=3", "pcds2030.com"),
+            ("https://sde2030.com", "/assets/contact/sde2030.png?v=3", "sde2030.com"),
             (
                 "https://ai.sarawak.news",
-                "/assets/contact/ai-sarawak-news.png?v=2",
+                "/assets/contact/ai-sarawak-news.png?v=3",
                 "ai.sarawak.news",
             ),
         ]
