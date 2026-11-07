@@ -30,3 +30,6 @@ jobs:
 
       - name: Contact page marker and vCard tests
         run: python3 -m unittest tests.test_contact_events tests.test_contact_vcard -v
+
+      - name: Favicon asset and declaration tests
+        run: python3 -m unittest tests.test_favicon -v
