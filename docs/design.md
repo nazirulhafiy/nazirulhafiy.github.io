@@ -141,7 +141,7 @@ Experiment links should be simple block links with a title and one-sentence desc
 - centred existing portrait (`assets/profile.png`), site title, and the site tagline from `data/site.json` as the single line under the name (`.contact-bio`, same fluid one-line treatment as homepage `.hero-copy`: `container-type` on `.contact-intro`, `font-size: min(0.82rem, 3.2cqi)`, `white-space: nowrap`, `data-one-line`);
 - section headings are title-case **Contact** and **Projects**;
 - every action uses a `.contact-bar`: rounded rectangle (not a pill), left equal square thumbnail, title centred in the row, no kebab menus;
-- contact order: WhatsApp, Save Contact (`contact/nazirul-hafiy.vcf`), Email, LinkedIn — local monochrome PNGs under `assets/contact/` with matched optical size;
+- contact order: WhatsApp, Save Contact (`contact/nazirul-hafiy.vcf`), Email, LinkedIn, Portfolio (`https://hafiy.my/`) — local monochrome PNGs under `assets/contact/` with matched optical size (Portfolio uses a home mark, same `#111` / dark-invert treatment as the other bars);
 - Projects bars only: `pcds2030.com`, `sde2030.com`, `ai.sarawak.news` using monochrome local marks derived from each site’s currently declared production-browser favicon (`favicon-production-browser.png`; no coloured logos on the page). Shared solid-S silhouettes after mono are acceptable when that is what the live marks are;
 - phone number lives in the vCard (and WhatsApp digits), not as a separate `tel:` row;
 - keep hafiy.my monospace/monochrome tokens and automatic light/dark; do not copy third-party branding or invent logos.
@@ -196,7 +196,7 @@ Portfolio pages (home, experience, writing, contact) get **one** build-time anal
 
 **Internal traffic.** `?internal=1` sets `sn_internal=1` (~1 year, `Path=/`, `SameSite=Lax`, plus `Secure` on HTTPS). `?internal=0` clears it. While that cookie is set, GA4 config includes `traffic_type: 'internal'` and the Cloudflare beacon is not loaded. Agents and automation that open the live site should use `?internal=1` (see `AGENTS.md`).
 
-**Enhanced measurement (do not double-count).** GA4 HTTPS outbound clicks already cover WhatsApp, LinkedIn, and project links on `/contact/`. Do not add custom events for those activations.
+**Enhanced measurement (do not double-count).** GA4 HTTPS outbound clicks already cover WhatsApp, LinkedIn, and project links on `/contact/`. Do not add custom events for those activations. The Portfolio bar is a same-site link to `https://hafiy.my/` (may not fire outbound enhanced measurement); leave it as a normal uninstrumented link like the project bars — do not invent a custom Portfolio event.
 
 **Contact custom events (`/contact/` only).** Mailto and the same-origin `.vcf` download are not covered by outbound or download enhanced measurement, so `/contact/` includes one tiny inline `<script data-sn-contact-events>` that listens for activation clicks on two marked bars only:
 
