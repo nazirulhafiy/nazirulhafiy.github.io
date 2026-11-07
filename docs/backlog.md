@@ -32,7 +32,8 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 ## Technical cleanup
 
 - [ ] Remove `.DS_Store` from the repository if it is tracked; otherwise ensure `.gitignore` prevents it from being added.
-- [ ] If CSS changes, update the `styles.css?v=` cache-busting query consistently across public pages (currently `v=38` after the contact bar redesign).
+- [ ] If CSS changes, update the `styles.css?v=` cache-busting query consistently across public pages (currently `v=39` after contact icon/mono + tagline pass).
+- [ ] PCDS and SDE production favicons share the same silhouette (different brand colours). Contact page monochrome marks therefore match; reconsider only if the live marks diverge.
 - [ ] Homepage LinkedIn still points at the older `/in/hafiy/` profile URL; `/contact/` uses `/in/nazirulhafiy/`. Align the homepage (and JSON-LD `sameAs`) in a follow-up if the newer URL is canonical site-wide.
 - [ ] Consider centralizing repeated SVG icons only if duplication becomes painful; avoid adding build tooling solely for this.
 - [ ] Keep `robots.txt`, `CNAME`, Google verification file, and sitemap intact during cleanup.

@@ -113,10 +113,11 @@ Experiment links should be simple block links with a title and one-sentence desc
 `/contact/` is a mobile-first link hub rendered from `site/templates/contact/index.html`:
 
 - no top navbar on this page only;
-- centred existing portrait (`assets/profile.png`), site title, and one bio paragraph;
-- every action uses a `.contact-bar`: rounded rectangle (not a pill), left square thumbnail, title centred in the row, no kebab menus;
-- contact order: WhatsApp, Save Contact (`contact/nazirul-hafiy.vcf`), Email, LinkedIn — local icons under `assets/contact/`;
-- Projects bars only: `pcds2030.com`, `sde2030.com`, `ai.sarawak.news` with their own hosted favicons/marks under `assets/contact/`;
+- centred existing portrait (`assets/profile.png`), site title, and the site tagline from `data/site.json` as the single line under the name;
+- section headings are title-case **Contact** and **Projects**;
+- every action uses a `.contact-bar`: rounded rectangle (not a pill), left equal square thumbnail, title centred in the row, no kebab menus;
+- contact order: WhatsApp, Save Contact (`contact/nazirul-hafiy.vcf`), Email, LinkedIn — local monochrome PNGs under `assets/contact/` with matched optical size;
+- Projects bars only: `pcds2030.com`, `sde2030.com`, `ai.sarawak.news` using monochrome local marks derived from each site’s live favicon/mark (no coloured logos on the page);
 - phone number lives in the vCard (and WhatsApp digits), not as a separate `tel:` row;
 - keep hafiy.my monospace/monochrome tokens and automatic light/dark; do not copy third-party branding or invent logos.
 

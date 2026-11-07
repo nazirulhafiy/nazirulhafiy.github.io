@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import html as html_lib
 import json
 import re
 import unittest
@@ -15,20 +16,18 @@ CONTACT_BUILT = ROOT / "contact" / "index.html"
 SITE_JSON = ROOT / "data" / "site.json"
 CONTACT_ASSETS = ROOT / "assets" / "contact"
 
-EXACT_BIO = (
-    "Brings together experience in marketing, project management, and operations "
-    "across government, enterprise, and start-up environments. PMP-trained and "
-    "skilled in AI-assisted workflows, with a practical approach to planning, "
-    "delivery, and performance tracking.."
-)
 
-
-def site_title() -> str:
+def site_copy() -> dict[str, str]:
     payload = json.loads(SITE_JSON.read_text(encoding="utf-8"))
-    title = payload.get("title")
-    if not isinstance(title, str) or not title.strip():
-        raise AssertionError("data/site.json missing title")
-    return title.strip()
+    required = ("title", "tagline")
+    missing = [
+        key
+        for key in required
+        if not isinstance(payload.get(key), str) or not payload[key].strip()
+    ]
+    if missing:
+        raise AssertionError(f"data/site.json missing fields: {', '.join(missing)}")
+    return {key: payload[key].strip() for key in required}
 
 
 def unfold_vcard(text: str) -> list[str]:
@@ -53,7 +52,7 @@ class ContactVCardTests(unittest.TestCase):
             key = name.split(";", 1)[0].upper()
             by_name.setdefault(key, []).append(value)
 
-        title = site_title()
+        title = site_copy()["title"]
         parts = title.split()
         family = parts[-1] if parts else title
         given = " ".join(parts[:-1]) if len(parts) >= 2 else ""
@@ -71,15 +70,17 @@ class ContactVCardTests(unittest.TestCase):
     def test_contact_page_bars_order_and_assets(self):
         html = CONTACT_TEMPLATE.read_text(encoding="utf-8")
         self.assertNotIn("site-header", html)
-        self.assertIn(EXACT_BIO, html)
-        self.assertNotIn("AI Native —", html)
+        self.assertIn("@@SITE_TAGLINE_ESC@@", html)
+        self.assertIn('<h2 id="contact-title">Contact</h2>', html)
+        self.assertIn('<h2 id="projects-title">Projects</h2>', html)
+        self.assertNotIn("contact-bio\">Brings together", html)
         self.assertNotIn("Portfolio", html)
         self.assertNotIn("/experience.html", html)
         self.assertNotIn('href="/posts/"', html)
         self.assertNotIn("tel:", html)
         self.assertNotIn("/in/hafiy/", html)
-        self.assertNotIn("contact-btn", html)
         self.assertNotIn("nav-toggle", html)
+        self.assertNotIn(".svg", html)
 
         bars = re.findall(
             r'<a class="contact-bar" href="([^"]+)"[^>]*>\s*'
@@ -90,19 +91,19 @@ class ContactVCardTests(unittest.TestCase):
             flags=re.DOTALL,
         )
         expected = [
-            ("https://wa.me/60135623005", "/assets/contact/whatsapp.svg", "WhatsApp"),
-            ("/contact/nazirul-hafiy.vcf", "/assets/contact/download.svg", "Save Contact"),
-            ("mailto:nazirul@hafiy.my", "/assets/contact/email.svg", "Email"),
+            ("https://wa.me/60135623005", "/assets/contact/whatsapp.png", "WhatsApp"),
+            ("/contact/nazirul-hafiy.vcf", "/assets/contact/download.png", "Save Contact"),
+            ("mailto:nazirul@hafiy.my", "/assets/contact/email.png", "Email"),
             (
                 "https://www.linkedin.com/in/nazirulhafiy/",
-                "/assets/contact/linkedin.svg",
+                "/assets/contact/linkedin.png",
                 "LinkedIn",
             ),
             ("https://pcds2030.com", "/assets/contact/pcds2030.png", "pcds2030.com"),
             ("https://sde2030.com", "/assets/contact/sde2030.png", "sde2030.com"),
             (
                 "https://ai.sarawak.news",
-                "/assets/contact/ai-sarawak-news.svg",
+                "/assets/contact/ai-sarawak-news.png",
                 "ai.sarawak.news",
             ),
         ]
@@ -114,16 +115,21 @@ class ContactVCardTests(unittest.TestCase):
             asset = ROOT / src.lstrip("/")
             self.assertTrue(asset.is_file(), f"missing asset {src}")
             self.assertGreater(asset.stat().st_size, 100)
+            # PNG icons only
+            self.assertTrue(src.endswith(".png"))
 
     def test_built_contact_page_keeps_actions(self):
         if not CONTACT_BUILT.is_file():
             self.skipTest("contact/index.html not built yet")
+        copy = site_copy()
         html = CONTACT_BUILT.read_text(encoding="utf-8")
         self.assertIn('href="https://wa.me/60135623005"', html)
         self.assertIn('href="mailto:nazirul@hafiy.my"', html)
         self.assertIn('href="/contact/nazirul-hafiy.vcf"', html)
         self.assertIn("data-sn-analytics-loader", html)
-        self.assertIn(EXACT_BIO, html)
+        self.assertIn(html_lib.escape(copy["tagline"]), html)
+        self.assertIn(">Contact<", html)
+        self.assertIn(">Projects<", html)
         self.assertNotIn("site-header", html)
 
 
