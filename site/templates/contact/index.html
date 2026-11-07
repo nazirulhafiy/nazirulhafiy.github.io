@@ -48,13 +48,6 @@
       <section class="contact-section" aria-labelledby="contact-title" data-box>
         <h2 id="contact-title">Contact</h2>
         <nav class="contact-actions" aria-label="Contact actions">
-          <a class="contact-bar" href="https://hafiy.my/">
-            <span class="contact-bar-thumb" aria-hidden="true">
-              <img src="/assets/contact/portfolio.png?v=3" alt="" width="128" height="128">
-            </span>
-            <span class="contact-bar-title">Portfolio</span>
-            <span class="contact-bar-spacer" aria-hidden="true"></span>
-          </a>
           <a class="contact-bar" href="https://wa.me/60135623005" target="_blank" rel="noreferrer">
             <span class="contact-bar-thumb" aria-hidden="true">
               <img src="/assets/contact/whatsapp.png?v=3" alt="" width="128" height="128">
@@ -62,11 +55,11 @@
             <span class="contact-bar-title">WhatsApp</span>
             <span class="contact-bar-spacer" aria-hidden="true"></span>
           </a>
-          <a class="contact-bar" href="/contact/nazirul-hafiy.vcf" download="nazirul-hafiy.vcf" data-sn-event="contact_download">
+          <a class="contact-bar" href="tel:+60135623005">
             <span class="contact-bar-thumb" aria-hidden="true">
-              <img src="/assets/contact/phone.png?v=6" alt="" width="128" height="128">
+              <img src="/assets/contact/phone.png?v=7" alt="" width="128" height="128">
             </span>
-            <span class="contact-bar-title">Save Contact</span>
+            <span class="contact-bar-title">Call</span>
             <span class="contact-bar-spacer" aria-hidden="true"></span>
           </a>
           <a class="contact-bar" href="mailto:nazirul@hafiy.my" data-sn-event="email_click">
@@ -121,7 +114,7 @@
   </footer>
   <script data-sn-contact-events>
   (function () {
-    var ALLOWED = { email_click: 1, contact_download: 1 };
+    var ALLOWED = { email_click: 1 };
     function send(name) {
       try {
         if (typeof gtag !== "function") return;

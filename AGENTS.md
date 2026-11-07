@@ -33,7 +33,7 @@ These files define the product intent, design direction, and known maintenance p
 - Keep the site static by default. Do not introduce a framework, bundler, package manager, or CMS unless explicitly requested.
 - Preserve the minimalist, content-first identity. Avoid decorative UI, heavy animation, or feature creep.
 - Prefer small, targeted changes over broad rewrites.
-- Keep the portfolio pages usable without JavaScript. Do not add JavaScript to portfolio pages unless explicitly requested. The allowed exceptions are the shared analytics loader and the `/contact/`-only `email_click` / `contact_download` helper documented in `docs/design.md`.
+- Keep the portfolio pages usable without JavaScript. Do not add JavaScript to portfolio pages unless explicitly requested. The allowed exceptions are the shared analytics loader and the `/contact/`-only `email_click` helper documented in `docs/design.md`.
 - Keep routes and links root-relative where the current site already uses that style.
 - Do not remove Google site-verification files unless asked.
 - Preserve the custom domain setup in `CNAME`.
