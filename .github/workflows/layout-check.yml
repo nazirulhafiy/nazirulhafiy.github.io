@@ -25,3 +25,6 @@ jobs:
 
       - name: Layout check
         run: npm run layout-check
+
+      - name: Contact events runtime check
+        run: npm run contact-events-check

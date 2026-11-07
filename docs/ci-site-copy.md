@@ -4,10 +4,11 @@ Pull requests and pushes to `main` run the **site-copy** job in [`.github/workfl
 
 ## What it enforces
 
-1. `python3 scripts/build.py` must reproduce the committed homepage, experience page, and writing pages from `site/templates/` and `data/site.json`.
+1. `python3 scripts/build.py` must reproduce the committed homepage, experience page, contact hub, and writing pages from `site/templates/` and `data/site.json`.
 2. [`tests/test_site_copy.py`](../tests/test_site_copy.py) must pass: canonical site copy must not appear hand-typed outside `data/site.json`.
 3. `python3 scripts/check_analytics_dist.py` must pass on the built portfolio HTML (exactly one `data-sn-analytics-loader` per page; IDs and cookie name match `data/analytics.json`).
 4. [`tests/test_analytics_registry.py`](../tests/test_analytics_registry.py) must pass.
+5. [`tests/test_contact_events.py`](../tests/test_contact_events.py) and [`tests/test_contact_vcard.py`](../tests/test_contact_vcard.py) must pass (contact markers / script contract and vCard fields). Runtime click behaviour for the contact custom events lives in the layout-check job (`npm run contact-events-check`); see [ci-layout-check.md](ci-layout-check.md).
 
 ## Canonical fields
 

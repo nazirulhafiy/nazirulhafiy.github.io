@@ -17,7 +17,7 @@ jobs:
       - name: Verify built pages match templates
         run: |
           python3 scripts/build.py
-          git diff --exit-code index.html experience.html posts/
+          git diff --exit-code index.html experience.html contact/ posts/
 
       - name: Site copy source-of-truth test
         run: python3 -m unittest tests.test_site_copy -v
@@ -27,3 +27,6 @@ jobs:
 
       - name: Analytics registry tests
         run: python3 -m unittest tests.test_analytics_registry -v
+
+      - name: Contact page marker and vCard tests
+        run: python3 -m unittest tests.test_contact_events tests.test_contact_vcard -v

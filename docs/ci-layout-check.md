@@ -33,6 +33,7 @@ Markers live in `site/templates/` for the homepage, experience page, writing ind
 npm ci
 npx playwright install chromium webkit
 npm run layout-check
+npm run contact-events-check
 ```
 
 Optional environment variables:
@@ -41,6 +42,19 @@ Optional environment variables:
 - `LAYOUT_CHECK_PORT` — port for the local server (default `8765`)
 - `LAYOUT_CHECK_BROWSERS` — comma-separated list (`chromium`, `webkit`)
 - `LAYOUT_CHECK_LABEL` — label printed in the report (for proof runs)
+- `CONTACT_EVENTS_CHECK_PORT` — port for the contact-events runtime check server (default `8766`)
+
+## Contact events runtime check
+
+The same workflow also runs `npm run contact-events-check` after the layout pass. That script opens `/contact/` in Chromium against a local static server and injects a `gtag`/`dataLayer` stub (it does not load `googletagmanager.com` or send production hits). It asserts:
+
+- one `email_click` and one `contact_download` with `{ surface: "contact" }` per successful activation;
+- repeated activations emit one event each (no double-registered listeners);
+- WhatsApp, LinkedIn, and project HTTPS bars do not emit those custom events;
+- absent, non-function, and throwing `gtag` leave mailto/download default actions unprevented and do not surface uncaught page errors;
+- emitted event params contain no PII (email, phone, contact URLs, vCard payload).
+
+Default-action preservation is checked by reading `event.defaultPrevented` in a bubble-phase probe registered after the page script, then calling `preventDefault` only in the probe so the test stays inside Chromium.
 
 ## Runtime
 
