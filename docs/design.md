@@ -163,7 +163,7 @@ Experiment links should be simple block links with a title and one-sentence desc
 - centred existing portrait (`assets/profile.png`), site title, and the site tagline from `data/site.json` as the single line under the name (`.contact-bio`, same fluid one-line treatment as homepage `.hero-copy`: `container-type` on `.contact-intro`, `font-size: min(0.82rem, 3.2cqi)`, `white-space: nowrap`, `data-one-line`);
 - section headings are title-case **Contact** and **Projects**;
 - every action uses a `.contact-bar`: rounded rectangle (not a pill), left equal square thumbnail, title centred in the row, no kebab menus;
-- contact order: WhatsApp, Save Contact (`contact/nazirul-hafiy.vcf`), Email, LinkedIn, Portfolio (`https://hafiy.my/`) — local monochrome PNGs under `assets/contact/` with matched optical size (Portfolio uses a home mark, same `#111` / dark-invert treatment as the other bars);
+- contact order: Portfolio (`https://hafiy.my/`), WhatsApp, Save Contact (`contact/nazirul-hafiy.vcf`), Email, LinkedIn — local monochrome PNGs under `assets/contact/` with matched optical size (Portfolio uses a home mark; Save Contact uses a phone mark at `assets/contact/phone.png`; same `#111` / dark-invert treatment as the other bars);
 - Projects bars only: `pcds2030.com`, `sde2030.com`, `ai.sarawak.news` using monochrome local marks derived from each site’s currently declared production-browser favicon (`favicon-production-browser.png`; no coloured logos on the page). Shared solid-S silhouettes after mono are acceptable when that is what the live marks are;
 - phone number lives in the vCard (and WhatsApp digits), not as a separate `tel:` row;
 - keep hafiy.my monospace/monochrome tokens and automatic light/dark; do not copy third-party branding or invent logos.
