@@ -89,6 +89,20 @@ The hero should remain concise:
 
 Homepage `<title>`, meta description, Open Graph / Twitter tags, and footer brand text are filled by `scripts/build.py` from the same file. Do not hand-type those strings in templates, scripts, or docs; `tests/test_site_copy.py` fails CI if they appear elsewhere.
 
+### Favicon (site tab / touch icon)
+
+Browser and touch icons use the approved original-photo PFP crop (full composition and background retained — not a silhouette redraw). Canonical files under `assets/`:
+
+| Path | Role |
+| --- | --- |
+| `favicon.ico` | Multi-size ICO (16 / 32 / 48); each frame is the matching PNG embedded byte-for-byte |
+| `favicon-16.png` | 16×16 PNG |
+| `favicon.png` / `favicon-32.png` | 32×32 PNG (identical bytes; HTML declares `favicon.png`) |
+| `favicon-48.png` | 48×48 PNG |
+| `apple-touch-icon.png` / `favicon-180.png` | 180×180 PNG (identical bytes; HTML declares `apple-touch-icon.png`) |
+
+Public pages declare those links with cache-bust `?v=3`. Do not substitute silhouette marks for the site favicon. `assets/profile.png` is the page portrait / social image and is separate from the favicon set (do not overwrite it when refreshing icons). `tests/test_favicon.py` asserts the approved SHA-256 hashes, ICO↔PNG frame parity, and link presence on templates and built pages.
+
 ### Social sharing (identity pages)
 
 Portfolio identity pages (`/`, `/contact/`, `/experience.html`, `/posts/`) share one Open Graph / Twitter card contract from `scripts/build.py` tokens (`@@SITE_SOCIAL_IMAGE@@`, `@@SITE_TWITTER_CARD@@`, plus title / tagline from `data/site.json`):

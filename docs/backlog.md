@@ -13,6 +13,7 @@ Practical next tasks from the current repo audit. Keep this list grounded in mai
 - [ ] Review all public pages for repeated header/footer markup and define a safe manual update pattern in the README if the site stays framework-free.
 - [ ] Refresh `sitemap.xml` `lastmod` values whenever public pages materially change.
 - [x] Identity pages (`/`, `/contact/`, `/experience.html`, `/posts/`) share one social card: site title, tagline, `assets/profile.png?v=2` (1024×1024), `twitter:card=summary`. Article pages keep article-specific OG title/description.
+- [x] Site favicon / apple-touch icons use the approved original-photo PFP assets (16/32/48/180 + multi-size ICO), not silhouette redraws. Cache-bust `?v=3`.
 - [ ] Review article reading times after any substantial article edits.
 
 ## Content opportunities
