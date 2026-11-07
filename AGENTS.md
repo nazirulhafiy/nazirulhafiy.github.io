@@ -12,7 +12,7 @@ The production site is static HTML and CSS:
 - a small Python build (`scripts/build.py`) renders homepage, experience, and writing pages from `data/site.json` and `site/templates/`; run it after changing site-wide copy;
 - no framework and no CSS library;
 - no environment variables;
-- no JavaScript on the portfolio pages (`/`, `/experience.html`, `/contact/`, `/posts/`);
+- portfolio pages (`/`, `/experience.html`, `/contact/`, `/posts/`) stay usable without JavaScript; the shared analytics loader is the only sitewide script, plus a contact-only GA4 click helper on `/contact/` (see `docs/design.md`);
 - hosted as the GitHub Pages user site `nazirulhafiy.github.io`, with the custom domain in `CNAME` (`hafiy.my`).
 
 `/cat-pinball-game/` is published from [nazirulhafiy/cat-pinball-game](https://github.com/nazirulhafiy/cat-pinball-game), not from this repo. `/sifir-sprint/` and `/kracked-quest/` are published from their own repos and client-redirect to `https://polah.app/sifir/` and `https://polah.app/kracked/`. The short paths `/sifir` and `/kracked` are not files here. See `README.md`.
@@ -33,7 +33,7 @@ These files define the product intent, design direction, and known maintenance p
 - Keep the site static by default. Do not introduce a framework, bundler, package manager, or CMS unless explicitly requested.
 - Preserve the minimalist, content-first identity. Avoid decorative UI, heavy animation, or feature creep.
 - Prefer small, targeted changes over broad rewrites.
-- Keep the portfolio pages usable without JavaScript. Do not add JavaScript to portfolio pages unless explicitly requested.
+- Keep the portfolio pages usable without JavaScript. Do not add JavaScript to portfolio pages unless explicitly requested. The allowed exceptions are the shared analytics loader and the `/contact/`-only `email_click` / `contact_download` helper documented in `docs/design.md`.
 - Keep routes and links root-relative where the current site already uses that style.
 - Do not remove Google site-verification files unless asked.
 - Preserve the custom domain setup in `CNAME`.

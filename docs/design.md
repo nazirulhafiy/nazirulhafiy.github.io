@@ -162,7 +162,7 @@ Avoid inflated claims, buzzword-heavy copy, and generic portfolio language.
 
 ## Analytics
 
-Portfolio pages (home, experience, writing) get **one** build-time analytics loader from `data/analytics.json`.
+Portfolio pages (home, experience, writing, contact) get **one** build-time analytics loader from `data/analytics.json`.
 
 **Registry.** `data/analytics.json` (kit shape `version: 1`) holds the shared `internal_cookie` (`sn_internal`), fleet `spa` (`false`), and the `hafiy.my` host entry: GA4 `G-JTQGL6WQYW`, Cloudflare Web Analytics token `57920823ff68472c8e325232c7b86127`, aliases `www.hafiy.my` and `nazirulhafiy.github.io`. `scripts/analytics_registry.py` validates the file.
 
@@ -170,7 +170,18 @@ Portfolio pages (home, experience, writing) get **one** build-time analytics loa
 
 **Internal traffic.** `?internal=1` sets `sn_internal=1` (~1 year, `Path=/`, `SameSite=Lax`, plus `Secure` on HTTPS). `?internal=0` clears it. While that cookie is set, GA4 config includes `traffic_type: 'internal'` and the Cloudflare beacon is not loaded. Agents and automation that open the live site should use `?internal=1` (see `AGENTS.md`).
 
-**CI.** After `scripts/build.py`, `scripts/check_analytics_dist.py` fails if any generated page has zero or multiple loaders, if GA4 / CF values drift from the registry, or if cookie / `spa` values drift.
+**Enhanced measurement (do not double-count).** GA4 HTTPS outbound clicks already cover WhatsApp, LinkedIn, and project links on `/contact/`. Do not add custom events for those activations.
+
+**Contact custom events (`/contact/` only).** Mailto and the same-origin `.vcf` download are not covered by outbound or download enhanced measurement, so `/contact/` includes one tiny inline `<script data-sn-contact-events>` that listens for activation clicks on two marked bars only:
+
+| Activation | Marker | GA4 event name | Parameters |
+| --- | --- | --- | --- |
+| Email (`mailto:`) | `data-sn-event="email_click"` | `email_click` | `surface: "contact"` |
+| Save Contact (`.vcf`) | `data-sn-event="contact_download"` | `contact_download` | `surface: "contact"` |
+
+These count activation clicks only (not completed mail sends or address-book saves). The listener never calls `preventDefault`, never waits on transport/beacons, and no-ops when `gtag` is missing or throws, so mailto and download keep working when analytics is absent, blocked, or off-host (for example localhost). Event parameters must stay nonpersonal: no email, phone, full contact URLs, or vCard payload.
+
+**CI.** After `scripts/build.py`, `scripts/check_analytics_dist.py` fails if any generated page has zero or multiple loaders, if GA4 / CF values drift from the registry, or if cookie / `spa` values drift. `tests/test_contact_events.py` asserts the contact-only event markers and that other built pages do not ship `data-sn-contact-events`.
 
 No Content-Security-Policy is set; if one is added, allow `www.googletagmanager.com`, `*.google-analytics.com` and `static.cloudflareinsights.com`.
 
