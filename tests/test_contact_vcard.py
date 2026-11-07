@@ -90,15 +90,15 @@ class ContactVCardTests(unittest.TestCase):
             flags=re.DOTALL,
         )
         expected = [
+            ("https://hafiy.my/", "/assets/contact/portfolio.png?v=3", "Portfolio"),
             ("https://wa.me/60135623005", "/assets/contact/whatsapp.png?v=3", "WhatsApp"),
-            ("/contact/nazirul-hafiy.vcf", "/assets/contact/download.png?v=3", "Save Contact"),
+            ("/contact/nazirul-hafiy.vcf", "/assets/contact/phone.png?v=6", "Save Contact"),
             ("mailto:nazirul@hafiy.my", "/assets/contact/email.png?v=3", "Email"),
             (
                 "https://www.linkedin.com/in/nazirulhafiy/",
                 "/assets/contact/linkedin.png?v=3",
                 "LinkedIn",
             ),
-            ("https://hafiy.my/", "/assets/contact/portfolio.png?v=3", "Portfolio"),
             ("https://pcds2030.com", "/assets/contact/pcds2030.png?v=3", "pcds2030.com"),
             ("https://sde2030.com", "/assets/contact/sde2030.png?v=3", "sde2030.com"),
             (
@@ -112,8 +112,9 @@ class ContactVCardTests(unittest.TestCase):
         portfolio_open = html.split('href="https://hafiy.my/"', 1)[1].split("</a>", 1)[0]
         self.assertNotIn("data-sn-event", portfolio_open)
         self.assertNotIn("target=", portfolio_open)
-        self.assertRegex(bars[0][0], r"^https://wa\.me/\d+$")
+        self.assertRegex(bars[1][0], r"^https://wa\.me/\d+$")
         self.assertIn('download="nazirul-hafiy.vcf"', html)
+        self.assertIn('data-sn-event="contact_download"', html)
 
         for _, src, _ in expected:
             path_only = src.split("?", 1)[0]
