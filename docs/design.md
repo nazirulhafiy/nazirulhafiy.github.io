@@ -124,7 +124,7 @@ Experiment links should be simple block links with a title and one-sentence desc
 `/contact/` is a mobile-first link hub rendered from `site/templates/contact/index.html`:
 
 - no top navbar on this page only;
-- centred existing portrait (`assets/profile.png`), site title, and the site tagline from `data/site.json` as the single line under the name;
+- centred existing portrait (`assets/profile.png`), site title, and the site tagline from `data/site.json` as the single line under the name (`.contact-bio`, same fluid one-line treatment as homepage `.hero-copy`: `container-type` on `.contact-intro`, `font-size: min(0.82rem, 3.2cqi)`, `white-space: nowrap`, `data-one-line`);
 - section headings are title-case **Contact** and **Projects**;
 - every action uses a `.contact-bar`: rounded rectangle (not a pill), left equal square thumbnail, title centred in the row, no kebab menus;
 - contact order: WhatsApp, Save Contact (`contact/nazirul-hafiy.vcf`), Email, LinkedIn — local monochrome PNGs under `assets/contact/` with matched optical size;
@@ -201,6 +201,6 @@ No Content-Security-Policy is set; if one is added, allow `www.googletagmanager.
 
 Pull requests run a Playwright layout check on `/`, `/experience.html`, `/posts/`, and `/contact/` in Chromium and WebKit. See [ci-layout-check.md](ci-layout-check.md).
 
-`[data-box]` marks layout regions the check watches for overlap and clipping (for example the homepage hero text column, section headings, and the experience header row). `[data-one-line]` marks copy that must stay on one line at the tested viewports — notably the homepage `.hero-copy` tagline, which broke in Safari when the role line wrapped after a font-size change ([PR #21](https://github.com/nazirulhafiy/nazirulhafiy.github.io/pull/21)).
+`[data-box]` marks layout regions the check watches for overlap and clipping (for example the homepage hero text column, section headings, and the experience header row). `[data-one-line]` marks copy that must stay on one line at the tested viewports — notably the homepage `.hero-copy` tagline, which broke in Safari when the role line wrapped after a font-size change ([PR #21](https://github.com/nazirulhafiy/nazirulhafiy.github.io/pull/21)), and the contact `.contact-bio` tagline (same site tagline under a narrower hub measure).
 
 Markers live in `site/templates/`; run `python3 scripts/build.py` after editing them. CI-only Node dependencies are listed in `package.json` at the repo root; production Pages deploy remains static HTML and CSS with no runtime package manager.

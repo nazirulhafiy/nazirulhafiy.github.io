@@ -269,6 +269,7 @@ nav a[aria-current="page"] {
 }
 
 .hero-copy,
+.contact-bio,
 .lede,
 .experience-role-preview > p:last-child,
 .history-role > p:not(.role-date):not(.role-hierarchy),
@@ -453,6 +454,7 @@ nav a[aria-current="page"] {
 
 .contact-intro {
   margin-bottom: 1.65rem;
+  container-type: inline-size;
 }
 
 .contact-avatar {
@@ -466,12 +468,15 @@ nav a[aria-current="page"] {
 }
 
 .contact-bio {
-  max-width: 22rem;
+  max-width: 100%;
   margin: 0 auto;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  font-size: min(0.82rem, 3.2cqi);
   line-height: 1.45;
-  text-wrap: pretty;
+  white-space: nowrap;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 .contact-section,
