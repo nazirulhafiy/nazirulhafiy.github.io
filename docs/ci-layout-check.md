@@ -54,7 +54,7 @@ The same workflow also runs `npm run contact-events-check` after the layout pass
 - absent, non-function, and throwing `gtag` leave mailto/download default actions unprevented and do not surface uncaught page errors;
 - emitted event params contain no PII (email, phone, contact URLs, vCard payload).
 
-Default-action preservation is checked by reading `event.defaultPrevented` in a bubble-phase probe registered after the page script, then calling `preventDefault` only in the probe so the test stays inside Chromium.
+Default-action preservation is checked by reading `event.defaultPrevented` on a **document** bubble-phase probe registered after the page script (the implementation is also a document bubble listener; an anchor-target probe would run too early). The probe calls `preventDefault` only after that observation so the test stays inside Chromium. An isolated harness injects a temporary canceling document listener (not committed product code) and asserts the probe sees `defaultPrevented === true`, proving the oracle would catch a regression that cancelled the default.
 
 ## Runtime
 

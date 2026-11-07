@@ -122,9 +122,14 @@ async function recordedEvents(page) {
 }
 
 /**
- * Click a selector and report whether the contact-events listener cancelled
- * the default action. The probe listener runs in bubble phase after the page
- * script (registered later), then preventDefault so mailto/download stay local.
+ * Click a selector and report whether any earlier bubble handler cancelled the
+ * default action.
+ *
+ * The page script listens on `document` (bubble). A probe on the anchor itself
+ * would run in the target phase — before that delegated handler — and would
+ * observe too early. The probe therefore also listens on `document` (bubble),
+ * registered after the page script, so it runs after the implementation.
+ * Only then does the probe call preventDefault so mailto/download stay local.
  */
 async function clickAndProbeDefault(page, selector) {
   return page.evaluate((sel) => {
@@ -132,19 +137,75 @@ async function clickAndProbeDefault(page, selector) {
     if (!a) return { ok: false, reason: `missing ${sel}` }
     return new Promise((resolve) => {
       const onClick = (ev) => {
-        a.removeEventListener('click', onClick, false)
+        const target = ev.target && ev.target.closest ? ev.target.closest('a') : null
+        if (target !== a) return
+        document.removeEventListener('click', onClick, false)
         resolve({
           ok: true,
           defaultPrevented: ev.defaultPrevented,
           href: a.getAttribute('href') || '',
           eventName: a.getAttribute('data-sn-event') || null,
         })
+        // Test-only cancel AFTER observing what earlier handlers did.
         ev.preventDefault()
       }
-      a.addEventListener('click', onClick, false)
+      document.addEventListener('click', onClick, false)
       a.click()
     })
   }, selector)
+}
+
+/**
+ * Isolated harness: inject a temporary document bubble canceler (not product
+ * code) registered after the page script but before the probe. The probe must
+ * observe defaultPrevented === true, proving the oracle catches cancellation.
+ */
+async function caseProbeOracleDetectsCancellation(browser) {
+  const { context, page } = await openContact(browser, { gtagMode: 'stub' })
+  try {
+    const result = await page.evaluate(() => {
+      const a = document.querySelector('a[data-sn-event="email_click"]')
+      if (!a) return { ok: false, reason: 'missing email_click bar' }
+      return new Promise((resolve) => {
+        const canceler = (ev) => {
+          const target = ev.target && ev.target.closest ? ev.target.closest('a') : null
+          if (target !== a) return
+          ev.preventDefault()
+        }
+        const probe = (ev) => {
+          const target = ev.target && ev.target.closest ? ev.target.closest('a') : null
+          if (target !== a) return
+          document.removeEventListener('click', canceler, false)
+          document.removeEventListener('click', probe, false)
+          resolve({
+            ok: true,
+            defaultPrevented: ev.defaultPrevented,
+          })
+          // Already cancelled by canceler; keep local either way.
+          ev.preventDefault()
+        }
+        // Order on document bubble: page script → canceler → probe.
+        document.addEventListener('click', canceler, false)
+        document.addEventListener('click', probe, false)
+        a.click()
+      })
+    })
+    assert(result.ok, result.reason || 'oracle harness failed to run')
+    assert(
+      result.defaultPrevented === true,
+      'oracle must observe defaultPrevented after an intentional canceler; probe ordering is wrong',
+    )
+
+    // Sanity: without the canceler, the real page script must leave default intact.
+    const clean = await clickAndProbeDefault(page, 'a[data-sn-event="email_click"]')
+    assert(clean.ok, 'clean email_click probe failed')
+    assert(
+      clean.defaultPrevented === false,
+      'real contact-events script unexpectedly prevented default',
+    )
+  } finally {
+    await context.close()
+  }
 }
 
 async function clickHttpsBars(page) {
@@ -263,6 +324,7 @@ async function caseGtagFailurePreservesDefault(browser, gtagMode) {
 }
 
 const CASES = [
+  ['probe oracle detects cancellation', caseProbeOracleDetectsCancellation],
   ['successful single emission', caseSuccessfulSingleEmission],
   ['repeated activations one event each', caseRepeatedActivationsOneEach],
   ['uninstrumented HTTPS links silent', caseUninstrumentedHttpsSilent],
