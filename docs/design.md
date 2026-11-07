@@ -87,6 +87,8 @@ The hero should remain concise:
 - one professional pitch (`tagline` in `data/site.json`);
 - icon contact links.
 
+**Load entrance (homepage only).** `.hero` plays a one-shot entrance on first paint: opacity `0` → `1` with `translateY(8px)` and `scale(0.98)` settling to rest. Duration is `220ms` with ease-out `cubic-bezier(0.16, 1, 0.3, 1)`. Prefer `@starting-style` + transition where `transition-behavior: allow-discrete` is supported; otherwise a matching `@keyframes hero-load-enter` fallback. Do not stagger other sections, nav, or project blocks. Contact uses `.contact-intro`, not `.hero`, and does not share this entrance. Under `prefers-reduced-motion: reduce`, the entrance is disabled (no transform or opacity motion). CSS-only — no portfolio-page JavaScript.
+
 Homepage `<title>`, meta description, Open Graph / Twitter tags, and footer brand text are filled by `scripts/build.py` from the same file. Do not hand-type those strings in templates, scripts, or docs; `tests/test_site_copy.py` fails CI if they appear elsewhere.
 
 ### Favicon (site tab / touch icon)
