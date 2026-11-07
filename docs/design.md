@@ -21,6 +21,7 @@ The current public design is closer to editorial documentation than marketing co
 - Horizontal padding is controlled by `--gutter`.
 - The homepage hero uses a two-column layout on wider screens and stacks on small screens. The homepage has no site header.
 - Experience, writing, and article pages share a header: site name plus a primary nav (Experience, Writing, Experiments). At `38rem` and below the nav becomes a CSS checkbox menu. There is no menu script.
+- The contact microsite (`/contact/`) uses the same header shell with only the site name (no primary nav), then a compact identity block and stacked `.project` action rows. It is built for a fast mobile scan without changing homepage or shared nav.
 - Secondary pages use a centered article-style column.
 - Sections are separated by thin borders and clear headings.
 
@@ -107,6 +108,15 @@ Writing previews should include:
 
 Experiment links should be simple block links with a title and one-sentence description. Do not add category, location, or other kicker labels above project titles.
 
+### Contact microsite
+
+`/contact/` is a mobile-first link hub rendered from `site/templates/contact/index.html`:
+
+- identity uses the site title from `data/site.json` plus two short pitch lines for the page;
+- Reach actions are plain `.project` rows (email, phone, WhatsApp, LinkedIn) — no icon-only CTAs;
+- Work rows reuse the same pattern for portfolio, experience, writing, and the three public experiments already linked on the homepage;
+- keep the page event-agnostic; do not invent handles, phone numbers, or event details.
+
 ## Navigation
 
 Experience and writing pages use the shared header in `styles.css`:
@@ -115,7 +125,7 @@ Experience and writing pages use the shared header in `styles.css`:
 - narrow screens (`max-width: 38rem`) show a menu button. Checking `#nav-toggle` opens the nav and a backdrop. Both are `<label>` elements, so the menu works without JavaScript;
 - the current page sets `aria-current="page"`.
 
-The homepage does not include this header.
+The homepage does not include this header. The contact page keeps the site-name link home and omits the primary nav so the hub stays scan-first.
 
 ## Accessibility
 
@@ -162,7 +172,7 @@ No Content-Security-Policy is set; if one is added, allow `www.googletagmanager.
 
 ## Layout check
 
-Pull requests run a Playwright layout check on `/`, `/experience.html`, and `/posts/` in Chromium and WebKit. See [ci-layout-check.md](ci-layout-check.md).
+Pull requests run a Playwright layout check on `/`, `/experience.html`, `/posts/`, and `/contact/` in Chromium and WebKit. See [ci-layout-check.md](ci-layout-check.md).
 
 `[data-box]` marks layout regions the check watches for overlap and clipping (for example the homepage hero text column, section headings, and the experience header row). `[data-one-line]` marks copy that must stay on one line at the tested viewports — notably the homepage `.hero-copy` tagline, which broke in Safari when the role line wrapped after a font-size change ([PR #21](https://github.com/nazirulhafiy/nazirulhafiy.github.io/pull/21)).
 

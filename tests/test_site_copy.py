@@ -53,6 +53,7 @@ TEXT_SUFFIXES = {
 GENERATED_PATHS = {
     "index.html",
     "experience.html",
+    "contact/index.html",
     "posts/index.html",
     "posts/agentic-ai-force-multiplier.html",
     "posts/becoming-ai-native.html",

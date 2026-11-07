@@ -11,6 +11,7 @@ Pages checked:
 - `/` (home)
 - `/experience.html`
 - `/posts/`
+- `/contact/`
 
 Viewports: 375×667, 390×844, 390×680, and 1280×800. Each combination is tested in **light** and **dark** (`prefers-color-scheme`).
 

@@ -438,9 +438,37 @@ nav a[aria-current="page"] {
 }
 
 .experience-page,
-.posts-page {
+.posts-page,
+.contact-page {
   max-width: 43rem;
   margin-inline: auto;
+}
+
+.contact-page .page-intro {
+  padding-block: clamp(2.25rem, 8vw, 4.5rem);
+}
+
+.contact-pitch {
+  max-width: 36rem;
+  margin: 0 0 0.7rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.contact-pitch:last-child {
+  margin-bottom: 0;
+}
+
+.contact-block {
+  padding-top: 0;
+}
+
+.contact-block .section-heading {
+  margin-bottom: 0.35rem;
+}
+
+.contact-list .project:first-child {
+  border-top: 1px solid var(--border);
 }
 
 .experience-history {

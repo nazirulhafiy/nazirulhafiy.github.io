@@ -13,6 +13,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://hafiy.my/contact/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://hafiy.my/posts/</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>

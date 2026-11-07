@@ -26,6 +26,7 @@ const PAGES = [
   { name: 'home', path: '/' },
   { name: 'experience', path: '/experience.html' },
   { name: 'posts', path: '/posts/' },
+  { name: 'contact', path: '/contact/' },
 ]
 
 const TOLERANCE_PX = 1

@@ -30,6 +30,7 @@ SITE_COPY_FIELDS = (
 OUTPUTS: dict[str, str] = {
     "index.html": "index.html",
     "experience.html": "experience.html",
+    "contact/index.html": "contact/index.html",
     "posts/index.html": "posts/index.html",
     "posts/agentic-ai-force-multiplier.html": "posts/agentic-ai-force-multiplier.html",
     "posts/becoming-ai-native.html": "posts/becoming-ai-native.html",
@@ -92,6 +93,15 @@ def substitution_map(site: dict[str, str]) -> dict[str, str]:
         "@@SITE_EXPERIENCE_META_ESC@@": html.escape(
             f"The professional experience of {title} across project delivery, "
             "operations, connectivity, marketing, and digital communities.",
+            quote=True,
+        ),
+        "@@SITE_CONTACT_META@@": (
+            f"Contact {title} — email, phone, WhatsApp, LinkedIn, "
+            "and links to portfolio work and experiments."
+        ),
+        "@@SITE_CONTACT_META_ESC@@": html.escape(
+            f"Contact {title} — email, phone, WhatsApp, LinkedIn, "
+            "and links to portfolio work and experiments.",
             quote=True,
         ),
     }
