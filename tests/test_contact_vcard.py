@@ -74,7 +74,6 @@ class ContactVCardTests(unittest.TestCase):
         self.assertIn('<h2 id="contact-title">Contact</h2>', html)
         self.assertIn('<h2 id="projects-title">Projects</h2>', html)
         self.assertNotIn("contact-bio\">Brings together", html)
-        self.assertNotIn("Portfolio", html)
         self.assertNotIn("/experience.html", html)
         self.assertNotIn('href="/posts/"', html)
         self.assertNotIn("tel:", html)
@@ -99,6 +98,7 @@ class ContactVCardTests(unittest.TestCase):
                 "/assets/contact/linkedin.png?v=3",
                 "LinkedIn",
             ),
+            ("https://hafiy.my/", "/assets/contact/portfolio.png?v=3", "Portfolio"),
             ("https://pcds2030.com", "/assets/contact/pcds2030.png?v=3", "pcds2030.com"),
             ("https://sde2030.com", "/assets/contact/sde2030.png?v=3", "sde2030.com"),
             (
@@ -108,6 +108,10 @@ class ContactVCardTests(unittest.TestCase):
             ),
         ]
         self.assertEqual([(h, s, t.strip()) for h, s, t in bars], expected)
+        # Portfolio is a normal same-site link: no custom GA marker, no new-tab target.
+        portfolio_open = html.split('href="https://hafiy.my/"', 1)[1].split("</a>", 1)[0]
+        self.assertNotIn("data-sn-event", portfolio_open)
+        self.assertNotIn("target=", portfolio_open)
         self.assertRegex(bars[0][0], r"^https://wa\.me/\d+$")
         self.assertIn('download="nazirul-hafiy.vcf"', html)
 
@@ -126,6 +130,9 @@ class ContactVCardTests(unittest.TestCase):
         self.assertIn('href="https://wa.me/60135623005"', html)
         self.assertIn('href="mailto:nazirul@hafiy.my"', html)
         self.assertIn('href="/contact/nazirul-hafiy.vcf"', html)
+        self.assertIn('href="https://hafiy.my/"', html)
+        self.assertIn(">Portfolio<", html)
+        self.assertIn("/assets/contact/portfolio.png?v=3", html)
         self.assertIn("data-sn-analytics-loader", html)
         self.assertIn(html_lib.escape(copy["tagline"]), html)
         self.assertIn(">Contact<", html)

@@ -212,6 +212,7 @@ async function clickHttpsBars(page) {
   const selectors = [
     'a.contact-bar[href^="https://wa.me/"]',
     'a.contact-bar[href*="linkedin.com"]',
+    'a.contact-bar[href="https://hafiy.my/"]',
     'a.contact-bar[href="https://pcds2030.com"]',
     'a.contact-bar[href="https://sde2030.com"]',
     'a.contact-bar[href="https://ai.sarawak.news"]',

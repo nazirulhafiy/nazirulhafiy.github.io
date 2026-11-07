@@ -50,7 +50,7 @@ The same workflow also runs `npm run contact-events-check` after the layout pass
 
 - one `email_click` and one `contact_download` with `{ surface: "contact" }` per successful activation;
 - repeated activations emit one event each (no double-registered listeners);
-- WhatsApp, LinkedIn, and project HTTPS bars do not emit those custom events;
+- WhatsApp, LinkedIn, Portfolio (`https://hafiy.my/`), and project HTTPS bars do not emit those custom events;
 - absent, non-function, and throwing `gtag` leave mailto/download default actions unprevented and do not surface uncaught page errors;
 - emitted event params contain no PII (email, phone, contact URLs, vCard payload).
 
