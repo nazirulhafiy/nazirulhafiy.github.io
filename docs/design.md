@@ -24,9 +24,9 @@ Portfolio **hover / press** polish is CSS-only (no JavaScript). It is separate f
 | `--ease-out` | `cubic-bezier(0.23, 1, 0.32, 1)` | Strong ease-out for UI feedback |
 | `--duration-ui` | `160ms` | Color / border / background transitions |
 | `--duration-press` | `140ms` | Transform / press feedback |
-| `--ease-load` | `cubic-bezier(0.16, 1, 0.3, 1)` | Soft ease-out for page load entrance |
-| `--duration-load` | `220ms` | Load entrance duration (≤250ms) |
-| `--load-rise` | `8px` | Load entrance `translateY` distance |
+| `--ease-load` | `ease-out` | Evil Rabbit load easing (direct recipe) |
+| `--duration-load` | `500ms` | Load entrance duration (Evil Rabbit direct) |
+| `--load-rise` | `10px` | Load entrance `translateY` distance |
 
 Rules:
 
@@ -107,7 +107,7 @@ The hero should remain concise:
 - one professional pitch (`tagline` in `data/site.json`);
 - icon contact links.
 
-**Load entrance (homepage + contact).** Inspired by evilrabbit.com’s CSS band stagger (`opacity` + slight `translateY`, short delays) but quieter and scoped. Shared `@keyframes load-enter`: opacity `0` → `1` with `translateY(var(--load-rise))` (`8px`), duration `--duration-load` (`220ms`), easing `--ease-load`. No blur, no scale. Homepage: `.hero` at 0 delay (prefer `@starting-style` + transition where `transition-behavior: allow-discrete` is supported; otherwise the keyframe), then `main > .section` bands at **50 / 100 / 150ms** (experience → writing → experiments). Contact: `.contact-intro` at 0, `.contact-section` at 50ms, `.contact-projects` at 100ms. Do not animate nav, footer, experience/writing inner pages, or individual contact bars. Under `prefers-reduced-motion: reduce`, all load entrances are disabled (no transform or opacity motion). CSS-only — no portfolio-page JavaScript.
+**Load entrance (homepage + contact).** Direct copy of evilrabbit.com’s CSS band recipe (user-directed; iterate later if it does not fit). Shared `@keyframes load-enter`: opacity `0` → `1` with `translateY(10px)` → `0`, duration **500ms**, easing **`ease-out`**, fill `forwards`, base `opacity: 0` on each band. No blur, no scale. Homepage: `.hero` at 0 delay, then `main > .section` at **100 / 200 / 300ms** (experience → writing → experiments). Contact: `.contact-intro` at 0, `.contact-section` at 100ms, `.contact-projects` at 200ms. Do not animate nav, footer, experience/writing inner pages, or individual contact bars. Under `prefers-reduced-motion: reduce`, all load entrances are disabled (opacity 1, no transform) — hafiy requirement even though Evil Rabbit does not gate its fade. CSS-only — no portfolio-page JavaScript.
 
 Homepage `<title>`, meta description, Open Graph / Twitter tags, and footer brand text are filled by `scripts/build.py` from the same file. Do not hand-type those strings in templates, scripts, or docs; `tests/test_site_copy.py` fails CI if they appear elsewhere.
 

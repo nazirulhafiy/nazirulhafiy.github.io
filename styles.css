@@ -15,10 +15,10 @@
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --duration-ui: 160ms;
   --duration-press: 140ms;
-  /* One-shot page load entrance (homepage + contact). */
-  --ease-load: cubic-bezier(0.16, 1, 0.3, 1);
-  --duration-load: 220ms;
-  --load-rise: 8px;
+  /* One-shot page load entrance (homepage + contact) — direct Evil Rabbit recipe. */
+  --ease-load: ease-out;
+  --duration-load: 500ms;
+  --load-rise: 10px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -212,8 +212,9 @@ nav a[aria-current="page"] {
   gap: clamp(1.75rem, 5vw, 3.25rem);
   padding-block: clamp(2.25rem, 7vw, 3.75rem) clamp(1.25rem, 4vw, 1.75rem);
   text-align: left;
-  /* One-shot load entrance: keyframe fallback for browsers without @starting-style. */
-  animation: load-enter var(--duration-load) var(--ease-load) both;
+  /* Direct Evil Rabbit load recipe: opacity 0 + fadeIn 0.5s ease-out forwards. */
+  opacity: 0;
+  animation: load-enter var(--duration-load) var(--ease-load) forwards;
 }
 
 @keyframes load-enter {
@@ -221,42 +222,29 @@ nav a[aria-current="page"] {
     opacity: 0;
     transform: translateY(var(--load-rise));
   }
-}
 
-/* Prefer transition + @starting-style where supported (Chrome 117+, Safari 17.5+). */
-@supports (transition-behavior: allow-discrete) {
-  .hero {
-    animation: none;
+  to {
     opacity: 1;
     transform: translateY(0);
-    transition:
-      opacity var(--duration-load) var(--ease-load),
-      transform var(--duration-load) var(--ease-load);
-  }
-
-  @starting-style {
-    .hero {
-      opacity: 0;
-      transform: translateY(var(--load-rise));
-    }
   }
 }
 
-/* Homepage primary bands after hero: short stagger (Evil Rabbit–inspired, quieter). */
+/* Homepage primary bands after hero: 100ms stagger steps (Evil Rabbit direct). */
 main > .section {
-  animation: load-enter var(--duration-load) var(--ease-load) both;
+  opacity: 0;
+  animation: load-enter var(--duration-load) var(--ease-load) forwards;
 }
 
 main > .section:nth-child(2) {
-  animation-delay: 50ms;
-}
-
-main > .section:nth-child(3) {
   animation-delay: 100ms;
 }
 
+main > .section:nth-child(3) {
+  animation-delay: 200ms;
+}
+
 main > .section:nth-child(4) {
-  animation-delay: 150ms;
+  animation-delay: 300ms;
 }
 
 .hero > div {
@@ -543,7 +531,8 @@ main > .section:nth-child(4) {
 .contact-intro {
   margin-bottom: 1.65rem;
   container-type: inline-size;
-  animation: load-enter var(--duration-load) var(--ease-load) both;
+  opacity: 0;
+  animation: load-enter var(--duration-load) var(--ease-load) forwards;
 }
 
 .contact-avatar {
@@ -571,15 +560,16 @@ main > .section:nth-child(4) {
 .contact-section,
 .contact-projects {
   margin: 0 0 1.85rem;
-  animation: load-enter var(--duration-load) var(--ease-load) both;
+  opacity: 0;
+  animation: load-enter var(--duration-load) var(--ease-load) forwards;
 }
 
 .contact-section {
-  animation-delay: 50ms;
+  animation-delay: 100ms;
 }
 
 .contact-projects {
-  animation-delay: 100ms;
+  animation-delay: 200ms;
 }
 
 .contact-section h2,
