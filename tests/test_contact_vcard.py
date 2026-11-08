@@ -94,7 +94,7 @@ class ContactVCardTests(unittest.TestCase):
             flags=re.DOTALL,
         )
         expected = [
-            ("https://wa.me/60135623005", "/assets/contact/whatsapp.png?v=3", "WhatsApp"),
+            ("https://wa.me/nazirulhafiy", "/assets/contact/whatsapp.png?v=3", "WhatsApp"),
             ("tel:+60135623005", "/assets/contact/phone.png?v=7", "Call"),
             ("mailto:nazirul@hafiy.my", "/assets/contact/email.png?v=3", "Email"),
             (
@@ -111,7 +111,7 @@ class ContactVCardTests(unittest.TestCase):
             ),
         ]
         self.assertEqual([(h, s, t.strip()) for h, s, t in bars], expected)
-        self.assertRegex(bars[0][0], r"^https://wa\.me/\d+$")
+        self.assertEqual(bars[0][0], "https://wa.me/nazirulhafiy")
         self.assertEqual(bars[1][0], "tel:+60135623005")
         # Call is a normal tel: link: no custom GA marker, no new-tab target.
         call_open = html.split('href="tel:+60135623005"', 1)[1].split("</a>", 1)[0]
@@ -131,7 +131,7 @@ class ContactVCardTests(unittest.TestCase):
             self.skipTest("contact/index.html not built yet")
         copy = site_copy()
         html = CONTACT_BUILT.read_text(encoding="utf-8")
-        self.assertIn('href="https://wa.me/60135623005"', html)
+        self.assertIn('href="https://wa.me/nazirulhafiy"', html)
         self.assertIn('href="tel:+60135623005"', html)
         self.assertIn('href="mailto:nazirul@hafiy.my"', html)
         self.assertIn(">Call<", html)
