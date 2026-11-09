@@ -53,6 +53,7 @@ TEXT_SUFFIXES = {
 GENERATED_PATHS = {
     "index.html",
     "experience.html",
+    "404.html",
     "contact/index.html",
     "contact/nazirul-hafiy.vcf",
     "posts/index.html",

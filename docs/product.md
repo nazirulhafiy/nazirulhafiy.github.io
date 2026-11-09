@@ -72,6 +72,10 @@ These links demonstrate public, Sarawak-aware digital exploration without turnin
 
 `/contact/` is a compact, mobile-first contact hub for people who need reach and project links quickly (for example after scanning a card). It stays neutral and reusable: centred identity with the site tagline, Contact and Projects sections, WhatsApp (`wa.me/nazirulhafiy`) / Call (`tel:`) / Email / LinkedIn bars, and project bars for `pcds2030.com`, `sde2030.com`, and `ai.sarawak.news`. Phone details are reachable via Call; WhatsApp opens the `@nazirulhafiy` username landing. A vCard file remains published at `/contact/nazirul-hafiy.vcf` for direct URL use. It is not a second homepage and does not add a site-wide nav item.
 
+### Custom 404
+
+Missing portfolio paths should show the site’s own light, header/footer 404 page (`404.html`) instead of GitHub Pages’ default. Keep the message short and neutral, link home, and do not index the page. This does not own or replace routes published from other repositories (`/sifir-sprint/`, `/kracked-quest/`, `/cat-pinball-game/`).
+
 ### Games on the same host
 
 `/cat-pinball-game/` is published from its own repository. `/sifir-sprint/` and `/kracked-quest/` are too, and those pages redirect visitors to `https://polah.app/sifir/` and `https://polah.app/kracked/`. None of those games are source files here, and they are not homepage experiments.

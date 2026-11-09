@@ -26,6 +26,7 @@ from analytics_registry import load_analytics  # noqa: E402
 GENERATED_PATHS = (
     "index.html",
     "experience.html",
+    "404.html",
     "contact/index.html",
     "posts/index.html",
     "posts/agentic-ai-force-multiplier.html",
