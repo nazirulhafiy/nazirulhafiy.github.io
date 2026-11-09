@@ -30,6 +30,7 @@ SITE_COPY_FIELDS = (
 OUTPUTS: dict[str, str] = {
     "index.html": "index.html",
     "experience.html": "experience.html",
+    "404.html": "404.html",
     "contact/index.html": "contact/index.html",
     "posts/index.html": "posts/index.html",
     "posts/agentic-ai-force-multiplier.html": "posts/agentic-ai-force-multiplier.html",

@@ -9,7 +9,7 @@ This is the source for `hafiy.my`, a static personal portfolio and writing site.
 The production site is static HTML and CSS:
 
 - no package manager for the published site (CI uses `package.json` only for the Playwright layout check);
-- a small Python build (`scripts/build.py`) renders homepage, experience, and writing pages from `data/site.json` and `site/templates/`; run it after changing site-wide copy;
+- a small Python build (`scripts/build.py`) renders homepage, experience, custom 404, contact, and writing pages from `data/site.json` and `site/templates/`; run it after changing site-wide copy;
 - no framework and no CSS library;
 - no environment variables;
 - portfolio pages (`/`, `/experience.html`, `/contact/`, `/posts/`) stay usable without JavaScript; the shared analytics loader is the only sitewide script, plus a contact-only GA4 click helper on `/contact/` (see `docs/design.md`);

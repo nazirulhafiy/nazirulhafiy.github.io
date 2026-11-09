@@ -41,6 +41,7 @@ Rules:
 - Horizontal padding is controlled by `--gutter`.
 - The homepage hero uses a two-column layout on wider screens and stacks on small screens. The homepage has no site header.
 - Experience, writing, and article pages share a header: site name plus a primary nav (Experience, Writing, Experiments). At `38rem` and below the nav becomes a CSS checkbox menu. There is no menu script.
+- The custom GitHub Pages 404 page (`404.html`) uses that same header and footer, with absolute `/…` asset and nav paths so styles and links still resolve when Pages serves the file under a nested missing URL.
 - The contact microsite (`/contact/`) has no site header. It uses a centred portrait, one bio paragraph, stacked rounded-rectangular bars (left square thumbnail + centred title), and a Projects list of public experiment domains. It borrows link-hub bar geometry, not third-party branding, and does not change homepage or shared nav on other pages.
 - Secondary pages use a centered article-style column.
 - Sections are separated by thin borders and clear headings.
@@ -177,7 +178,19 @@ Experience and writing pages use the shared header in `styles.css`:
 - narrow screens (`max-width: 38rem`) show a menu button. Checking `#nav-toggle` opens the nav and a backdrop. Both are `<label>` elements, so the menu works without JavaScript;
 - the current page sets `aria-current="page"`.
 
-The homepage does not include this header. The contact page omits the header entirely so the hub stays scan-first.
+The homepage does not include this header. The contact page omits the header entirely so the hub stays scan-first. The 404 page includes the shared header but does not mark any nav item as current.
+
+### Custom 404 (`404.html`)
+
+GitHub Pages serves root `404.html` for missing paths on this user site (status 404, URL unchanged). The page is built from `site/templates/404.html` like other portfolio HTML:
+
+- short heading **Page not found** and one supporting line;
+- a home link;
+- `<meta name="robots" content="noindex">` (and no sitemap entry);
+- the shared analytics loader only — no synthetic 404 events;
+- absolute paths for CSS, favicons, and in-page links (`/styles.css…`, `/`, `/experience.html`, etc.).
+
+Do not add `/sifir`, `/kracked`, `/sifir-sprint`, `/kracked-quest`, or `/cat-pinball-game` files here; those routes are owned by other repositories (see README).
 
 ## Accessibility
 
@@ -210,7 +223,7 @@ Avoid inflated claims, buzzword-heavy copy, and generic portfolio language.
 
 ## Analytics
 
-Portfolio pages (home, experience, writing, contact) get **one** build-time analytics loader from `data/analytics.json`.
+Portfolio pages (home, experience, writing, contact, and the custom 404) get **one** build-time analytics loader from `data/analytics.json`.
 
 **Registry.** `data/analytics.json` (kit shape `version: 1`) holds the shared `internal_cookie` (`sn_internal`), fleet `spa` (`false`), and the `hafiy.my` host entry: GA4 `G-JTQGL6WQYW`, Cloudflare Web Analytics token `57920823ff68472c8e325232c7b86127`, aliases `www.hafiy.my` and `nazirulhafiy.github.io`. `scripts/analytics_registry.py` validates the file.
 

@@ -15,6 +15,7 @@ CONTACT_BUILT = ROOT / "contact" / "index.html"
 OTHER_PAGES = (
     "index.html",
     "experience.html",
+    "404.html",
     "posts/index.html",
     "posts/agentic-ai-force-multiplier.html",
     "posts/becoming-ai-native.html",

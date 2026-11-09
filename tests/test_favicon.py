@@ -40,6 +40,7 @@ REQUIRED_HREFS = (
 HTML_PATHS = [
     "site/templates/index.html",
     "site/templates/experience.html",
+    "site/templates/404.html",
     "site/templates/contact/index.html",
     "site/templates/posts/index.html",
     "site/templates/posts/agentic-ai-force-multiplier.html",
@@ -49,6 +50,7 @@ HTML_PATHS = [
     "site/templates/posts/the-future-of-agentic-ai.html",
     "index.html",
     "experience.html",
+    "404.html",
     "contact/index.html",
     "posts/index.html",
     "posts/agentic-ai-force-multiplier.html",
