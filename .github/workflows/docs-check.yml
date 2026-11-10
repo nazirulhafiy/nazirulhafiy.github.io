@@ -12,22 +12,14 @@ on:
 permissions:
   contents: read
   pull-requests: read
-  issues: write
 
 jobs:
-  docs-check:
+  # issues: write only here; no checkout, no repo scripts.
+  ensure-no-docs-needed-label:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Fetch pull request commits
-        run: |
-          git fetch --no-tags origin \
-            ${{ github.event.pull_request.base.sha }} \
-            ${{ github.event.pull_request.head.sha }}
-
       - name: Ensure no-docs-needed label exists
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,6 +27,23 @@ jobs:
           gh label create "no-docs-needed" \
             --description "Design or behaviour change needs no docs/ update" \
             --color "0E8A16" 2>/dev/null || true
+
+  docs-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Fetch pull request commits
+        run: |
+          git fetch --no-tags origin \
+            ${{ github.event.pull_request.base.sha }} \
+            ${{ github.event.pull_request.head.sha }}
 
       - name: docs-check
         env:

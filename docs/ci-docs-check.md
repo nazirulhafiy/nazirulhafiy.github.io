@@ -1,6 +1,11 @@
 # CI: docs check
 
-Pull requests run the **docs-check** job in [`.github/workflows/docs-check.yml`](../.github/workflows/docs-check.yml) on `opened`, `synchronize`, `reopened`, `labeled`, and `unlabeled`.
+Pull requests run the workflow in [`.github/workflows/docs-check.yml`](../.github/workflows/docs-check.yml) on `opened`, `synchronize`, `reopened`, `labeled`, and `unlabeled`.
+
+Two jobs:
+
+- **`docs-check`** — the required check. Read-only token (`contents: read`, `pull-requests: read`). Checks out the pull request with `persist-credentials: false`, then runs `scripts/docs_check_pr.py`.
+- **`ensure-no-docs-needed-label`** — creates the `no-docs-needed` label if missing. This is the only job with `issues: write`. It does not check out the repository or run repository scripts.
 
 ## What it enforces
 
@@ -30,7 +35,7 @@ These paths are watched in addition to `*.css` and `*.js` (see `scripts/docs_che
 
 Layout regressions on the portfolio shell are covered separately by [ci-layout-check.md](ci-layout-check.md) (`layout-check` workflow).
 
-Add the **`no-docs-needed`** label when a pull request touches watched files and truly needs no `docs/` update. The workflow creates the label if it is missing.
+Add the **`no-docs-needed`** label when a pull request touches watched files and truly needs no `docs/` update. The `ensure-no-docs-needed-label` job creates the label if it is missing.
 
 Use the label only for that case. A real layout, colour, type, or interaction change still needs `docs/design.md` (or another file under `docs/`) in the same PR.
 
