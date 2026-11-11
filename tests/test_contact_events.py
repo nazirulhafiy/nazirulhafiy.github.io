@@ -33,6 +33,11 @@ EMAIL_MARKER_RE = re.compile(
     r'|<a\b[^>]*\bdata-sn-event="email_click"[^>]*\bhref="mailto:[^"]+"[^>]*>',
     re.IGNORECASE,
 )
+DOWNLOAD_MARKER_RE = re.compile(
+    r'<a\b[^>]*\bhref="/contact/nazirul-hafiy\.vcf"[^>]*\bdata-sn-event="contact_download"[^>]*>'
+    r'|<a\b[^>]*\bdata-sn-event="contact_download"[^>]*\bhref="/contact/nazirul-hafiy\.vcf"[^>]*>',
+    re.IGNORECASE,
+)
 
 
 class ContactEventsTests(unittest.TestCase):
@@ -40,24 +45,25 @@ class ContactEventsTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         subprocess.run(["python3", "scripts/build.py"], cwd=ROOT, check=True)
 
-    def test_template_and_built_page_wire_exactly_one_event(self) -> None:
+    def test_template_and_built_page_wire_exactly_two_events(self) -> None:
         for path in (CONTACT_TEMPLATE, CONTACT_BUILT):
             text = path.read_text(encoding="utf-8")
             with self.subTest(path=path.relative_to(ROOT).as_posix()):
                 self.assertEqual(text.count("data-sn-contact-events"), 1)
                 self.assertEqual(text.count('data-sn-event="email_click"'), 1)
-                self.assertNotIn("contact_download", text)
+                self.assertEqual(text.count('data-sn-event="contact_download"'), 1)
                 self.assertRegex(text, EMAIL_MARKER_RE)
-                # HTTPS / tel contact/project bars must not get custom event markers.
+                self.assertRegex(text, DOWNLOAD_MARKER_RE)
+                # HTTPS contact/project bars must not get custom event markers.
                 self.assertNotIn('data-sn-event="whatsapp', text)
-                self.assertEqual(len(re.findall(r"data-sn-event=", text)), 1)
+                self.assertEqual(len(re.findall(r"data-sn-event=", text)), 2)
 
                 scripts = EVENTS_SCRIPT_RE.findall(text)
                 self.assertEqual(len(scripts), 1)
                 script = scripts[0]
                 self.assertIn('gtag("event", name, { surface: "contact" })', script)
                 self.assertIn("email_click", script)
-                self.assertNotIn("contact_download", script)
+                self.assertIn("contact_download", script)
                 self.assertNotIn("preventDefault", script)
                 self.assertNotIn("event_callback", script)
                 self.assertNotIn("transport", script)
