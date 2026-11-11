@@ -5,9 +5,10 @@
  * Uses a local static server + Chromium. Injects a gtag/dataLayer stub only —
  * does not load googletagmanager.com or emit production GA traffic.
  *
- * Covers: single emission, one event per repeated activation (no double
- * registration), unmarked HTTPS links, absent/nonfunction/throwing gtag
- * preserving default action, and no PII in event params.
+ * Covers: single emission of email_click + contact_download, one event per
+ * repeated activation (no double registration), unmarked HTTPS links,
+ * absent/nonfunction/throwing gtag preserving default action, and no PII in
+ * event params.
  */
 
 import { spawn } from 'node:child_process'
@@ -71,7 +72,9 @@ function paramsHavePii(params) {
 }
 
 function customEvents(recorded) {
-  return recorded.filter((row) => row.name === 'email_click')
+  return recorded.filter(
+    (row) => row.name === 'email_click' || row.name === 'contact_download',
+  )
 }
 
 async function openContact(browser, { gtagMode }) {
@@ -206,10 +209,9 @@ async function caseProbeOracleDetectsCancellation(browser) {
   }
 }
 
-async function clickUninstrumentedBars(page) {
+async function clickHttpsBars(page) {
   const selectors = [
     'a.contact-bar[href^="https://wa.me/"]',
-    'a.contact-bar[href^="tel:"]',
     'a.contact-bar[href*="linkedin.com"]',
     'a.contact-bar[href="https://pcds2030.com"]',
     'a.contact-bar[href="https://sde2030.com"]',
@@ -217,7 +219,7 @@ async function clickUninstrumentedBars(page) {
   ]
   for (const sel of selectors) {
     const result = await clickAndProbeDefault(page, sel)
-    assert(result.ok, `uninstrumented bar missing: ${sel}`)
+    assert(result.ok, `HTTPS bar missing: ${sel}`)
     assert(
       result.defaultPrevented === false,
       `unexpected defaultPrevented before probe on ${sel}`,
@@ -229,12 +231,15 @@ async function caseSuccessfulSingleEmission(browser) {
   const { context, page, pageErrors } = await openContact(browser, { gtagMode: 'stub' })
   try {
     const email = await clickAndProbeDefault(page, 'a[data-sn-event="email_click"]')
-    assert(email.ok, 'instrumented email bar missing')
+    const download = await clickAndProbeDefault(page, 'a[data-sn-event="contact_download"]')
+    assert(email.ok && download.ok, 'instrumented bars missing')
     assert(email.defaultPrevented === false, 'email_click listener prevented default')
+    assert(download.defaultPrevented === false, 'contact_download listener prevented default')
 
     const events = customEvents(await recordedEvents(page))
-    assert(events.length === 1, `expected 1 custom event, got ${JSON.stringify(events)}`)
+    assert(events.length === 2, `expected 2 custom events, got ${JSON.stringify(events)}`)
     assert(events[0].name === 'email_click', `first event ${events[0].name}`)
+    assert(events[1].name === 'contact_download', `second event ${events[1].name}`)
     for (const ev of events) {
       assert(
         ev.params && ev.params.surface === 'contact',
@@ -254,27 +259,33 @@ async function caseRepeatedActivationsOneEach(browser) {
   try {
     for (let i = 0; i < 2; i += 1) {
       await clickAndProbeDefault(page, 'a[data-sn-event="email_click"]')
+      await clickAndProbeDefault(page, 'a[data-sn-event="contact_download"]')
     }
     const events = customEvents(await recordedEvents(page))
     const emails = events.filter((e) => e.name === 'email_click')
+    const downloads = events.filter((e) => e.name === 'contact_download')
     assert(
       emails.length === 2,
       `expected 2 email_click (one per activation), got ${emails.length}: ${JSON.stringify(events)}`,
     )
-    assert(events.length === 2, `expected exactly 2 custom events, got ${events.length}`)
+    assert(
+      downloads.length === 2,
+      `expected 2 contact_download (one per activation), got ${downloads.length}: ${JSON.stringify(events)}`,
+    )
+    assert(events.length === 4, `expected exactly 4 custom events, got ${events.length}`)
   } finally {
     await context.close()
   }
 }
 
-async function caseUninstrumentedBarsSilent(browser) {
+async function caseUninstrumentedHttpsSilent(browser) {
   const { context, page } = await openContact(browser, { gtagMode: 'stub' })
   try {
-    await clickUninstrumentedBars(page)
+    await clickHttpsBars(page)
     const events = customEvents(await recordedEvents(page))
     assert(
       events.length === 0,
-      `uninstrumented bars must not emit custom events, got ${JSON.stringify(events)}`,
+      `HTTPS bars must not emit custom events, got ${JSON.stringify(events)}`,
     )
   } finally {
     await context.close()
@@ -285,12 +296,18 @@ async function caseGtagFailurePreservesDefault(browser, gtagMode) {
   const { context, page, pageErrors } = await openContact(browser, { gtagMode })
   try {
     const email = await clickAndProbeDefault(page, 'a[data-sn-event="email_click"]')
-    assert(email.ok, `${gtagMode}: instrumented bars missing`)
+    const download = await clickAndProbeDefault(page, 'a[data-sn-event="contact_download"]')
+    assert(email.ok && download.ok, `${gtagMode}: instrumented bars missing`)
     assert(
       email.defaultPrevented === false,
       `${gtagMode}: email default was prevented`,
     )
+    assert(
+      download.defaultPrevented === false,
+      `${gtagMode}: download default was prevented`,
+    )
     assert(email.href.startsWith('mailto:'), `${gtagMode}: email href lost`)
+    assert(download.href.includes('.vcf'), `${gtagMode}: vcf href lost`)
 
     const events = customEvents(await recordedEvents(page))
     assert(
@@ -311,7 +328,7 @@ const CASES = [
   ['probe oracle detects cancellation', caseProbeOracleDetectsCancellation],
   ['successful single emission', caseSuccessfulSingleEmission],
   ['repeated activations one event each', caseRepeatedActivationsOneEach],
-  ['uninstrumented bars silent', caseUninstrumentedBarsSilent],
+  ['uninstrumented HTTPS bars silent', caseUninstrumentedHttpsSilent],
   ['absent gtag preserves default', (b) => caseGtagFailurePreservesDefault(b, 'absent')],
   ['nonfunction gtag preserves default', (b) => caseGtagFailurePreservesDefault(b, 'nonfunction')],
   ['throwing gtag preserves default', (b) => caseGtagFailurePreservesDefault(b, 'throwing')],

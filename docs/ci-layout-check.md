@@ -49,10 +49,10 @@ Optional environment variables:
 
 The same workflow also runs `npm run contact-events-check` after the layout pass. That script opens `/contact/` in Chromium against a local static server and injects a `gtag`/`dataLayer` stub (it does not load `googletagmanager.com` or send production hits). It asserts:
 
-- one `email_click` with `{ surface: "contact" }` per successful activation;
+- one `email_click` and one `contact_download` with `{ surface: "contact" }` per successful activation;
 - repeated activations emit one event each (no double-registered listeners);
-- WhatsApp, Call (`tel:`), LinkedIn, and project HTTPS bars do not emit those custom events;
-- absent, non-function, and throwing `gtag` leave mailto default actions unprevented and do not surface uncaught page errors;
+- WhatsApp, LinkedIn, and project HTTPS bars do not emit those custom events;
+- absent, non-function, and throwing `gtag` leave mailto and vCard-download default actions unprevented and do not surface uncaught page errors;
 - emitted event params contain no PII (email, phone, contact URLs, vCard payload).
 
 Default-action preservation is checked by reading `event.defaultPrevented` on a **document** bubble-phase probe registered after the page script (the implementation is also a document bubble listener; an anchor-target probe would run too early). The probe calls `preventDefault` only after that observation so the test stays inside Chromium. An isolated harness injects a temporary canceling document listener (not committed product code) and asserts the probe sees `defaultPrevented === true`, proving the oracle would catch a regression that cancelled the default.
