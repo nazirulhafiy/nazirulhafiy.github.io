@@ -70,7 +70,7 @@ These links demonstrate public, Sarawak-aware digital exploration without turnin
 
 ### Contact
 
-`/contact/` is a compact, mobile-first contact hub for people who need reach and project links quickly (for example after scanning a card). It stays neutral and reusable: centred identity with the site tagline, Contact and Projects sections, WhatsApp (`wa.me/nazirulhafiy`) / Call (vCard download) / Email / LinkedIn bars, and project bars for `pcds2030.com`, `sde2030.com`, and `ai.sarawak.news`. The Call bar keeps its phone icon and label while downloading `/contact/nazirul-hafiy.vcf`; WhatsApp opens the `@nazirulhafiy` username landing. It is not a second homepage and does not add a site-wide nav item.
+`/contact/` is a compact, mobile-first contact hub for people who need reach and project links quickly (for example after scanning a card). It stays neutral and reusable: centred identity with the site tagline, Contact and Projects sections, WhatsApp (`wa.me/nazirulhafiy`) / Call (`tel:`) / Email / LinkedIn bars, and project bars for `pcds2030.com`, `sde2030.com`, and `ai.sarawak.news`. Phone details are reachable via Call; WhatsApp opens the `@nazirulhafiy` username landing. A vCard file remains published at `/contact/nazirul-hafiy.vcf` for direct URL use. It is not a second homepage and does not add a site-wide nav item.
 
 ### Custom 404
 

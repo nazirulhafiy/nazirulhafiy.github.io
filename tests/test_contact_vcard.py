@@ -76,13 +76,14 @@ class ContactVCardTests(unittest.TestCase):
         self.assertNotIn("contact-bio\">Brings together", html)
         self.assertNotIn("/experience.html", html)
         self.assertNotIn('href="/posts/"', html)
-        self.assertNotIn("tel:", html)
         self.assertNotIn("/in/hafiy/", html)
         self.assertNotIn("nav-toggle", html)
         self.assertNotIn(".svg", html)
         self.assertNotIn(">Portfolio<", html)
         self.assertNotIn("portfolio.png", html)
         self.assertNotIn("Save Contact", html)
+        self.assertNotIn("contact_download", html)
+        self.assertNotIn('download="nazirul-hafiy.vcf"', html)
 
         bars = re.findall(
             r'<a class="contact-bar" href="([^"]+)"[^>]*>\s*'
@@ -94,7 +95,7 @@ class ContactVCardTests(unittest.TestCase):
         )
         expected = [
             ("https://wa.me/nazirulhafiy", "/assets/contact/whatsapp.png?v=3", "WhatsApp"),
-            ("/contact/nazirul-hafiy.vcf", "/assets/contact/phone.png?v=7", "Call"),
+            ("tel:+60135623005", "/assets/contact/phone.png?v=7", "Call"),
             ("mailto:nazirul@hafiy.my", "/assets/contact/email.png?v=3", "Email"),
             (
                 "https://www.linkedin.com/in/nazirulhafiy/",
@@ -111,14 +112,12 @@ class ContactVCardTests(unittest.TestCase):
         ]
         self.assertEqual([(h, s, t.strip()) for h, s, t in bars], expected)
         self.assertEqual(bars[0][0], "https://wa.me/nazirulhafiy")
-        self.assertEqual(bars[1][0], "/contact/nazirul-hafiy.vcf")
-        # Call downloads the vCard: download attr + contact_download marker, no new-tab.
-        call_open = html.split('href="/contact/nazirul-hafiy.vcf"', 1)[1].split("</a>", 1)[0]
-        self.assertIn('download="nazirul-hafiy.vcf"', call_open)
-        self.assertIn('data-sn-event="contact_download"', call_open)
+        self.assertEqual(bars[1][0], "tel:+60135623005")
+        # Call is a normal tel: link: no custom GA marker, no new-tab target.
+        call_open = html.split('href="tel:+60135623005"', 1)[1].split("</a>", 1)[0]
+        self.assertNotIn("data-sn-event", call_open)
         self.assertNotIn("target=", call_open)
-        self.assertIn('download="nazirul-hafiy.vcf"', html)
-        self.assertIn('data-sn-event="contact_download"', html)
+        self.assertNotIn("download=", call_open)
 
         for _, src, _ in expected:
             path_only = src.split("?", 1)[0]
@@ -133,20 +132,20 @@ class ContactVCardTests(unittest.TestCase):
         copy = site_copy()
         html = CONTACT_BUILT.read_text(encoding="utf-8")
         self.assertIn('href="https://wa.me/nazirulhafiy"', html)
-        self.assertIn('href="/contact/nazirul-hafiy.vcf"', html)
-        self.assertIn('download="nazirul-hafiy.vcf"', html)
-        self.assertIn('data-sn-event="contact_download"', html)
+        self.assertIn('href="tel:+60135623005"', html)
         self.assertIn('href="mailto:nazirul@hafiy.my"', html)
         self.assertIn(">Call<", html)
         self.assertNotIn(">Portfolio<", html)
         self.assertNotIn("Save Contact", html)
-        self.assertNotIn("tel:", html)
+        self.assertNotIn("contact_download", html)
+        self.assertNotIn('download="nazirul-hafiy.vcf"', html)
         self.assertIn("/assets/contact/phone.png?v=7", html)
         self.assertIn("data-sn-analytics-loader", html)
         self.assertIn(html_lib.escape(copy["tagline"]), html)
         self.assertIn(">Contact<", html)
         self.assertIn(">Projects<", html)
         self.assertNotIn("site-header", html)
+        # vCard file remains published for direct URL use; not linked from the bars.
         self.assertTrue(VCARD.is_file())
 
 
