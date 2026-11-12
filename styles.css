@@ -540,7 +540,7 @@ main > .section:nth-child(4) {
 }
 
 .contact-avatar {
-  width: min(7.5rem, 42%);
+  width: 13rem;
   margin: 0 auto 1.15rem;
 }
 
