@@ -57,7 +57,7 @@ The current public portfolio uses a minimalist editorial system:
 
 - monochrome, content-first presentation;
 - narrow readable measure;
-- system monospace for the interface, system sans for article text;
+- self-hosted Roboto Mono for the interface, system sans for article text;
 - low-motion interactions;
 - light-only styling (`color-scheme: light`; no system-dark override).
 

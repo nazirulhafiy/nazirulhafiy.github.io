@@ -1,3 +1,36 @@
+/* Self-hosted Roboto Mono (SIL OFL 1.1). Used weights/styles only: 400, 600, 700, italic 400. */
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/roboto-mono/RobotoMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/roboto-mono/RobotoMono-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/roboto-mono/RobotoMono-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/roboto-mono/RobotoMono-Italic.woff2") format("woff2");
+}
+
 :root {
   color-scheme: light;
   --background: #ffffff;
@@ -9,7 +42,7 @@
   --accent-soft: #f1f1f1;
   --page: 48rem;
   --gutter: clamp(1.1rem, 4vw, 1.5rem);
-  --mono: ui-monospace, "SFMono-Regular", "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --mono: "Roboto Mono", ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   /* Interaction hover/press: strong ease-out, short UI durations (load entrance is separate). */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);

@@ -9,7 +9,7 @@ The current public design is closer to editorial documentation than marketing co
 ## Visual language
 
 - Monochrome palette with soft surfaces and subtle borders.
-- System monospace typography for the interface. Article decks and article bodies use the system sans stack (`--sans`).
+- Self-hosted Roboto Mono for the interface (`--mono`). Article decks and article bodies use the system sans stack (`--sans`).
 - Narrow content measure for readability.
 - Generous vertical spacing.
 - Dashed underlines and light hover movement as the main interaction language.
@@ -63,8 +63,10 @@ When adding new sections, prefer the existing patterns:
 Interface font stack (`--mono`):
 
 ```css
-ui-monospace, "SFMono-Regular", "Cascadia Code", "Roboto Mono", Consolas, "Liberation Mono", Menlo, monospace
+"Roboto Mono", ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace
 ```
+
+Roboto Mono is self-hosted under `assets/fonts/roboto-mono/` (official [googlefonts/RobotoMono](https://github.com/googlefonts/RobotoMono) sources, SIL OFL 1.1 — see `OFL.txt` next to the files; not loaded from Google Fonts/CDN at runtime). Shipped faces are only the weights/styles portfolio CSS uses on body-mono pages: Regular **400**, SemiBold **600**, Bold **700**, and Italic **400** (`.post-meta`). Regular/Bold/Italic are the upstream static `woff2` webfonts; SemiBold is instantiated from the official variable font because upstream does not ship a static 600 face. Do not ship Thin/Light/Medium or unused italics. `--sans` and `.article-deck, .article-body` stay on the system sans stack unchanged.
 
 Article text (`--sans`):
 
