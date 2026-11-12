@@ -162,6 +162,7 @@ Experiment links should be simple block links with a title and one-sentence desc
 
 - no top navbar on this page only;
 - centred existing portrait (`assets/profile.png`), site title, and the site tagline from `data/site.json` as the single line under the name (`.contact-bio`, same fluid one-line treatment as homepage `.hero-copy`: `container-type` on `.contact-intro`, `font-size: min(0.82rem, 3.2cqi)`, `white-space: nowrap`, `data-one-line`);
+- the whole intro (avatar + name + tagline) is one root-relative home link (`.contact-intro-link` → `/`, `aria-label` from `@@SITE_ARIA_HOME@@`); load-enter stays on `.contact-intro`, not the inner link;
 - section headings are title-case **Contact** and **Projects**;
 - every action uses a `.contact-bar`: rounded rectangle (not a pill), left equal square thumbnail, title centred in the row, no kebab menus;
 - contact order: WhatsApp (`https://wa.me/nazirulhafiy` username link), Call (`tel:+60135623005`, same number as vCard `TEL`), Email, LinkedIn — local monochrome PNGs under `assets/contact/` with matched optical size (Call uses the classic handset mark at `assets/contact/phone.png`; same `#111` light treatment as the other bars). No Portfolio bar on this page;

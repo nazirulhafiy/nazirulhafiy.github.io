@@ -71,6 +71,10 @@ class ContactVCardTests(unittest.TestCase):
         html = CONTACT_TEMPLATE.read_text(encoding="utf-8")
         self.assertNotIn("site-header", html)
         self.assertIn("@@SITE_TAGLINE_ESC@@", html)
+        self.assertIn(
+            '<a class="contact-intro-link" href="/" aria-label="@@SITE_ARIA_HOME@@">',
+            html,
+        )
         self.assertIn('<h2 id="contact-title">Contact</h2>', html)
         self.assertIn('<h2 id="projects-title">Projects</h2>', html)
         self.assertNotIn("contact-bio\">Brings together", html)
