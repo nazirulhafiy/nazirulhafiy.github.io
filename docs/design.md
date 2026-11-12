@@ -27,6 +27,8 @@ Portfolio **hover / press** polish is CSS-only (no JavaScript). It is separate f
 | `--ease-load` | `ease-out` | Evil Rabbit load easing (direct recipe) |
 | `--duration-load` | `500ms` | Load entrance duration (Evil Rabbit direct) |
 | `--load-rise` | `10px` | Load entrance `translateY` distance |
+| `--delay-contact-pfp-hold` | `800ms` | Contact helmet hold before dissolve |
+| `--duration-contact-pfp-dissolve` | `1s` | Contact helmet → live PFP opacity dissolve |
 
 Rules:
 
@@ -110,6 +112,8 @@ The hero should remain concise:
 
 **Load entrance (homepage + contact).** Direct copy of evilrabbit.com’s CSS band recipe (user-directed; iterate later if it does not fit). Shared `@keyframes load-enter`: opacity `0` → `1` with `translateY(10px)` → `0`, duration **500ms**, easing **`ease-out`**, fill `forwards`, base `opacity: 0` on each band. No blur, no scale. Homepage: `.hero` at 0 delay, then `main > .section` at **100 / 200 / 300ms** (experience → writing → experiments). Contact: `.contact-intro` at 0, `.contact-section` at 100ms, `.contact-projects` at 200ms. Do not animate nav, footer, experience/writing inner pages, or individual contact bars. Under `prefers-reduced-motion: reduce`, all load entrances are disabled (opacity 1, no transform) — hafiy requirement even though Evil Rabbit does not gate its fade. CSS-only — no portfolio-page JavaScript.
 
+**Contact portrait dissolve (`/contact/` only).** On load, the contact avatar stacks the live portrait (`assets/profile.png?v=2`) under a one-shot decorative overlay (`assets/contact-helmet-pfp.png`, Gundam helmet bust aligned to the same shirt/shoulders). The helmet layer holds for **`--delay-contact-pfp-hold` (800ms)**, then fades out once over **`--duration-contact-pfp-dissolve` (1s)** via `@keyframes contact-pfp-dissolve` (`opacity` 1 → 0, `forwards`, no loop, no hover/click toggle). After the dissolve, only the live portrait remains visible. Under `prefers-reduced-motion: reduce`, skip the dissolve and keep the helmet layer at `opacity: 0` so only the normal portrait shows. Open Graph / Twitter / share images stay `assets/profile.png?v=2` — never use the helmet asset as a social card.
+
 Homepage `<title>`, meta description, Open Graph / Twitter tags, and footer brand text are filled by `scripts/build.py` from the same file. Do not hand-type those strings in templates, scripts, or docs; `tests/test_site_copy.py` fails CI if they appear elsewhere.
 
 ### Favicon (site tab / touch icon)
@@ -161,7 +165,7 @@ Experiment links should be simple block links with a title and one-sentence desc
 `/contact/` is a mobile-first link hub rendered from `site/templates/contact/index.html`:
 
 - no top navbar on this page only;
-- centred existing portrait (`assets/profile.png`), site title, and the site tagline from `data/site.json` as the single line under the name (`.contact-bio`, same fluid one-line treatment as homepage `.hero-copy`: `container-type` on `.contact-intro`, `font-size: min(0.82rem, 3.2cqi)`, `white-space: nowrap`, `data-one-line`);
+- centred portrait stack (live `assets/profile.png?v=2` under decorative `assets/contact-helmet-pfp.png`; see Contact portrait dissolve above), site title, and the site tagline from `data/site.json` as the single line under the name (`.contact-bio`, same fluid one-line treatment as homepage `.hero-copy`: `container-type` on `.contact-intro`, `font-size: min(0.82rem, 3.2cqi)`, `white-space: nowrap`, `data-one-line`);
 - section headings are title-case **Contact** and **Projects**;
 - every action uses a `.contact-bar`: rounded rectangle (not a pill), left equal square thumbnail, title centred in the row, no kebab menus;
 - contact order: WhatsApp (`https://wa.me/nazirulhafiy` username link), Call (`tel:+60135623005`, same number as vCard `TEL`), Email, LinkedIn — local monochrome PNGs under `assets/contact/` with matched optical size (Call uses the classic handset mark at `assets/contact/phone.png`; same `#111` light treatment as the other bars). No Portfolio bar on this page;

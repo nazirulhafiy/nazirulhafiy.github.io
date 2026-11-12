@@ -19,6 +19,8 @@
   --ease-load: ease-out;
   --duration-load: 500ms;
   --load-rise: 10px;
+  --delay-contact-pfp-hold: 800ms;
+  --duration-contact-pfp-dissolve: 1s;
 }
 
 *,
@@ -526,6 +528,28 @@ main > .section:nth-child(4) {
 .contact-avatar {
   width: min(7.5rem, 42%);
   margin: 0 auto 1.15rem;
+}
+
+/* Contact-only: stack aligned portraits; helmet dissolves once into live PFP. */
+.contact-avatar img {
+  grid-area: 1 / 1;
+}
+
+.contact-avatar-helmet {
+  z-index: 1;
+  pointer-events: none;
+  animation: contact-pfp-dissolve var(--duration-contact-pfp-dissolve) var(--ease-load)
+    var(--delay-contact-pfp-hold) forwards;
+}
+
+@keyframes contact-pfp-dissolve {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 .contact-intro h1 {
@@ -1258,6 +1282,11 @@ main > .section:nth-child(4) {
     transition: none;
     opacity: 1;
     transform: none;
+  }
+
+  .contact-avatar-helmet {
+    animation: none;
+    opacity: 0;
   }
 
   .inline-links a:hover,
