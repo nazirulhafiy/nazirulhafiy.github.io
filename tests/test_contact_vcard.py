@@ -115,7 +115,7 @@ class ContactVCardTests(unittest.TestCase):
             ),
             (
                 "https://polah.app/kracked/",
-                "/assets/contact/kracked-quest.png?v=1",
+                "/assets/contact/kracked-quest.png?v=2",
                 "Kracked Quest",
             ),
             (
