@@ -108,7 +108,7 @@ The hero should remain concise:
 - square monochrome portrait;
 - greeting (`about_lead` in `data/site.json`);
 - one professional pitch (`tagline` in `data/site.json`);
-- icon contact links.
+- icon contact links in `ul.inline-links` (order: Email, LinkedIn, X, Threads → `https://www.threads.com/@nazirul.hafiy`, GitHub).
 
 **Load entrance (homepage + contact).** Direct copy of evilrabbit.com’s CSS band recipe (user-directed; iterate later if it does not fit). Shared `@keyframes load-enter`: opacity `0` → `1` with `translateY(10px)` → `0`, duration **500ms**, easing **`ease-out`**, fill `forwards`, base `opacity: 0` on each animated element. No blur, no scale. Homepage: `.hero` at 0 delay, then `main > .section` at **100 / 200 / 300ms** (experience → writing → experiments). Contact staged cascade (same `load-enter`): `.contact-intro` at **0**; `.contact-section h2` at **400ms**; Contact bars (`.contact-actions .contact-bar` nth-child 1–4) at **460 / 520 / 580 / 640ms**; `.contact-projects h2` at **700ms**; Projects bars (`.contact-project-list .contact-bar` nth-child 1–6) at **760 / 820 / 880 / 940 / 1000 / 1060ms**. Full entrance settles around **1.6s** (last delay 1060ms + 500ms). Section containers (`.contact-section`, `.contact-projects`) are not animated. Do not animate nav, footer, or experience/writing inner pages. Under `prefers-reduced-motion: reduce`, all load entrances (homepage bands plus contact intro, headings, and bars) are disabled (animation none, opacity 1, no transform) — hafiy requirement even though Evil Rabbit does not gate its fade. CSS-only — no portfolio-page JavaScript.
 
