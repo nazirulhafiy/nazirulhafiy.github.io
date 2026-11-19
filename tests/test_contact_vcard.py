@@ -116,17 +116,17 @@ class ContactVCardTests(unittest.TestCase):
             (
                 "https://polah.app/kracked/",
                 "/assets/contact/kracked-quest.png?v=5",
-                "Kracked Quest",
+                "kracked quest",
             ),
             (
                 "https://polah.app/sifir/",
                 "/assets/contact/sifir-sprint.png?v=5",
-                "Sifir Sprint",
+                "sifir sprint",
             ),
             (
                 "https://polah.app/balls/",
                 "/assets/contact/cat-balls.png?v=5",
-                "Cat Balls",
+                "cat balls",
             ),
         ]
         self.assertEqual([(h, s, t.strip()) for h, s, t in bars], expected)
