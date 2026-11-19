@@ -70,7 +70,7 @@ These links demonstrate public, Sarawak-aware digital exploration without turnin
 
 ### Contact
 
-`/contact/` is a compact, mobile-first contact hub for people who need reach and project links quickly (for example after scanning a card). It stays neutral and reusable: centred identity with the site tagline, Contact, Projects, and Games sections, WhatsApp (`wa.me/nazirulhafiy`) / Call (`tel:`) / Email / LinkedIn bars, project bars for `pcds2030.com`, `sde2030.com`, and `ai.sarawak.news`, and game bars for Kracked Quest, Sifir Sprint, and Cat Balls on `polah.app`. Phone details are reachable via Call; WhatsApp opens the `@nazirulhafiy` username landing. A vCard file remains published at `/contact/nazirul-hafiy.vcf` for direct URL use. It is not a second homepage and does not add a site-wide nav item.
+`/contact/` is a compact, mobile-first contact hub for people who need reach and project links quickly (for example after scanning a card). It stays neutral and reusable: centred identity with the site tagline, Contact and Projects sections, WhatsApp (`wa.me/nazirulhafiy`) / Call (`tel:`) / Email / LinkedIn bars, and one Projects list for `pcds2030.com`, `sde2030.com`, `ai.sarawak.news`, plus Kracked Quest, Sifir Sprint, and Cat Balls on `polah.app`. Phone details are reachable via Call; WhatsApp opens the `@nazirulhafiy` username landing. A vCard file remains published at `/contact/nazirul-hafiy.vcf` for direct URL use. It is not a second homepage and does not add a site-wide nav item.
 
 ### Custom 404
 
@@ -78,7 +78,7 @@ Missing portfolio paths should show the site’s own light, header/footer 404 pa
 
 ### Games on the same host
 
-`/cat-pinball-game/` is published from its own repository. `/sifir-sprint/` and `/kracked-quest/` are too, and those pages redirect visitors to `https://polah.app/sifir/` and `https://polah.app/kracked/`. None of those games are source files here, and they are not homepage experiments. The contact hub Games section links the public play URLs on `polah.app` (`/kracked/`, `/sifir/`, `/balls/`) rather than the hafiy.my project-site paths.
+`/cat-pinball-game/` is published from its own repository. `/sifir-sprint/` and `/kracked-quest/` are too, and those pages redirect visitors to `https://polah.app/sifir/` and `https://polah.app/kracked/`. None of those games are source files here, and they are not homepage experiments. The contact hub Projects list links the public play URLs on `polah.app` (`/kracked/`, `/sifir/`, `/balls/`) rather than the hafiy.my project-site paths.
 
 ## Product principles
 

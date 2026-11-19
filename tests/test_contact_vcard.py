@@ -115,17 +115,17 @@ class ContactVCardTests(unittest.TestCase):
             ),
             (
                 "https://polah.app/kracked/",
-                "/assets/contact/kracked-quest.png?v=4",
+                "/assets/contact/kracked-quest.png?v=5",
                 "Kracked Quest",
             ),
             (
                 "https://polah.app/sifir/",
-                "/assets/contact/sifir-sprint.png?v=1",
+                "/assets/contact/sifir-sprint.png?v=5",
                 "Sifir Sprint",
             ),
             (
                 "https://polah.app/balls/",
-                "/assets/contact/cat-balls.png?v=1",
+                "/assets/contact/cat-balls.png?v=5",
                 "Cat Balls",
             ),
         ]
@@ -163,7 +163,8 @@ class ContactVCardTests(unittest.TestCase):
         self.assertIn(html_lib.escape(copy["tagline"]), html)
         self.assertIn(">Contact<", html)
         self.assertIn(">Projects<", html)
-        self.assertIn(">Games<", html)
+        self.assertNotIn(">Games<", html)
+        self.assertNotIn("contact-games", html)
         self.assertIn("https://polah.app/kracked/", html)
         self.assertIn("https://polah.app/sifir/", html)
         self.assertIn("https://polah.app/balls/", html)
