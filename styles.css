@@ -595,12 +595,14 @@ main > .section:nth-child(4) {
 }
 
 .contact-section,
-.contact-projects {
+.contact-projects,
+.contact-games {
   margin: 0 0 1.85rem;
 }
 
 .contact-section h2,
-.contact-projects h2 {
+.contact-projects h2,
+.contact-games h2 {
   margin: 0 0 0.85rem;
   color: var(--muted);
   font-size: 0.78rem;
@@ -619,8 +621,13 @@ main > .section:nth-child(4) {
   animation-delay: 700ms;
 }
 
+.contact-games h2 {
+  animation-delay: 940ms;
+}
+
 .contact-actions,
-.contact-project-list {
+.contact-project-list,
+.contact-game-list {
   display: grid;
   gap: 0.7rem;
 }
@@ -673,6 +680,18 @@ main > .section:nth-child(4) {
 
 .contact-project-list .contact-bar:nth-child(3) {
   animation-delay: 880ms;
+}
+
+.contact-game-list .contact-bar:nth-child(1) {
+  animation-delay: 1000ms;
+}
+
+.contact-game-list .contact-bar:nth-child(2) {
+  animation-delay: 1060ms;
+}
+
+.contact-game-list .contact-bar:nth-child(3) {
+  animation-delay: 1120ms;
 }
 
 .contact-bar:hover {
@@ -1333,8 +1352,10 @@ main > .section:nth-child(4) {
   .contact-intro,
   .contact-section h2,
   .contact-projects h2,
+  .contact-games h2,
   .contact-actions .contact-bar,
-  .contact-project-list .contact-bar {
+  .contact-project-list .contact-bar,
+  .contact-game-list .contact-bar {
     animation: none;
     transition: none;
     opacity: 1;

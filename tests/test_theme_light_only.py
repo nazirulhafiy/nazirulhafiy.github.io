@@ -43,7 +43,7 @@ LIGHT_TOKENS = {
     "--accent-soft": "#f1f1f1",
 }
 
-CSS_CACHE = "v=48"
+CSS_CACHE = "v=49"
 
 
 class ThemeLightOnlyCssTest(unittest.TestCase):
