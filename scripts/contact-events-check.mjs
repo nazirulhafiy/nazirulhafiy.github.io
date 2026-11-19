@@ -214,6 +214,9 @@ async function clickUninstrumentedBars(page) {
     'a.contact-bar[href="https://pcds2030.com"]',
     'a.contact-bar[href="https://sde2030.com"]',
     'a.contact-bar[href="https://ai.sarawak.news"]',
+    'a.contact-bar[href="https://polah.app/kracked/"]',
+    'a.contact-bar[href="https://polah.app/sifir/"]',
+    'a.contact-bar[href="https://polah.app/balls/"]',
   ]
   for (const sel of selectors) {
     const result = await clickAndProbeDefault(page, sel)

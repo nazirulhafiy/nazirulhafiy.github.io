@@ -113,6 +113,21 @@ class ContactVCardTests(unittest.TestCase):
                 "/assets/contact/ai-sarawak-news.png?v=3",
                 "ai.sarawak.news",
             ),
+            (
+                "https://polah.app/kracked/",
+                "/assets/contact/kracked-quest.png?v=4",
+                "Kracked Quest",
+            ),
+            (
+                "https://polah.app/sifir/",
+                "/assets/contact/sifir-sprint.png?v=1",
+                "Sifir Sprint",
+            ),
+            (
+                "https://polah.app/balls/",
+                "/assets/contact/cat-balls.png?v=1",
+                "Cat Balls",
+            ),
         ]
         self.assertEqual([(h, s, t.strip()) for h, s, t in bars], expected)
         self.assertEqual(bars[0][0], "https://wa.me/nazirulhafiy")
@@ -148,6 +163,10 @@ class ContactVCardTests(unittest.TestCase):
         self.assertIn(html_lib.escape(copy["tagline"]), html)
         self.assertIn(">Contact<", html)
         self.assertIn(">Projects<", html)
+        self.assertIn(">Games<", html)
+        self.assertIn("https://polah.app/kracked/", html)
+        self.assertIn("https://polah.app/sifir/", html)
+        self.assertIn("https://polah.app/balls/", html)
         self.assertNotIn("site-header", html)
         # vCard file remains published for direct URL use; not linked from the bars.
         self.assertTrue(VCARD.is_file())
